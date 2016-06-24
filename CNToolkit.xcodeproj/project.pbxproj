@@ -13,12 +13,10 @@
 		1BA4A9D21B5556D800E3FBD4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BA4A9D11B5556D800E3FBD4 /* Images.xcassets */; };
 		1BA4A9D51B5556D800E3FBD4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BA4A9D31B5556D800E3FBD4 /* LaunchScreen.xib */; };
 		1BA4A9E11B5556D800E3FBD4 /* Integrated_test_v1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA4A9E01B5556D800E3FBD4 /* Integrated_test_v1Tests.swift */; };
-		1BA503711C0A2FD50021F216 /* FaceNameAdaptiveMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA503701C0A2FD50021F216 /* FaceNameAdaptiveMemoryViewController.swift */; };
 		1BA503731C0A487C0021F216 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA503721C0A487C0021F216 /* AVFoundation.framework */; };
 		1BA503771C0A4A980021F216 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA503761C0A4A980021F216 /* CreditsViewController.swift */; };
 		1BA503791C0A578F0021F216 /* SoundEffect1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1BA503781C0A578F0021F216 /* SoundEffect1.mp3 */; };
 		1BCEE8B21B555A53002AEE37 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCEE8B11B555A53002AEE37 /* PicturesViewController.swift */; };
-		1BF3163E1CB18FA6007AF4D8 /* FaceNameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3163D1CB18FA6007AF4D8 /* FaceNameData.swift */; };
 		F280A3EF1B7EB5E20071C100 /* ScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280A3EE1B7EB5E20071C100 /* ScaleView.swift */; };
 		F280A3F11B80B80D0071C100 /* AllResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280A3F01B80B80D0071C100 /* AllResults.swift */; };
 		F280A3F31B80F1620071C100 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280A3F21B80F1620071C100 /* SetupViewController.swift */; };
@@ -50,12 +48,10 @@
 		1BA4A9DA1B5556D800E3FBD4 /* CNToolkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CNToolkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA4A9DF1B5556D800E3FBD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BA4A9E01B5556D800E3FBD4 /* Integrated_test_v1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integrated_test_v1Tests.swift; sourceTree = "<group>"; };
-		1BA503701C0A2FD50021F216 /* FaceNameAdaptiveMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceNameAdaptiveMemoryViewController.swift; sourceTree = "<group>"; };
 		1BA503721C0A487C0021F216 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1BA503761C0A4A980021F216 /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		1BA503781C0A578F0021F216 /* SoundEffect1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SoundEffect1.mp3; sourceTree = "<group>"; };
 		1BCEE8B11B555A53002AEE37 /* PicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
-		1BF3163D1CB18FA6007AF4D8 /* FaceNameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceNameData.swift; sourceTree = "<group>"; };
 		F280A3EE1B7EB5E20071C100 /* ScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleView.swift; sourceTree = "<group>"; };
 		F280A3F01B80B80D0071C100 /* AllResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllResults.swift; sourceTree = "<group>"; };
 		F280A3F21B80F1620071C100 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +112,6 @@
 				1BA503761C0A4A980021F216 /* CreditsViewController.swift */,
 				1BA4A9CE1B5556D800E3FBD4 /* Main.storyboard */,
 				F2DA21E71B7BFCE20048C068 /* Results */,
-				F28F37831CCD06EC00E2C8B1 /* FaceName */,
 				F2DA21D81B7646E40048C068 /* Pictures */,
 				1BA4A9D11B5556D800E3FBD4 /* Images.xcassets */,
 				1BA503781C0A578F0021F216 /* SoundEffect1.mp3 */,
@@ -152,15 +147,6 @@
 				1BA4A9DF1B5556D800E3FBD4 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F28F37831CCD06EC00E2C8B1 /* FaceName */ = {
-			isa = PBXGroup;
-			children = (
-				1BA503701C0A2FD50021F216 /* FaceNameAdaptiveMemoryViewController.swift */,
-				1BF3163D1CB18FA6007AF4D8 /* FaceNameData.swift */,
-			);
-			name = FaceName;
 			sourceTree = "<group>";
 		};
 		F2DA21D81B7646E40048C068 /* Pictures */ = {
@@ -297,9 +283,7 @@
 				F2DA21D61B7646420048C068 /* Results.swift in Sources */,
 				F2DA21D01B74249D0048C068 /* PatientUIViewController.swift in Sources */,
 				1BA4A9CD1B5556D800E3FBD4 /* ViewController.swift in Sources */,
-				1BF3163E1CB18FA6007AF4D8 /* FaceNameData.swift in Sources */,
 				F280A3EF1B7EB5E20071C100 /* ScaleView.swift in Sources */,
-				1BA503711C0A2FD50021F216 /* FaceNameAdaptiveMemoryViewController.swift in Sources */,
 				F2DA21E91B7C11210048C068 /* ResultsViewController.swift in Sources */,
 				1BA4A9CB1B5556D800E3FBD4 /* AppDelegate.swift in Sources */,
 			);
