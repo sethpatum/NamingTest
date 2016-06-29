@@ -36,16 +36,11 @@ class PicturesViewController: ViewController {
         if(selectedTest == "Naming Pictures") {
             let vc = storyboard!.instantiateViewControllerWithIdentifier("Naming Pictures Help") as UIViewController
             navigationController?.pushViewController(vc, animated:true)
-        } else {
-            let vc = storyboard!.instantiateViewControllerWithIdentifier("Famous Faces Help") as UIViewController
-            navigationController?.pushViewController(vc, animated:true)
         }
     }
     
     
     @IBAction func reset(sender: AnyObject) {
-        
-        
         
         resetButton.enabled = false
         backButton.enabled = false
@@ -59,11 +54,7 @@ class PicturesViewController: ViewController {
         corr = 0
         imageName = getImageName()
         
-        var imageView4 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-        
-        if(selectedTest == "Famous Faces") {
-            imageView4 = UIImageView(frame:CGRectMake(207.0, 171.0, 600.0, 600.0))
-        }
+        let imageView4 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
         
         let image4 = UIImage(named: imageName)
         imageView4.image = image4
@@ -73,9 +64,6 @@ class PicturesViewController: ViewController {
         
         if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
-        else {
-            placeLabel.text = "\(count+1)/\(namingImages2.count)"
         }
         
     }
@@ -103,11 +91,7 @@ class PicturesViewController: ViewController {
             
             imageName = getImageName()
             
-            var imageView1 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-            
-            if(selectedTest == "Famous Faces") {
-                imageView1 = UIImageView(frame:CGRectMake(207.0, 171.0, 600.0, 600.0))
-            }
+            let imageView1 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
             
             let image1 = UIImage(named: imageName)
             imageView1.image = image1
@@ -118,11 +102,6 @@ class PicturesViewController: ViewController {
             if selectedTest == "Naming Pictures" {
                 if count != namingImages.count {
                     placeLabel.text = "\(count+1)/\(namingImages.count)"
-                }
-            }
-            else {
-                if count != namingImages2.count {
-                    placeLabel.text = "\(count+1)/\(namingImages2.count)"
                 }
             }
             
@@ -150,11 +129,7 @@ class PicturesViewController: ViewController {
         
         else{
             imageName = getImageName()
-            var imageView2 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-            
-            if(selectedTest == "Famous Faces") {
-                imageView2 = UIImageView(frame:CGRectMake(207.0, 171.0, 600.0, 600.0))
-            }
+            let imageView2 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
             
             let image2 = UIImage(named: imageName)
             imageView2.image = image2
@@ -165,11 +140,6 @@ class PicturesViewController: ViewController {
             if selectedTest == "Naming Pictures" {
                 if count != namingImages.count-1 {
                     placeLabel.text = "\(count+1)/\(namingImages.count)"
-                }
-            }
-            else {
-                if count != namingImages2.count-1 {
-                    placeLabel.text = "\(count+1)/\(namingImages2.count)"
                 }
             }
             
@@ -198,11 +168,7 @@ class PicturesViewController: ViewController {
         
         imageName = getImageName()
         
-        var imageView3 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-        
-        if(selectedTest == "Famous Faces") {
-            imageView3 = UIImageView(frame:CGRectMake(207.0, 171.0, 600.0, 600.0))
-        }
+        let imageView3 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
         
         let image3 = UIImage(named: imageName)
         imageView3.image = image3
@@ -210,9 +176,6 @@ class PicturesViewController: ViewController {
         
         if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
-        else {
-            placeLabel.text = "\(count+1)/\(namingImages2.count)"
         }
         
     }
@@ -255,20 +218,13 @@ class PicturesViewController: ViewController {
         if(selectedTest == "Naming Pictures") {
             self.title = "Naming Pictures"
             totalCount = namingImages.count
-        } else {
-            self.title = "Famous People"
-            totalCount = namingImages2.count
         }
         
         count = 0
         corr = 0
         imageName = getImageName()
         
-        var imageView = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-        
-        if(selectedTest == "Famous Faces") {
-            imageView = UIImageView(frame:CGRectMake(207.0, 171.0, 600.0, 600.0))
-        }
+        let imageView = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
         
         let image = UIImage(named: imageName)
         imageView.image = image
@@ -280,9 +236,6 @@ class PicturesViewController: ViewController {
         if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
         }
-        else {
-            placeLabel.text = "\(count+1)/\(namingImages2.count)"
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -293,18 +246,20 @@ class PicturesViewController: ViewController {
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Landscape
     }
-    let namingImages:[String] = ["Ring", "Chimney", "Clover", "Ladle", "Piano", "Eyebrow", "Shovel", "Lighthouse", "Goggles", "Horseshoe", "Corkscrew", "Anvil", "Yarn", "Llama", "Skeleton"]
-    let namingImages2:[String] = ["A. Schwarzenegger", "B. Clinton", "B. Murray", "B. Obama", "E. Presley", "G. Bush", "G. Clooney", "H. Clinton", "J. Leno", "J. Travolta", "M. Monroe", "M. Obama", "MLK", "O. Winfrey", "R. Williams", "R. Williams"]
     
+    
+    
+    let namingImages:[String] = ["Ring", "Chimney", "Clover", "Ladle", "Piano", "Eyebrow", "Shovel", "Lighthouse", "Goggles", "Horseshoe", "Corkscrew", "Anvil", "Yarn", "Llama", "Skeleton"]
+    
+    /*
+    let namingImages2:[String] = ["A. Schwarzenegger", "B. Clinton", "B. Murray", "B. Obama", "E. Presley", "G. Bush", "G. Clooney", "H. Clinton", "J. Leno", "J. Travolta", "M. Monroe", "M. Obama", "MLK", "O. Winfrey", "R. Williams", "R. Williams"]
+    */
+
+
     func getImageName()->String{
         
-        if(selectedTest == "Naming Pictures") {
-            print(count)
-    
-            return namingImages[count]
-        } else {
-            return namingImages2[count]
-        }
+        print(count)
+        return namingImages[count]
         
     }
     
