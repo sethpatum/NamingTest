@@ -9,7 +9,7 @@ import UIKit
 
 class PicturesViewController: ViewController {
     
-    var imageName = "House"
+    var imageName = ""
     var count = 0
     var corr = 0
     @IBOutlet weak var placeLabel: UILabel!
@@ -31,6 +31,59 @@ class PicturesViewController: ViewController {
     
     var wrongList = [String]()
     
+    var namingImages = [String]()
+    
+    var namingImageGroups = [[String]]()
+    
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        getImages()
+        
+        print(selectedTest, terminator: "")
+        if(selectedTest == "Naming Pictures") {
+            self.title = "Naming Pictures"
+            totalCount = namingImages.count
+        }
+        
+        count = 0
+        corr = 0
+        imageName = getImageName()
+        
+        let imageView = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
+        
+        let image = UIImage(named: imageName)
+        imageView.image = image
+        self.view.addSubview(imageView)
+        
+        backButton.enabled = false
+        resetButton.enabled = false
+        
+        if selectedTest == "Naming Pictures" {
+            placeLabel.text = "\(count+1)/\(namingImages.count)"
+        }
+    }
+    
+    func getImages(){
+        
+        namingImages = []
+        
+        let group1:[String] = ["Abacus", "Accordian", "Acorn", "Asparagus", "Beaver"].shuffle()
+        let group2:[String] = ["Bed", "Bench", "Broom", "Cactus", "Camel"].shuffle()
+        let group3:[String] = ["Canoe", "Comb", "Compass", "Dart", "Domino"].shuffle()
+        let group4:[String] = ["Escalator", "Flower", "Funnel", "Globe", "Hammock"].shuffle()
+        
+        namingImageGroups = [group1, group2, group3, group4]
+        
+        for(var k=0; k<namingImageGroups.count; k++){
+            namingImages += namingImageGroups[k]
+        }
+        
+        print(namingImages)
+        
+    }
     
     @IBAction func HelpButton(sender: AnyObject) {
         if(selectedTest == "Naming Pictures") {
@@ -211,33 +264,6 @@ class PicturesViewController: ViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        print(selectedTest, terminator: "")
-        if(selectedTest == "Naming Pictures") {
-            self.title = "Naming Pictures"
-            totalCount = namingImages.count
-        }
-        
-        count = 0
-        corr = 0
-        imageName = getImageName()
-        
-        let imageView = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-        
-        let image = UIImage(named: imageName)
-        imageView.image = image
-        self.view.addSubview(imageView)
-        
-        backButton.enabled = false
-        resetButton.enabled = false
-        
-        if selectedTest == "Naming Pictures" {
-            placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -246,10 +272,6 @@ class PicturesViewController: ViewController {
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Landscape
     }
-    
-    
-    
-    let namingImages:[String] = ["Ring", "Chimney", "Clover", "Ladle", "Piano", "Eyebrow", "Shovel", "Lighthouse", "Goggles", "Horseshoe", "Corkscrew", "Anvil", "Yarn", "Llama", "Skeleton"]
     
     /*
     let namingImages2:[String] = ["A. Schwarzenegger", "B. Clinton", "B. Murray", "B. Obama", "E. Presley", "G. Bush", "G. Clooney", "H. Clinton", "J. Leno", "J. Travolta", "M. Monroe", "M. Obama", "MLK", "O. Winfrey", "R. Williams", "R. Williams"]
@@ -263,6 +285,48 @@ class PicturesViewController: ViewController {
         
     }
     
+    
+}
+
+extension CollectionType {
+    
+    /// Return a copy of `self` with its elements shuffled
+    
+    func shuffle() -> [Generator.Element] {
+        
+        var list = Array(self)
+        
+        list.shuffleInPlace()
+        
+        return list
+        
+    }
+    
+}
+
+extension MutableCollectionType where Index == Int {
+    
+    /// Shuffle the elements of `self` in-place.
+    
+    mutating func shuffleInPlace() {
+        
+        // empty and single-element collections don't shuffle
+        
+        if count < 2 { return }
+        
+        
+        
+        for i in 0..<count - 1 {
+            
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            
+            guard i != j else { continue }
+            
+            swap(&self[i], &self[j])
+            
+        }
+        
+    }
     
 }
 
