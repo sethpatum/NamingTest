@@ -15,30 +15,52 @@ class PicturesViewController: ViewController {
     @IBOutlet weak var placeLabel: UILabel!
     
     var order = [Bool]()
+    var startTime = NSTimeInterval()
     var startTime2 = NSDate()
     
     @IBOutlet weak var correctButton: UIButton!
-    
     @IBOutlet weak var incorrectButton: UIButton!
-    
     @IBOutlet weak var backButton: UIButton!
-   
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var semanticErrorButton: UIButton!
+    @IBOutlet weak var perceptualErrorButton: UIButton!
     
     @IBOutlet weak var resultsLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
+    
+    var endTimer = false
     
     var totalCount = Int()
-    
     var wrongList = [String]()
     
     var namingImages = [String]()
-    
     var namingImageGroups = [[String]]()
+    
+    var image = UIImage()
+    var imageView = UIImageView()
+    var gesture = UIPanGestureRecognizer()
+    
+    var resultErrors = [[Int]]()
+    var resultTimes = [[Double]]()
+    
+    // RESULT ERRORS KEY
+    //
+    // CORRECT : 0
+    // INCORRECT - SEMANTIC : 1
+    // INCORRECT - PERCEPTUAL : 2
+    // INCORRECT - "DON'T KNOW" : 3
+    // INCORRECT - TIMER DONE : 4
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
+        imageView.addGestureRecognizer(gesture)
+        imageView.userInteractionEnabled = true
+        
+        print("0 interaction enabled is \(imageView.userInteractionEnabled)")
         
         getImages()
         
@@ -52,11 +74,18 @@ class PicturesViewController: ViewController {
         corr = 0
         imageName = getImageName()
         
-        let imageView = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-        
-        let image = UIImage(named: imageName)
+        imageView = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
+        image = UIImage(named: imageName)!
         imageView.image = image
+        
+        imageView.addGestureRecognizer(gesture)
+        imageView.userInteractionEnabled = false
+        
+        print("1 interaction enabled is \(imageView.userInteractionEnabled)")
+        
         self.view.addSubview(imageView)
+        
+        print("2 interaction enabled is \(imageView.userInteractionEnabled)")
         
         backButton.enabled = false
         resetButton.enabled = false
@@ -64,6 +93,11 @@ class PicturesViewController: ViewController {
         if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
         }
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "update:", userInfo: nil, repeats: true)
+        
+        startTime = NSDate.timeIntervalSinceReferenceDate()
+        
     }
     
     func getImages(){
@@ -105,13 +139,14 @@ class PicturesViewController: ViewController {
         wrongList = [String]()
         count = 0
         corr = 0
+        
         imageName = getImageName()
         
-        let imageView4 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
+        imageView.removeFromSuperview()
+        image = UIImage(named: imageName)!
+        imageView.image = image
+        self.view.addSubview(imageView)
         
-        let image4 = UIImage(named: imageName)
-        imageView4.image = image4
-        self.view.addSubview(imageView4)
         correctButton.enabled = true
         incorrectButton.enabled = true
         
@@ -122,7 +157,6 @@ class PicturesViewController: ViewController {
     }
     
     @IBAction func correct(sender: AnyObject) {
-        
         
         resultsLabel.text = ""
         
@@ -136,19 +170,24 @@ class PicturesViewController: ViewController {
         count += 1
         corr += 1
         
+        endTimer = true
+        imageView.addGestureRecognizer(gesture)
+        imageView.userInteractionEnabled = true
+        
         if(count==totalCount){
             done()
         }
         
         else{
             
+            /*
             imageName = getImageName()
             
-            let imageView1 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-            
-            let image1 = UIImage(named: imageName)
-            imageView1.image = image1
-            self.view.addSubview(imageView1)
+            imageView.removeFromSuperview()
+            image = UIImage(named: imageName)!
+            imageView.image = image
+            self.view.addSubview(imageView)
+            */
             
             order.append(true)
             
@@ -162,6 +201,7 @@ class PicturesViewController: ViewController {
         
     }
     
+    //don't know
     @IBAction func incorrect(sender: AnyObject) {
         
         resultsLabel.text = ""
@@ -176,17 +216,23 @@ class PicturesViewController: ViewController {
         count += 1
         wrongList.append(imageName)
         
+        endTimer = true
+        imageView.addGestureRecognizer(gesture)
+        imageView.userInteractionEnabled = true
+        
         if(count==totalCount){
             done()
         }
         
         else{
+            /*
             imageName = getImageName()
-            let imageView2 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
             
-            let image2 = UIImage(named: imageName)
-            imageView2.image = image2
-            self.view.addSubview(imageView2)
+            imageView.removeFromSuperview()
+            image = UIImage(named: imageName)!
+            imageView.image = image
+            self.view.addSubview(imageView)
+            */
             
             order.append(false)
             
@@ -199,6 +245,15 @@ class PicturesViewController: ViewController {
         }
         
     }
+    
+    @IBAction func semanticError(sender: AnyObject) {
+    }
+    
+    
+    @IBAction func perceptualError(sender: AnyObject) {
+        startTime = NSDate.timeIntervalSinceReferenceDate()
+    }
+    
     
     @IBAction func back(sender: AnyObject) {
         
@@ -221,11 +276,10 @@ class PicturesViewController: ViewController {
         
         imageName = getImageName()
         
-        let imageView3 = UIImageView(frame:CGRectMake(107.0, 171.0, 800.0, 600.0))
-        
-        let image3 = UIImage(named: imageName)
-        imageView3.image = image3
-        self.view.addSubview(imageView3)
+        imageView.removeFromSuperview()
+        image = UIImage(named: imageName)!
+        imageView.image = image
+        self.view.addSubview(imageView)
         
         if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
@@ -264,6 +318,57 @@ class PicturesViewController: ViewController {
         
     }
     
+    func update(timer: NSTimer) {
+        
+        if(endTimer == false){
+            let currTime = NSDate.timeIntervalSinceReferenceDate()
+            var diff: NSTimeInterval = currTime - startTime
+            
+            let minutes = UInt8(diff / 60.0)
+            
+            diff -= (NSTimeInterval(minutes)*60.0)
+            
+            let seconds = UInt8(diff)
+            
+            diff = NSTimeInterval(seconds)
+            
+            let strMinutes = minutes > 9 ? String(minutes):"0"+String(minutes)
+            let strSeconds = seconds > 9 ? String(seconds):"0"+String(seconds)
+            
+            timerLabel.text = "\(strMinutes) : \(strSeconds)"
+            
+            if(seconds>=20){
+                print("endTimer = true")
+                endTimer = true
+                imageView.addGestureRecognizer(gesture)
+                imageView.userInteractionEnabled = true
+                print("should allow gesture")
+                
+                count += 1
+                wrongList.append(imageName)
+                
+                if(count==totalCount){
+                    done()
+                }
+                    
+                else{
+                    
+                    order.append(false)
+                    
+                    if selectedTest == "Naming Pictures" {
+                        if count != namingImages.count-1 {
+                            placeLabel.text = "\(count+1)/\(namingImages.count)"
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -282,6 +387,101 @@ class PicturesViewController: ViewController {
         
         print(count)
         return namingImages[count]
+        
+    }
+    
+    func wasDragged(gesture: UIPanGestureRecognizer) {
+        
+        print("SHOULD BE DRAGGING!")
+        
+        let translation = gesture.translationInView(self.view)
+        let img = gesture.view!
+        
+        img.center = CGPoint(x: self.view.bounds.width / 2 + translation.x, y: 471.0)
+        
+        //y: self.view.bounds.height / 2 + translation.y
+        
+        /*
+        let xFromCenter = img.center.x - self.view.bounds.width / 2
+        
+        let scale = min(100 / abs(xFromCenter), 1)
+        
+        
+        var rotation = CGAffineTransformMakeRotation(xFromCenter / 200)
+        
+        var stretch = CGAffineTransformScale(rotation, scale, scale)
+        
+        img.transform = stretch
+        */
+        
+        if gesture.state == UIGestureRecognizerState.Ended {
+            if img.center.x < 150 {
+                
+                print("next pic!")
+                img.center = CGPoint(x: 507.0, y: 471.0)
+                
+                imageName = getImageName()
+                
+                imageView.removeFromSuperview()
+                image = UIImage(named: imageName)!
+                imageView.image = image
+                
+                imageView.addGestureRecognizer(gesture)
+                imageView.userInteractionEnabled = false
+                
+                self.view.addSubview(imageView)
+                
+                endTimer = false
+                startTime = NSDate.timeIntervalSinceReferenceDate()
+                
+            }
+                
+            else{
+                
+                print("back to center!")
+                img.center = CGPoint(x: 507.0, y: 471.0)
+                
+            }
+            
+        }
+        
+        /*
+        if gesture.state == UIGestureRecognizerState.Ended {
+            
+            var acceptedOrRejected = ""
+            
+            if label.center.x < 100 {
+                
+                acceptedOrRejected = "rejected"
+                
+            } else if label.center.x > self.view.bounds.width - 100 {
+                
+                acceptedOrRejected = "accepted"
+                
+            }
+            
+            if acceptedOrRejected != "" {
+                
+                PFUser.currentUser()?.addUniqueObjectsFromArray([displayedUserId], forKey:acceptedOrRejected)
+                
+                PFUser.currentUser()?.save()
+                
+            }
+            
+            rotation = CGAffineTransformMakeRotation(0)
+            
+            stretch = CGAffineTransformScale(rotation, 1, 1)
+            
+            label.transform = stretch
+            
+            label.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
+            
+            updateImage()
+            
+        }
+*/
+        
+        
         
     }
     

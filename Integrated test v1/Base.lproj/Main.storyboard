@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -496,10 +496,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-21-hW6">
-                                <rect key="frame" x="182" y="90" width="129" height="35"/>
+                                <rect key="frame" x="127" y="84" width="149" height="47"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Incorrect">
+                                <state key="normal" title="Don't Know">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -507,7 +507,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFZ-iH-7a9">
-                                <rect key="frame" x="347" y="90" width="86" height="35"/>
+                                <rect key="frame" x="477" y="90" width="86" height="35"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Back">
@@ -518,12 +518,35 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxf-tH-mcb">
-                                <rect key="frame" x="462" y="90" width="79" height="35"/>
+                                <rect key="frame" x="552" y="88" width="79" height="35"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="End"/>
                                 <connections>
                                     <action selector="reset:" destination="34v-JF-kvs" eventType="touchUpInside" id="3Fh-zj-iZx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXc-wP-8fH">
+                                <rect key="frame" x="813" y="95" width="87" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvK-pP-y37">
+                                <rect key="frame" x="376" y="93" width="108" height="30"/>
+                                <animations/>
+                                <state key="normal" title="PerceptualError"/>
+                                <connections>
+                                    <action selector="perceptualError:" destination="34v-JF-kvs" eventType="touchUpInside" id="iwh-iZ-LZ0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdZ-wg-yx5">
+                                <rect key="frame" x="277" y="90" width="102" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Semantic Error"/>
+                                <connections>
+                                    <action selector="semanticError:" destination="34v-JF-kvs" eventType="touchUpInside" id="hZW-IK-RwI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -539,9 +562,12 @@
                         <outlet property="backButton" destination="uFZ-iH-7a9" id="Jct-SP-4md"/>
                         <outlet property="correctButton" destination="j9N-af-RhR" id="ul3-44-wvQ"/>
                         <outlet property="incorrectButton" destination="Wc6-21-hW6" id="LXV-nq-rIh"/>
+                        <outlet property="perceptualErrorButton" destination="vvK-pP-y37" id="kKN-sm-JE7"/>
                         <outlet property="placeLabel" destination="BdG-el-aYh" id="bwf-Pc-3HU"/>
                         <outlet property="resetButton" destination="kxf-tH-mcb" id="qVk-FW-k0w"/>
                         <outlet property="resultsLabel" destination="A1T-MC-dKm" id="uea-t2-fQC"/>
+                        <outlet property="semanticErrorButton" destination="SdZ-wg-yx5" id="gII-Nu-6lk"/>
+                        <outlet property="timerLabel" destination="JXc-wP-8fH" id="5Mw-Fj-i5F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2Y-Ax-B2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
