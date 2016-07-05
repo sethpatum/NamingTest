@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import AVFoundation
 
 var firstTimeThrough = true
 
@@ -17,7 +18,33 @@ var patientAge : String?
 var patientID : String?
 var patientBdate : String?
 
+
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+    
+    var recordingSession: AVAudioSession!
+    
+    var whistleRecorder: AVAudioRecorder!
+    var whistlePlayer: AVAudioPlayer!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        recordingSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                }
+            }
+        } catch {
+            
+        }
+        
+    }
+    
     
     var body:String?
     
@@ -66,6 +93,18 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] (allowed: Bool) -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                }
+            }
+        } catch {
+            
+        }
         
         // load the defaults from presistant memory
         nameOn = !NSUserDefaults.standardUserDefaults().boolForKey("nameOff")
@@ -119,6 +158,20 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    class func getDocumentsDirectory() -> NSString {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true) as [String]
+        let documentsDirectory = paths[0]
+        print("Document:", documentsDirectory)
+        return documentsDirectory
+    }
+    
+    class func getWhistleURL() -> NSURL {
+        let audioFilename = getDocumentsDirectory().stringByAppendingPathComponent("whistle.m4a")
+        let audioURL = NSURL(fileURLWithPath: audioFilename)
+        print("URL:", audioURL)
+        return audioURL
     }
     //drop
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
