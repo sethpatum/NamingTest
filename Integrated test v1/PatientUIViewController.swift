@@ -26,6 +26,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     var whistleRecorder: AVAudioRecorder!
     var whistlePlayer: AVAudioPlayer!
     
+    /*
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,7 +45,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         }
         
     }
-    
+    */
     
     var body:String?
     
@@ -93,6 +94,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        recordingSession = AVAudioSession.sharedInstance()
         
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
