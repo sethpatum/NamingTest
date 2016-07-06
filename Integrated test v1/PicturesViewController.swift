@@ -119,6 +119,7 @@ class PicturesViewController: ViewController {
         
         //6 New, 3 Original
         
+        /*
         let group1:[String] = ["can", "hand", "saw", "heart", "watch", "key", "bed", "tree", "pencil"].shuffle()
         let group2:[String] = ["star", "rose", "chair", "scale", "baseball", "train", "house", "whistle", "scissors"].shuffle()
         let group3:[String] = ["moon", "bridge", "ring", "bell", "eggs", "cat", "comb", "flower", "saw"].shuffle()
@@ -143,6 +144,7 @@ class PicturesViewController: ViewController {
         //Original BNT done; all new BNT from here
         
         let group21:[String] = ["spade", "zebra", "clover", "mermaid", "horseshoe", "panda", "artichoke", "ladle"].shuffle()
+*/
         let group22:[String] = ["clasp", "sickle", "pail", "moustache", "pliers", "cleats", "wheelbarrow", "cupcake", "gavel"].shuffle()
         let group23:[String] = ["ostrich", "anvil", "quill pen", "llama", "corkscrew", "catapult", "lightbulb", "hourglass", "antler"].shuffle()
         let group24:[String] = ["tuba", "trowel", "chalice", "flippers", "obelisk", "slingshot", "pegasus", "tusk", "cupola"].shuffle()
@@ -156,7 +158,8 @@ class PicturesViewController: ViewController {
         let group3:[String] = ["Canoe", "Comb", "Compass", "Dart", "Domino"].shuffle()
         let group4:[String] = ["Escalator", "Flower", "Funnel", "Globe", "Hammock"].shuffle()
         */
-        namingImageGroups = [group1, group2, group3, group4, group5, group6, group7, group8, group9, group10, group11, group12, group13, group14, group15, group16, group17, group18, group19, group20, group21, group22, group23, group24, group25, group26, group27]
+        //namingImageGroups = [group1, group2, group3, group4, group5, group6, group7, group8, group9, group10, group11, group12, group13, group14, group15, group16, group17, group18, group19, group20, group21, group22, group23, group24, group25, group26, group27]
+        namingImageGroups = [group22, group23, group24, group25, group26, group27]
         
         for(var k=0; k<namingImageGroups.count; k++){
             namingImages += namingImageGroups[k]
