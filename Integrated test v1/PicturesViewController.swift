@@ -132,10 +132,15 @@ class PicturesViewController: ViewController {
     }
    
     @IBAction func HelpButton(sender: AnyObject) {
+        imageName = getImageName()
+        myUtterance = AVSpeechUtterance(string: imageName)
+        myUtterance.rate = 0.3
+        synth.speakUtterance(myUtterance)
+        /*
         if(selectedTest == "Naming Pictures") {
             let vc = storyboard!.instantiateViewControllerWithIdentifier("Naming Pictures Help") as UIViewController
             navigationController?.pushViewController(vc, animated:true)
-        }
+        } */
     }
     
     
