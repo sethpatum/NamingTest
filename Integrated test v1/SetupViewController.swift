@@ -68,6 +68,16 @@ class SetupViewController: ViewController {
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
             emailAddress = NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") as! String
         }
+        
+        if(NSUserDefaults.standardUserDefaults().objectForKey("iPadName") != nil) {
+            ipadName = NSUserDefaults.standardUserDefaults().objectForKey("iPadName") as! String
+        } else {
+            // if there is no name, use the device name
+            ipadName = UIDevice.currentDevice().name
+            NSUserDefaults.standardUserDefaults().setObject(ipadName, forKey:"iPadName")
+            NSUserDefaults.standardUserDefaults().synchronize()
+
+        }
        
         uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
         uName.text = uniqueName
@@ -75,6 +85,7 @@ class SetupViewController: ViewController {
         emailOnOff.on = emailOn
         cloudOnOff.on = cloudOn
         email.text = emailAddress
+        ipName.text = ipadName
         resultsDisplayOnOff.on = resultsDisplayOn
     }
     
