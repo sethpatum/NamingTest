@@ -58,6 +58,8 @@ class PicturesViewController: ViewController {
     // INCORRECT - TIMER DONE : 4
     
     
+    
+    // This function will print the current picture onto the screen
     func outputImage() {
         
         imageName = getImageName()
@@ -91,6 +93,7 @@ class PicturesViewController: ViewController {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
         }
  
+        // synthesize the name of the image to audio out
         if announceOn {
             myUtterance = AVSpeechUtterance(string: imageName)
             myUtterance.rate = 0.3
