@@ -66,7 +66,6 @@ class SetupViewController: ViewController {
         cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
         announceOn = !NSUserDefaults.standardUserDefaults().boolForKey("announceOff")
-
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
 
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {

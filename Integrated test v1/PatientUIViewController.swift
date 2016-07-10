@@ -119,6 +119,10 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
         announceOn = !NSUserDefaults.standardUserDefaults().boolForKey("announceOff")
+        cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
+        
+        uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
+        ipadName = UIDevice.currentDevice().name
         
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
             emailAddress = NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") as! String
