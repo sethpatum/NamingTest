@@ -872,6 +872,12 @@ While the authors and producers of this program strive to provide you with usefu
                                     <action selector="StartTesting:" destination="8LV-H7-0SE" eventType="touchUpInside" id="7ef-Ti-iy8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NSUUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usc-zw-dsR">
+                                <rect key="frame" x="544" y="438" width="352" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -917,6 +923,7 @@ While the authors and producers of this program strive to provide you with usefu
                     <connections>
                         <outlet property="IDfield" destination="3H2-tG-MDe" id="7dq-F3-tOV"/>
                         <outlet property="IDlabel" destination="n3L-FX-oZV" id="N5a-u0-R62"/>
+                        <outlet property="UUID" destination="Usc-zw-dsR" id="diW-pU-pfp"/>
                         <outlet property="ageLabel" destination="6ve-bk-cbh" id="ulb-Bu-el4"/>
                         <outlet property="ageTextField" destination="j5C-kr-yOE" id="qBf-7C-Ex3"/>
                         <outlet property="birthdateField" destination="Blz-yN-Djr" id="q9K-AG-b1D"/>

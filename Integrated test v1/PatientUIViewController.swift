@@ -17,6 +17,7 @@ var patientName : String?
 var patientAge : String?
 var patientID : String?
 var patientBdate : String?
+var patientUUID : String?
 
 
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
@@ -61,6 +62,8 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdateField: UIDatePicker!
     
+    @IBOutlet weak var UUID: UILabel!
+    
     @IBAction func StartTesting(sender: AnyObject) {
         if firstTimeThrough == true {
             firstTimeThrough = false
@@ -94,6 +97,10 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        patientUUID = NSUUID().UUIDString
+        UUID.text = patientUUID
+        
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
