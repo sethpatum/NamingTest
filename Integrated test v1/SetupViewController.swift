@@ -12,8 +12,8 @@ var cloudOn   : Bool = true
 var emailOn  : Bool = false
 var announceOn : Bool = true
 var emailAddress : String = ""
-var ipadName : String = ""
 var uniqueName : String = ""
+var ipadName : String = ""
 var resultsDisplayOn : Bool = true
 
 class SetupViewController: ViewController {
@@ -24,9 +24,9 @@ class SetupViewController: ViewController {
     @IBOutlet weak var emailOnOff: UISwitch!
     @IBOutlet weak var announceOnOff: UISwitch!
     @IBOutlet weak var cloudOnOff: UISwitch!
-    @IBOutlet weak var ipName: UITextField!
     @IBOutlet weak var resultsDisplayOnOff: UISwitch!
     @IBOutlet weak var uName: UILabel!
+    @IBOutlet weak var iName: UILabel!
     
     @IBAction func emailOnOff(sender: AnyObject) {
         emailOn = emailOnOff.on
@@ -44,12 +44,6 @@ class SetupViewController: ViewController {
     @IBAction func cloudOnOff(sender: UISwitch) {
         cloudOn = cloudOnOff.on
         NSUserDefaults.standardUserDefaults().setBool(!cloudOn, forKey: "cloudOff")
-        NSUserDefaults.standardUserDefaults().synchronize()
-    }
-    
-    @IBAction func iPadNameChanged(sender: AnyObject) {
-        ipadName = ipName.text!
-        NSUserDefaults.standardUserDefaults().setObject(ipadName, forKey:"iPadName")
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
@@ -78,25 +72,19 @@ class SetupViewController: ViewController {
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
             emailAddress = NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") as! String
         }
-        
-        if(NSUserDefaults.standardUserDefaults().objectForKey("iPadName") != nil) {
-            ipadName = NSUserDefaults.standardUserDefaults().objectForKey("iPadName") as! String
-        } else {
-            // if there is no name, use the device name
-            ipadName = UIDevice.currentDevice().name
-            NSUserDefaults.standardUserDefaults().setObject(ipadName, forKey:"iPadName")
-            NSUserDefaults.standardUserDefaults().synchronize()
 
-        }
        
         uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
         uName.text = uniqueName
+        
+        ipadName = UIDevice.currentDevice().name
+        iName.text = ipadName
+        
         email.enabled = emailOn
         emailOnOff.on = emailOn
         cloudOnOff.on = cloudOn
         announceOnOff.on = announceOn
         email.text = emailAddress
-        ipName.text = ipadName
         resultsDisplayOnOff.on = resultsDisplayOn
     }
     
