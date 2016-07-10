@@ -226,6 +226,16 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nYS-OJ-Bqn" id="lJZ-nw-kzB">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDb-jH-T6Q">
+                                                    <rect key="frame" x="353" y="8" width="319" height="30"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <state key="normal" title="(Start in the Middle)"/>
+                                                    <connections>
+                                                        <segue destination="e22-w8-d0F" kind="show" id="sjV-ua-FBf"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OUA-HJ-d7s">
@@ -349,6 +359,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVE-AQ-Gnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="720" y="298"/>
+        </scene>
+        <!--Test Picker-->
+        <scene sceneID="i4U-e0-NvF">
+            <objects>
+                <viewController title="Test Picker" id="e22-w8-d0F" customClass="TestPickerViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Th0-rZ-PhG"/>
+                        <viewControllerLayoutGuide type="bottom" id="JJ7-Dj-oje"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jCA-bK-wCd">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tXO-oe-slH">
+                                <rect key="frame" x="0.0" y="138" width="1024" height="326"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Caq-6w-yAP">
+                                <rect key="frame" x="43" y="92" width="157" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="Start Test"/>
+                                <connections>
+                                    <segue destination="34v-JF-kvs" kind="show" id="NQR-eL-Nec"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="TestPicker" destination="tXO-oe-slH" id="n3D-ng-Fd8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UKc-Wz-kaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1898" y="298"/>
         </scene>
         <!--Results-->
         <scene sceneID="mpW-Ug-Cmc">
@@ -517,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2Y-Ax-B2H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2069" y="306"/>
+            <point key="canvasLocation" x="2986" y="281"/>
         </scene>
         <!--Disclaimer-->
         <scene sceneID="m2n-Jd-BT5">
@@ -943,7 +989,8 @@ While the authors and producers of this program strive to provide you with usefu
         <image name="cnbs" width="612" height="89"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lca-c5-giE"/>
-        <segue reference="mFR-im-uC4"/>
+        <segue reference="Db8-gX-wha"/>
+        <segue reference="kBo-Bx-fAG"/>
+        <segue reference="NQR-eL-Nec"/>
     </inferredMetricsTieBreakers>
 </document>

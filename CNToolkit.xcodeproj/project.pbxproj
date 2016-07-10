@@ -21,6 +21,8 @@
 		F280A3F11B80B80D0071C100 /* AllResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280A3F01B80B80D0071C100 /* AllResults.swift */; };
 		F280A3F31B80F1620071C100 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F280A3F21B80F1620071C100 /* SetupViewController.swift */; };
 		F297C1491B9320C200E0F5A1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F297C1481B9320C200E0F5A1 /* HomeViewController.swift */; };
+		F2D5ADF91D329E700099597B /* TestPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5ADF81D329E700099597B /* TestPickerViewController.swift */; };
+		F2D5ADFB1D32A6BF0099597B /* SetupImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D5ADFA1D32A6BF0099597B /* SetupImages.swift */; };
 		F2DA21D01B74249D0048C068 /* PatientUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA21CF1B74249D0048C068 /* PatientUIViewController.swift */; };
 		F2DA21D61B7646420048C068 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA21D51B7646420048C068 /* Results.swift */; };
 		F2DA21E91B7C11210048C068 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA21E81B7C11210048C068 /* ResultsViewController.swift */; };
@@ -56,6 +58,8 @@
 		F280A3F01B80B80D0071C100 /* AllResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllResults.swift; sourceTree = "<group>"; };
 		F280A3F21B80F1620071C100 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		F297C1481B9320C200E0F5A1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F2D5ADF81D329E700099597B /* TestPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPickerViewController.swift; sourceTree = "<group>"; };
+		F2D5ADFA1D32A6BF0099597B /* SetupImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupImages.swift; sourceTree = "<group>"; };
 		F2DA21CF1B74249D0048C068 /* PatientUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientUIViewController.swift; sourceTree = "<group>"; };
 		F2DA21D51B7646420048C068 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		F2DA21E81B7C11210048C068 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				1BA4A9CC1B5556D800E3FBD4 /* ViewController.swift */,
 				F2DA21CF1B74249D0048C068 /* PatientUIViewController.swift */,
 				F2DA21EC1B7D61E80048C068 /* TestSelectionTableViewController.swift */,
+				F2D5ADF81D329E700099597B /* TestPickerViewController.swift */,
 				F280A3F21B80F1620071C100 /* SetupViewController.swift */,
 				F297C1481B9320C200E0F5A1 /* HomeViewController.swift */,
 				1BA503761C0A4A980021F216 /* CreditsViewController.swift */,
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				1BCEE8B11B555A53002AEE37 /* PicturesViewController.swift */,
+				F2D5ADFA1D32A6BF0099597B /* SetupImages.swift */,
 			);
 			name = Pictures;
 			path = "Integrated test v1";
@@ -275,10 +281,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2DA21ED1B7D61E80048C068 /* TestSelectionTableViewController.swift in Sources */,
+				F2D5ADFB1D32A6BF0099597B /* SetupImages.swift in Sources */,
 				F280A3F31B80F1620071C100 /* SetupViewController.swift in Sources */,
 				F297C1491B9320C200E0F5A1 /* HomeViewController.swift in Sources */,
 				F280A3F11B80B80D0071C100 /* AllResults.swift in Sources */,
 				1BA503771C0A4A980021F216 /* CreditsViewController.swift in Sources */,
+				F2D5ADF91D329E700099597B /* TestPickerViewController.swift in Sources */,
 				1BCEE8B21B555A53002AEE37 /* PicturesViewController.swift in Sources */,
 				F2DA21D61B7646420048C068 /* Results.swift in Sources */,
 				F2DA21D01B74249D0048C068 /* PatientUIViewController.swift in Sources */,
