@@ -8,12 +8,11 @@
 
 import UIKit
 
-var nameOn   : Bool = true
-var useridOn : Bool = false
-var ageOn    : Bool = false
-var bdateOn  : Bool = true
+var cloudOn   : Bool = true
 var emailOn  : Bool = false
 var emailAddress : String = ""
+var ipadName : String = ""
+var uniqueName : String = ""
 var resultsDisplayOn : Bool = true
 
 class SetupViewController: ViewController {
@@ -22,15 +21,8 @@ class SetupViewController: ViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailOnOff: UISwitch!
-    
-    @IBOutlet weak var nameOnOff: UISwitch!
-    
-    @IBOutlet weak var useridOnOff: UISwitch!
-    
-    @IBOutlet weak var AgeOnOff: UISwitch!
-    
-    @IBOutlet weak var birthdateOnOff: UISwitch!
-    
+    @IBOutlet weak var cloudOnOff: UISwitch!
+    @IBOutlet weak var ipName: UITextField!
     @IBOutlet weak var resultsDisplayOnOff: UISwitch!
     
     @IBAction func emailOnOff(sender: AnyObject) {
@@ -48,45 +40,18 @@ class SetupViewController: ViewController {
 
     }
     
-    @IBAction func nameOnOff(sender: AnyObject) {
-        nameOn = nameOnOff.on
-        NSUserDefaults.standardUserDefaults().setBool(!nameOn, forKey: "nameOff")
+    @IBAction func cloudOnOff(sender: AnyObject) {
+        cloudOn = cloudOnOff.on
+        NSUserDefaults.standardUserDefaults().setBool(!cloudOn, forKey: "cloudOff")
         NSUserDefaults.standardUserDefaults().synchronize()
 
     }
     
-    @IBAction func UseridOnOff(sender: AnyObject) {
-        useridOn = useridOnOff.on
-        NSUserDefaults.standardUserDefaults().setBool(useridOn, forKey: "useridOn")
+    @IBAction func iPadNameChanged(sender: AnyObject) {
+        ipadName = ipName.text!
+        NSUserDefaults.standardUserDefaults().setObject(ipadName, forKey:"iPadName")
         NSUserDefaults.standardUserDefaults().synchronize()
 
-    }
-    
-    
-    @IBAction func AgeOnOff(sender: AnyObject) {
-        ageOn = AgeOnOff.on
-        NSUserDefaults.standardUserDefaults().setBool(ageOn, forKey: "ageOn")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        
-        if ageOn && bdateOn {
-            bdateOn = false
-            birthdateOnOff.on = bdateOn
-            NSUserDefaults.standardUserDefaults().setBool(!bdateOn, forKey: "bdateOff")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            
-        }
-    }
-    
-    @IBAction func BdateOnOff(sender: AnyObject) {
-        bdateOn = birthdateOnOff.on
-        NSUserDefaults.standardUserDefaults().setBool(!bdateOn, forKey: "bdateOff")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        if ageOn && bdateOn {
-            ageOn = false
-            AgeOnOff.on = ageOn
-            NSUserDefaults.standardUserDefaults().setBool(ageOn, forKey: "ageOn")
-            NSUserDefaults.standardUserDefaults().synchronize()
-        }
     }
     
     @IBAction func ResultsDisplayOnOff(sender: AnyObject) {
@@ -99,24 +64,18 @@ class SetupViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameOn = !NSUserDefaults.standardUserDefaults().boolForKey("nameOff")
-        useridOn = NSUserDefaults.standardUserDefaults().boolForKey("useridOn")
-        ageOn = NSUserDefaults.standardUserDefaults().boolForKey("ageOn")
+        cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
-        bdateOn = !NSUserDefaults.standardUserDefaults().boolForKey("bdateOff")
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
 
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
             emailAddress = NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") as! String
         }
        
-        
+        uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
         email.enabled = emailOn
         emailOnOff.on = emailOn
-        nameOnOff.on = nameOn
-        useridOnOff.on = useridOn
-        AgeOnOff.on = ageOn
-        birthdateOnOff.on = bdateOn
+        cloudOnOff.on = cloudOn
         email.text = emailAddress
         resultsDisplayOnOff.on = resultsDisplayOn
     }

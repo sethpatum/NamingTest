@@ -109,11 +109,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         }
         
         // load the defaults from presistant memory
-        nameOn = !NSUserDefaults.standardUserDefaults().boolForKey("nameOff")
-        useridOn = NSUserDefaults.standardUserDefaults().boolForKey("useridOn")
-        ageOn = NSUserDefaults.standardUserDefaults().boolForKey("ageOn")
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
-        bdateOn = !NSUserDefaults.standardUserDefaults().boolForKey("bdateOff")
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
         
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
@@ -124,17 +120,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         let currentDate = NSDate()
         birthdateField.maximumDate = currentDate
         
-        nameLabel.hidden = !nameOn
-        nameField.hidden = !nameOn
-        
-        IDlabel.hidden = !useridOn
-        IDfield.hidden = !useridOn
-        
-        ageLabel.hidden = !ageOn
-        ageTextField.hidden = !ageOn
-        
-        birthdayLabel.hidden = !bdateOn
-        birthdateField.hidden = !bdateOn
         
         // Seguing here from Test selection
         if(selectedTest == "DONE") {
