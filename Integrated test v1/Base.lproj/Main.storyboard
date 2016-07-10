@@ -372,7 +372,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tXO-oe-slH">
+                            <pickerView contentMode="left" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tXO-oe-slH">
                                 <rect key="frame" x="0.0" y="138" width="1024" height="326"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Caq-6w-yAP">
@@ -719,7 +719,6 @@ While the authors and producers of this program strive to provide you with usefu
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-kH-g6q">
                                 <rect key="frame" x="309" y="257" width="51" height="31"/>
                                 <connections>
-                                    <action selector="UseridOnOff:" destination="WAV-l7-oOn" eventType="valueChanged" id="3Er-Vs-HQ5"/>
                                     <action selector="cloudOnOff:" destination="WAV-l7-oOn" eventType="valueChanged" id="WLW-ms-ePa"/>
                                 </connections>
                             </switch>
@@ -769,12 +768,25 @@ While the authors and producers of this program strive to provide you with usefu
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Annouce Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NC1-vb-fTO">
+                                <rect key="frame" x="167" y="473" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hgl-CA-vdq">
+                                <rect key="frame" x="309" y="468" width="51" height="31"/>
+                                <connections>
+                                    <action selector="announceOnOff:" destination="WAV-l7-oOn" eventType="valueChanged" id="Ed4-L7-u3t"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="announceOnOff" destination="Hgl-CA-vdq" id="lEn-dV-vuU"/>
                         <outlet property="cloudOnOff" destination="gjh-kH-g6q" id="pEx-Tr-xtP"/>
                         <outlet property="email" destination="NrE-Xy-X6o" id="bEp-e3-fTN"/>
                         <outlet property="emailLabel" destination="6Jc-Y1-3bJ" id="Fub-Th-JPk"/>

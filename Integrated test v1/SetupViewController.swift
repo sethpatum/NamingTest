@@ -10,6 +10,7 @@ import UIKit
 
 var cloudOn   : Bool = true
 var emailOn  : Bool = false
+var announceOn : Bool = true
 var emailAddress : String = ""
 var ipadName : String = ""
 var uniqueName : String = ""
@@ -21,6 +22,7 @@ class SetupViewController: ViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailOnOff: UISwitch!
+    @IBOutlet weak var announceOnOff: UISwitch!
     @IBOutlet weak var cloudOnOff: UISwitch!
     @IBOutlet weak var ipName: UITextField!
     @IBOutlet weak var resultsDisplayOnOff: UISwitch!
@@ -28,7 +30,6 @@ class SetupViewController: ViewController {
     
     @IBAction func emailOnOff(sender: AnyObject) {
         emailOn = emailOnOff.on
-        
         email.enabled = emailOn
         NSUserDefaults.standardUserDefaults().setBool(!emailOn, forKey: "emailOff")
         NSUserDefaults.standardUserDefaults().synchronize()
@@ -58,11 +59,20 @@ class SetupViewController: ViewController {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
+    @IBAction func announceOnOff(sender: AnyObject) {
+        announceOn = announceOnOff.on
+        NSUserDefaults.standardUserDefaults().setBool(!announceOn, forKey: "announceOff")
+        NSUserDefaults.standardUserDefaults().synchronize()
+
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
+        announceOn = !NSUserDefaults.standardUserDefaults().boolForKey("announceOff")
+
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
 
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
@@ -84,6 +94,7 @@ class SetupViewController: ViewController {
         email.enabled = emailOn
         emailOnOff.on = emailOn
         cloudOnOff.on = cloudOn
+        announceOnOff.on = announceOn
         email.text = emailAddress
         ipName.text = ipadName
         resultsDisplayOnOff.on = resultsDisplayOn

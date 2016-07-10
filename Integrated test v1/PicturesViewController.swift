@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 sunspot. All rights reserved.
 //
 import UIKit
+import AVFoundation
 
 var totalCount: Int = 0
 
@@ -45,6 +46,9 @@ class PicturesViewController: ViewController {
     var resultErrors = [[Int]]()
     var resultTimes = [[Double]]()
     
+    let synth = AVSpeechSynthesizer()
+    var myUtterance = AVSpeechUtterance(string: "")
+    
     // RESULT ERRORS KEY
     //
     // CORRECT : 0
@@ -54,31 +58,8 @@ class PicturesViewController: ViewController {
     // INCORRECT - TIMER DONE : 4
     
     
-    override func viewDidLoad() {
+    func outputImage() {
         
-        super.viewDidLoad()
-        
-        gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
-        imageView.addGestureRecognizer(gesture)
-        imageView.userInteractionEnabled = true
-        
-        print("0 interaction enabled is \(imageView.userInteractionEnabled)")
-        
-        getImages()
-        
-        print(selectedTest, terminator: "")
-        if(selectedTest == "Naming Pictures") {
-            self.title = "Naming Pictures"
-            totalCount = namingImages.count
-        }
-        
-        if toPicture == "Test Picker" {
-            count = startCount
-        } else {
-            count = 0
-        }
-        
-        corr = 0
         imageName = getImageName()
         
         image = UIImage(named: imageName)!
@@ -101,18 +82,48 @@ class PicturesViewController: ViewController {
         imageView.addGestureRecognizer(gesture)
         imageView.userInteractionEnabled = false
         
-        print("1 interaction enabled is \(imageView.userInteractionEnabled)")
-        
         self.view.addSubview(imageView)
         
-        print("2 interaction enabled is \(imageView.userInteractionEnabled)")
-        
-        backButton.enabled = false
-        resetButton.enabled = false
+        backButton.enabled = true
+        resetButton.enabled = true
         
         if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
         }
+ 
+        if announceOn {
+            myUtterance = AVSpeechUtterance(string: imageName)
+            myUtterance.rate = 0.3
+            synth.speakUtterance(myUtterance)
+        }
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
+        imageView.addGestureRecognizer(gesture)
+        imageView.userInteractionEnabled = true
+        
+        print("0 interaction enabled is \(imageView.userInteractionEnabled)")
+        
+        
+        print(selectedTest, terminator: "")
+        if(selectedTest == "Naming Pictures") {
+            self.title = "Naming Pictures"
+            totalCount = namingImages.count
+        }
+        
+        if toPicture == "Test Picker" {
+            count = startCount
+        } else {
+            count = 0
+        }
+        
+        corr = 0
+        
+        outputImage()
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "update:", userInfo: nil, repeats: true)
         
@@ -141,35 +152,15 @@ class PicturesViewController: ViewController {
         count = 0
         corr = 0
         
-        imageName = getImageName()
         
         imageView.removeFromSuperview()
         
-        image = UIImage(named: imageName)!
-        
-        var x = CGFloat()
-        var y = CGFloat()
-        if image.size.width < image.size.height {
-            y = 575.0
-            x = (575.0*(image.size.width)/(image.size.height))
-        }
-        else {
-            x = 575.0
-            y = (575.0*(image.size.height)/(image.size.width))
-        }
-        
-        imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), 180.0, x, y))
-        
-        imageView.image = image
-        
-        self.view.addSubview(imageView)
+        outputImage()
         
         correctButton.enabled = true
         incorrectButton.enabled = true
         
-        if selectedTest == "Naming Pictures" {
-            placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
+       
         
     }
     
@@ -276,32 +267,10 @@ class PicturesViewController: ViewController {
             order.removeAtIndex(order.count-1)
         }
         
-        imageName = getImageName()
         
         imageView.removeFromSuperview()
         
-        image = UIImage(named: imageName)!
-        
-        var x = CGFloat()
-        var y = CGFloat()
-        if image.size.width < image.size.height {
-            y = 575.0
-            x = (575.0*(image.size.width)/(image.size.height))
-        }
-        else {
-            x = 575.0
-            y = (575.0*(image.size.height)/(image.size.width))
-        }
-        
-        imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), 180.0, x, y))
-        
-        imageView.image = image
-        
-        self.view.addSubview(imageView)
-        
-        if selectedTest == "Naming Pictures" {
-            placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
+        outputImage()
         
     }
     
@@ -437,31 +406,10 @@ class PicturesViewController: ViewController {
                 print("next pic!")
                 img.center = CGPoint(x: 507.0, y: 471.0)
                 
-                imageName = getImageName()
+   
                 
                 imageView.removeFromSuperview()
-                
-                image = UIImage(named: imageName)!
-                
-                var x = CGFloat()
-                var y = CGFloat()
-                if image.size.width < image.size.height {
-                    y = 575.0
-                    x = (575.0*(image.size.width)/(image.size.height))
-                }
-                else {
-                    x = 575.0
-                    y = (575.0*(image.size.height)/(image.size.width))
-                }
-                
-                imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), 180.0, x, y))
-                
-                imageView.image = image
-                
-                imageView.addGestureRecognizer(gesture)
-                imageView.userInteractionEnabled = false
-                
-                self.view.addSubview(imageView)
+                outputImage()
                 
                 endTimer = false
                 startTime = NSDate.timeIntervalSinceReferenceDate()

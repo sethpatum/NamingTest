@@ -22,9 +22,7 @@ class TestPickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getImages()
         
-        //HACK!!! Total number should be calculated before this. But, as is, it is not calculated until the next screen
         for i in 1...namingImages.count {
            imagelist.append(i)
         }
@@ -55,7 +53,7 @@ class TestPickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(imagelist[row])
+            return String(imagelist[row]) + "   " + namingImages[row]
     }
     
     
@@ -79,8 +77,13 @@ class TestPickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
             y = (300.0*(image.size.height)/(image.size.width))
         }
         
-        self.view.willRemoveSubview(imageView)
+        // remove the old imageView
+        if let viewWithTag = self.view.viewWithTag(1000) {
+            viewWithTag.removeFromSuperview()
+        }
+        
         imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), 480.0, x, y))
+        imageView.tag = 1000
         
         imageView.image = image
         self.view.addSubview(imageView)

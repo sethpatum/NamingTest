@@ -21,6 +21,7 @@ class TestSelectionTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         toPicture = "Test Selection"
+        getImages()
     }
 
     override func didReceiveMemoryWarning() {
