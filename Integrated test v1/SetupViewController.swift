@@ -24,6 +24,7 @@ class SetupViewController: ViewController {
     @IBOutlet weak var cloudOnOff: UISwitch!
     @IBOutlet weak var ipName: UITextField!
     @IBOutlet weak var resultsDisplayOnOff: UISwitch!
+    @IBOutlet weak var uName: UILabel!
     
     @IBAction func emailOnOff(sender: AnyObject) {
         emailOn = emailOnOff.on
@@ -37,28 +38,24 @@ class SetupViewController: ViewController {
         emailAddress = email.text!
         NSUserDefaults.standardUserDefaults().setObject(emailAddress, forKey:"emailAddress")
         NSUserDefaults.standardUserDefaults().synchronize()
-
     }
     
-    @IBAction func cloudOnOff(sender: AnyObject) {
+    @IBAction func cloudOnOff(sender: UISwitch) {
         cloudOn = cloudOnOff.on
         NSUserDefaults.standardUserDefaults().setBool(!cloudOn, forKey: "cloudOff")
         NSUserDefaults.standardUserDefaults().synchronize()
-
     }
     
     @IBAction func iPadNameChanged(sender: AnyObject) {
         ipadName = ipName.text!
         NSUserDefaults.standardUserDefaults().setObject(ipadName, forKey:"iPadName")
         NSUserDefaults.standardUserDefaults().synchronize()
-
     }
     
     @IBAction func ResultsDisplayOnOff(sender: AnyObject) {
         resultsDisplayOn = resultsDisplayOnOff.on
         NSUserDefaults.standardUserDefaults().setBool(!resultsDisplayOn, forKey: "resultsDisplayOff")
         NSUserDefaults.standardUserDefaults().synchronize()
-
     }
     
     
@@ -73,6 +70,7 @@ class SetupViewController: ViewController {
         }
        
         uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
+        uName.text = uniqueName
         email.enabled = emailOn
         emailOnOff.on = emailOn
         cloudOnOff.on = cloudOn

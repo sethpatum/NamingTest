@@ -664,13 +664,27 @@ While the authors and producers of this program strive to provide you with usefu
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="E-mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jc-Y1-3bJ">
+                                <rect key="frame" x="462" y="142" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-kH-g6q">
                                 <rect key="frame" x="309" y="257" width="51" height="31"/>
                                 <connections>
                                     <action selector="UseridOnOff:" destination="WAV-l7-oOn" eventType="valueChanged" id="3Er-Vs-HQ5"/>
-                                    <action selector="nameOnOff:" destination="WAV-l7-oOn" eventType="valueChanged" id="YIr-a1-hxW"/>
+                                    <action selector="cloudOnOff:" destination="WAV-l7-oOn" eventType="valueChanged" id="WLW-ms-ePa"/>
                                 </connections>
                             </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NrE-Xy-X6o">
+                                <rect key="frame" x="531" y="139" width="376" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="emailChanged:" destination="WAV-l7-oOn" eventType="editingDidEnd" id="HxM-2r-Z2S"/>
+                                </connections>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Display Results at end of the test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqa-Se-Me9">
                                 <rect key="frame" x="34" y="373" width="253" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -689,20 +703,6 @@ While the authors and producers of this program strive to provide you with usefu
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="E-mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jc-Y1-3bJ">
-                                <rect key="frame" x="462" y="142" width="49" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NrE-Xy-X6o">
-                                <rect key="frame" x="531" y="139" width="376" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                <connections>
-                                    <action selector="emailChanged:" destination="WAV-l7-oOn" eventType="editingDidEnd" id="HxM-2r-Z2S"/>
-                                </connections>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iPad name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehg-Dh-ptu">
                                 <rect key="frame" x="424" y="262" width="80" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -717,6 +717,12 @@ While the authors and producers of this program strive to provide you with usefu
                                     <action selector="iPadNameChanged:" destination="WAV-l7-oOn" eventType="editingDidEnd" id="NOU-P9-jH4"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unique Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDH-GS-4Zo">
+                                <rect key="frame" x="530" y="312" width="333" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -729,6 +735,7 @@ While the authors and producers of this program strive to provide you with usefu
                         <outlet property="emailOnOff" destination="jfq-be-YFq" id="Kc5-f7-bXg"/>
                         <outlet property="ipName" destination="9s9-8d-gSa" id="q5N-TF-1r0"/>
                         <outlet property="resultsDisplayOnOff" destination="xF5-aA-G4J" id="4ua-3H-3Z8"/>
+                        <outlet property="uName" destination="qDH-GS-4Zo" id="fG9-56-cRB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luq-3f-Trg" userLabel="First Responder" sceneMemberID="firstResponder"/>
