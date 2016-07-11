@@ -25,12 +25,15 @@ class PicturesViewController: ViewController {
     var startTime = NSTimeInterval()
     var startTime2 = NSDate()
     
-    @IBOutlet weak var correctButton: UIButton!
-    @IBOutlet weak var incorrectButton: UIButton!
+
+    var correct = UIButton()
+    var incorrect = UIButton()
+    var semanticError = UIButton()
+    var perceptualError = UIButton()
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var semanticErrorButton: UIButton!
-    @IBOutlet weak var perceptualErrorButton: UIButton!
+    @IBOutlet weak var helpButton: UIButton!
     
     @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -68,7 +71,7 @@ class PicturesViewController: ViewController {
         
         var x = CGFloat()
         var y = CGFloat()
-        if image.size.width < image.size.height {
+        if 0.56*image.size.width < image.size.height {
             y = 575.0
             x = (575.0*(image.size.width)/(image.size.height))
         }
@@ -77,7 +80,7 @@ class PicturesViewController: ViewController {
             y = (575.0*(image.size.height)/(image.size.width))
         }
         
-        imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), 180.0, x, y))
+        imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), (471.0-(y/2)), x, y))
         
         imageView.image = image
         
@@ -104,6 +107,34 @@ class PicturesViewController: ViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        let checkpic = UIImage(named: "check") as UIImage?
+        correct = UIButton(type: UIButtonType.Custom) as UIButton
+        correct.frame = CGRectMake(15, 75, 90, 90)
+        correct.setImage(checkpic, forState: .Normal)
+        correct.addTarget(self, action: "correct:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(correct)
+        
+        let xpic = UIImage(named: "x") as UIImage?
+        incorrect = UIButton(type: UIButtonType.Custom) as UIButton
+        incorrect.frame = CGRectMake(130, 75, 90, 90)
+        incorrect.setImage(xpic, forState: .Normal)
+        incorrect.addTarget(self, action: "incorrect:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(incorrect)
+        
+        let eyepic = UIImage(named: "eyebutton") as UIImage?
+        perceptualError = UIButton(type: UIButtonType.Custom) as UIButton
+        perceptualError.frame = CGRectMake(245, 75, 90, 90)
+        perceptualError.setImage(eyepic, forState: .Normal)
+        perceptualError.addTarget(self, action: "perceptualError:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(perceptualError)
+        
+        let umbrellapic = UIImage(named: "umbrellabutton") as UIImage?
+        semanticError = UIButton(type: UIButtonType.Custom) as UIButton
+        semanticError.frame = CGRectMake(360, 75, 90, 90)
+        semanticError.setImage(umbrellapic, forState: .Normal)
+        semanticError.addTarget(self, action: "semanticError:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(semanticError)
         
         gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
         imageView.addGestureRecognizer(gesture)
@@ -149,8 +180,15 @@ class PicturesViewController: ViewController {
     
     @IBAction func reset(sender: AnyObject) {
         
+        correct.enabled = true
+        incorrect.enabled = true
+        semanticError.enabled = true
+        perceptualError.enabled = true
+        
         resetButton.enabled = false
         backButton.enabled = false
+        helpButton.enabled = false
+        
         self.navigationItem.setHidesBackButton(false, animated:true)
         
         done()
@@ -165,14 +203,18 @@ class PicturesViewController: ViewController {
         
         outputImage()
         
-        correctButton.enabled = true
-        incorrectButton.enabled = true
-        
-       
-        
     }
     
     @IBAction func correct(sender: AnyObject) {
+        
+        correct.enabled = false
+        incorrect.enabled = false
+        semanticError.enabled = false
+        perceptualError.enabled = false
+        
+        resetButton.enabled = true
+        backButton.enabled = true
+        helpButton.enabled = true
         
         resultsLabel.text = ""
         
@@ -211,6 +253,15 @@ class PicturesViewController: ViewController {
     
     //don't know
     @IBAction func incorrect(sender: AnyObject) {
+        
+        correct.enabled = false
+        incorrect.enabled = false
+        semanticError.enabled = false
+        perceptualError.enabled = false
+        
+        resetButton.enabled = true
+        backButton.enabled = true
+        helpButton.enabled = true
         
         resultsLabel.text = ""
         
@@ -258,6 +309,15 @@ class PicturesViewController: ViewController {
     
     @IBAction func back(sender: AnyObject) {
         
+        correct.enabled = true
+        incorrect.enabled = true
+        semanticError.enabled = true
+        perceptualError.enabled = true
+        
+        resetButton.enabled = false
+        backButton.enabled = true
+        helpButton.enabled = false
+        
         count -= 1
         if count == 0 {
             resetButton.enabled = false
@@ -287,8 +347,6 @@ class PicturesViewController: ViewController {
         print("getting here")
         
         backButton.enabled = false
-        correctButton.enabled = false
-        incorrectButton.enabled = false
         self.navigationItem.setHidesBackButton(false, animated:true)
         
         placeLabel.text = ""
@@ -338,6 +396,15 @@ class PicturesViewController: ViewController {
                 imageView.addGestureRecognizer(gesture)
                 imageView.userInteractionEnabled = true
                 print("should allow gesture")
+                
+                correct.enabled = false
+                incorrect.enabled = false
+                semanticError.enabled = false
+                perceptualError.enabled = false
+                
+                resetButton.enabled = true
+                backButton.enabled = true
+                helpButton.enabled = true
                 
                 count += 1
                 wrongList.append(imageName)
@@ -412,12 +479,20 @@ class PicturesViewController: ViewController {
             if img.center.x < 150 {
                 
                 print("next pic!")
-                img.center = CGPoint(x: 507.0, y: 471.0)
+                img.center = CGPoint(x: 512.0, y: 471.0)
                 
-   
                 
                 imageView.removeFromSuperview()
                 outputImage()
+                
+                correct.enabled = true
+                incorrect.enabled = true
+                semanticError.enabled = true
+                perceptualError.enabled = true
+                
+                resetButton.enabled = false
+                backButton.enabled = false
+                helpButton.enabled = false
                 
                 endTimer = false
                 startTime = NSDate.timeIntervalSinceReferenceDate()
@@ -427,7 +502,7 @@ class PicturesViewController: ViewController {
             else{
                 
                 print("back to center!")
-                img.center = CGPoint(x: 507.0, y: 471.0)
+                img.center = CGPoint(x: 512.0, y: 471.0)
                 
             }
             
