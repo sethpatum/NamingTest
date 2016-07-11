@@ -152,7 +152,19 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         patientID = nil
         patientAge = nil
         patientBdate = nil
+        
+        if(cloudOn) {
+            cloudHelper.deviceRecord()
+        }
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(cloudOn) {
+            cloudHelper.patientRecord()
+        }
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
