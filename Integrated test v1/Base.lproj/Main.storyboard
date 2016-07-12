@@ -509,17 +509,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fO9-3x-orO">
-                                <rect key="frame" x="890" y="90" width="94" height="35"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Help">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="HelpButton:" destination="34v-JF-kvs" eventType="touchUpInside" id="yc0-Tt-Zdj"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1T-MC-dKm">
                                 <rect key="frame" x="542" y="57" width="358" height="140"/>
                                 <animations/>
@@ -534,26 +523,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFZ-iH-7a9">
-                                <rect key="frame" x="477" y="90" width="86" height="35"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="back:" destination="34v-JF-kvs" eventType="touchUpInside" id="chl-BI-WAd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxf-tH-mcb">
-                                <rect key="frame" x="552" y="88" width="79" height="35"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="End"/>
-                                <connections>
-                                    <action selector="reset:" destination="34v-JF-kvs" eventType="touchUpInside" id="3Fh-zj-iZx"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXc-wP-8fH">
                                 <rect key="frame" x="813" y="95" width="87" height="21"/>
                                 <animations/>
@@ -564,17 +533,11 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="fO9-3x-orO" secondAttribute="trailing" constant="20" id="zFa-MZ-EeN"/>
-                        </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
-                        <outlet property="backButton" destination="uFZ-iH-7a9" id="Jct-SP-4md"/>
-                        <outlet property="helpButton" destination="fO9-3x-orO" id="A3g-oH-ytr"/>
                         <outlet property="placeLabel" destination="BdG-el-aYh" id="bwf-Pc-3HU"/>
-                        <outlet property="resetButton" destination="kxf-tH-mcb" id="qVk-FW-k0w"/>
                         <outlet property="resultsLabel" destination="A1T-MC-dKm" id="uea-t2-fQC"/>
                         <outlet property="timerLabel" destination="JXc-wP-8fH" id="5Mw-Fj-i5F"/>
                     </connections>

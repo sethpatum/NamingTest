@@ -31,9 +31,9 @@ class PicturesViewController: ViewController {
     var semanticError = UIButton()
     var perceptualError = UIButton()
     
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var helpButton: UIButton!
+    var backButton = UIButton()
+    var resetButton = UIButton()
+    var helpButton = UIButton()
     
     @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -136,6 +136,27 @@ class PicturesViewController: ViewController {
         semanticError.addTarget(self, action: "semanticError:", forControlEvents:.TouchUpInside)
         self.view.addSubview(semanticError)
         
+        let backpic = UIImage(named: "backarrowbutton") as UIImage?
+        backButton = UIButton(type: UIButtonType.Custom) as UIButton
+        backButton.frame = CGRectMake(475, 75, 90, 90)
+        backButton.setImage(backpic, forState: .Normal)
+        backButton.addTarget(self, action: "back:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(backButton)
+        
+        let endpic = UIImage(named: "stopbutton") as UIImage?
+        resetButton = UIButton(type: UIButtonType.Custom) as UIButton
+        resetButton.frame = CGRectMake(590, 75, 90, 90)
+        resetButton.setImage(endpic, forState: .Normal)
+        resetButton.addTarget(self, action: "reset:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(resetButton)
+        
+        let helppic = UIImage(named: "earbutton") as UIImage?
+        helpButton = UIButton(type: UIButtonType.Custom) as UIButton
+        helpButton.frame = CGRectMake(894, 75, 90, 90)
+        helpButton.setImage(helppic, forState: .Normal)
+        helpButton.addTarget(self, action: "HelpButton:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(helpButton)
+        
         gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
         imageView.addGestureRecognizer(gesture)
         imageView.userInteractionEnabled = true
@@ -158,6 +179,9 @@ class PicturesViewController: ViewController {
         corr = 0
         
         outputImage()
+        
+        resultErrors.append([])
+        resultTimes.append([])
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "update:", userInfo: nil, repeats: true)
         
@@ -216,6 +240,9 @@ class PicturesViewController: ViewController {
         backButton.enabled = true
         helpButton.enabled = true
         
+        resultErrors[count].append(0)
+        resultTimes[count].append(findTime())
+        
         resultsLabel.text = ""
         
         if(start) {
@@ -263,6 +290,9 @@ class PicturesViewController: ViewController {
         backButton.enabled = true
         helpButton.enabled = true
         
+        resultErrors[count].append(3)
+        resultTimes[count].append(findTime())
+        
         resultsLabel.text = ""
         
         if(start) {
@@ -299,11 +329,20 @@ class PicturesViewController: ViewController {
     }
     
     @IBAction func semanticError(sender: AnyObject) {
+        
+        resultErrors[count].append(1)
+        resultTimes[count].append(findTime())
+        
     }
     
     
     @IBAction func perceptualError(sender: AnyObject) {
+        
+        resultErrors[count].append(2)
+        resultTimes[count].append(findTime())
+        
         startTime = NSDate.timeIntervalSinceReferenceDate()
+        
     }
     
     
@@ -318,7 +357,14 @@ class PicturesViewController: ViewController {
         backButton.enabled = true
         helpButton.enabled = false
         
+        resultErrors.removeLast()
+        resultTimes.removeLast()
+        
         count -= 1
+        
+        resultErrors[count] = []
+        resultTimes[count] = []
+        
         if count == 0 {
             resetButton.enabled = false
             backButton.enabled = false
@@ -393,6 +439,7 @@ class PicturesViewController: ViewController {
             if(seconds>=20){
                 print("endTimer = true")
                 endTimer = true
+                
                 imageView.addGestureRecognizer(gesture)
                 imageView.userInteractionEnabled = true
                 print("should allow gesture")
@@ -405,6 +452,9 @@ class PicturesViewController: ViewController {
                 resetButton.enabled = true
                 backButton.enabled = true
                 helpButton.enabled = true
+                
+                resultErrors[count].append(4)
+                resultTimes[count].append(findTime())
                 
                 count += 1
                 wrongList.append(imageName)
@@ -453,6 +503,17 @@ class PicturesViewController: ViewController {
         
     }
     
+    func findTime()->Double{
+        
+        let currTime = NSDate.timeIntervalSinceReferenceDate()
+        var diff: NSTimeInterval = currTime - startTime
+        let minutes = UInt8(diff / 60.0)
+        diff -= (NSTimeInterval(minutes)*60.0)
+        let seconds = Double(diff)
+        return seconds
+        
+    }
+    
     func wasDragged(gesture: UIPanGestureRecognizer) {
         
         let translation = gesture.translationInView(self.view)
@@ -478,12 +539,16 @@ class PicturesViewController: ViewController {
         if gesture.state == UIGestureRecognizerState.Ended {
             if img.center.x < 150 {
                 
+                print("Result errors: \(resultErrors[count-1]), result times: \(resultTimes[count-1])")
+                
                 print("next pic!")
                 img.center = CGPoint(x: 512.0, y: 471.0)
                 
-                
                 imageView.removeFromSuperview()
                 outputImage()
+                
+                resultErrors.append([])
+                resultTimes.append([])
                 
                 correct.enabled = true
                 incorrect.enabled = true
