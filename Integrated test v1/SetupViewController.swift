@@ -10,7 +10,7 @@ import UIKit
 
 var cloudOn   : Bool = true
 var emailOn  : Bool = false
-var announceOn : Bool = true
+var announceOn : Bool = false
 var emailAddress : String = ""
 var uniqueName : String = ""
 var ipadName : String = ""
