@@ -253,17 +253,17 @@ class PicturesViewController: ViewController {
             start = false
         }
         
-        count += 1
         corr += 1
         
         endTimer = true
         imageView.addGestureRecognizer(gesture)
         imageView.userInteractionEnabled = true
-        
+/*
+        count += 1
         if(count==totalCount){
             done()
         }
-        
+
         else{
             
             order.append(true)
@@ -275,6 +275,8 @@ class PicturesViewController: ViewController {
             }
             
         }
+        
+*/
         
     }
     
@@ -303,13 +305,13 @@ class PicturesViewController: ViewController {
             start = false
         }
         
-        count += 1
         wrongList.append(imageName)
         
         endTimer = true
         imageView.addGestureRecognizer(gesture)
         imageView.userInteractionEnabled = true
-        
+/*
+        count += 1
         if(count==totalCount){
             done()
         }
@@ -325,6 +327,7 @@ class PicturesViewController: ViewController {
             }
             
         }
+*/
         
     }
     
@@ -360,10 +363,10 @@ class PicturesViewController: ViewController {
         resultErrors.removeLast()
         resultTimes.removeLast()
         
-        count -= 1
+        print("full result errors: \(resultErrors), count: \(count)")
         
-        resultErrors[count] = []
-        resultTimes[count] = []
+        resultErrors.append([])
+        resultTimes.append([])
         
         if count == 0 {
             resetButton.enabled = false
@@ -456,13 +459,13 @@ class PicturesViewController: ViewController {
                 resultErrors[count].append(4)
                 resultTimes[count].append(findTime())
                 
-                count += 1
                 wrongList.append(imageName)
-                
+/*
+                count += 1
                 if(count==totalCount){
                     done()
                 }
-                    
+
                 else{
                     
                     order.append(false)
@@ -474,6 +477,7 @@ class PicturesViewController: ViewController {
                     }
                     
                 }
+*/
                 
             }
             
@@ -539,28 +543,44 @@ class PicturesViewController: ViewController {
         if gesture.state == UIGestureRecognizerState.Ended {
             if img.center.x < 150 {
                 
+                count += 1
+                
                 print("Result errors: \(resultErrors[count-1]), result times: \(resultTimes[count-1])")
                 
-                print("next pic!")
-                img.center = CGPoint(x: 512.0, y: 471.0)
-                
-                imageView.removeFromSuperview()
-                outputImage()
-                
-                resultErrors.append([])
-                resultTimes.append([])
-                
-                correct.enabled = true
-                incorrect.enabled = true
-                semanticError.enabled = true
-                perceptualError.enabled = true
-                
-                resetButton.enabled = false
-                backButton.enabled = false
-                helpButton.enabled = false
-                
-                endTimer = false
-                startTime = NSDate.timeIntervalSinceReferenceDate()
+                if(count==totalCount){
+                    done()
+                }
+                    
+                else{
+                    
+                    if selectedTest == "Naming Pictures" {
+                        if count != namingImages.count-1 {
+                            placeLabel.text = "\(count+1)/\(namingImages.count)"
+                        }
+                    }
+                    
+                    print("next pic!")
+                    img.center = CGPoint(x: 512.0, y: 471.0)
+                    
+                    imageView.removeFromSuperview()
+                    outputImage()
+                    
+                    resultErrors.append([])
+                    resultTimes.append([])
+                    
+                    correct.enabled = true
+                    incorrect.enabled = true
+                    semanticError.enabled = true
+                    perceptualError.enabled = true
+                    
+                    resetButton.enabled = false
+                    backButton.enabled = false
+                    helpButton.enabled = false
+                    
+                    endTimer = false
+                    startTime = NSDate.timeIntervalSinceReferenceDate()
+                    
+                }
                 
             }
                 
