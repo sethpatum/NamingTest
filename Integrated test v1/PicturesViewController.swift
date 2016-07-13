@@ -367,6 +367,7 @@ class PicturesViewController: ViewController {
         
     }
     
+    /*
     @IBAction func back(sender: AnyObject) {
         
         correct.enabled = true
@@ -407,6 +408,7 @@ class PicturesViewController: ViewController {
         outputImage()
         
     }
+    */
     
     func done() {
         
