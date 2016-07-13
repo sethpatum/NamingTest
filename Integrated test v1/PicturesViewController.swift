@@ -31,7 +31,7 @@ class PicturesViewController: ViewController {
     var semanticError = UIButton()
     var perceptualError = UIButton()
     
-    var backButton = UIButton()
+    var commentButton = UIButton()
     var resetButton = UIButton()
     var helpButton = UIButton()
     
@@ -48,6 +48,7 @@ class PicturesViewController: ViewController {
     
     var resultErrors = [[Int]]()
     var resultTimes = [[Double]]()
+    var resultComments = [String]()
     
     let synth = AVSpeechSynthesizer()
     var myUtterance = AVSpeechUtterance(string: "")
@@ -88,9 +89,6 @@ class PicturesViewController: ViewController {
         imageView.userInteractionEnabled = false
         
         self.view.addSubview(imageView)
-        
-        backButton.enabled = true
-        resetButton.enabled = true
         
         if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
@@ -136,12 +134,12 @@ class PicturesViewController: ViewController {
         semanticError.addTarget(self, action: "semanticError:", forControlEvents:.TouchUpInside)
         self.view.addSubview(semanticError)
         
-        let backpic = UIImage(named: "backarrowbutton") as UIImage?
-        backButton = UIButton(type: UIButtonType.Custom) as UIButton
-        backButton.frame = CGRectMake(475, 75, 90, 90)
-        backButton.setImage(backpic, forState: .Normal)
-        backButton.addTarget(self, action: "back:", forControlEvents:.TouchUpInside)
-        self.view.addSubview(backButton)
+        let commentpic = UIImage(named: "commentbutton") as UIImage?
+        commentButton = UIButton(type: UIButtonType.Custom) as UIButton
+        commentButton.frame = CGRectMake(475, 75, 90, 90)
+        commentButton.setImage(commentpic, forState: .Normal)
+        commentButton.addTarget(self, action: "comment:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(commentButton)
         
         let endpic = UIImage(named: "stopbutton") as UIImage?
         resetButton = UIButton(type: UIButtonType.Custom) as UIButton
@@ -182,10 +180,14 @@ class PicturesViewController: ViewController {
         
         resultErrors.append([])
         resultTimes.append([])
+        resultComments.append("")
         
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "update:", userInfo: nil, repeats: true)
         
         startTime = NSDate.timeIntervalSinceReferenceDate()
+        
+        commentButton.enabled = false
+        resetButton.enabled = false
         
     }
    
@@ -210,8 +212,7 @@ class PicturesViewController: ViewController {
         perceptualError.enabled = true
         
         resetButton.enabled = false
-        backButton.enabled = false
-        helpButton.enabled = false
+        commentButton.enabled = false
         
         self.navigationItem.setHidesBackButton(false, animated:true)
         
@@ -237,8 +238,7 @@ class PicturesViewController: ViewController {
         perceptualError.enabled = false
         
         resetButton.enabled = true
-        backButton.enabled = true
-        helpButton.enabled = true
+        commentButton.enabled = true
         
         resultErrors[count].append(0)
         resultTimes[count].append(findTime())
@@ -248,8 +248,6 @@ class PicturesViewController: ViewController {
         if(start) {
             startTime2 = NSDate()
             self.navigationItem.setHidesBackButton(true, animated:true)
-            backButton.enabled = true
-            resetButton.enabled = true
             start = false
         }
         
@@ -289,8 +287,7 @@ class PicturesViewController: ViewController {
         perceptualError.enabled = false
         
         resetButton.enabled = true
-        backButton.enabled = true
-        helpButton.enabled = true
+        commentButton.enabled = true
         
         resultErrors[count].append(3)
         resultTimes[count].append(findTime())
@@ -300,8 +297,6 @@ class PicturesViewController: ViewController {
         if(start) {
             startTime2 = NSDate()
             self.navigationItem.setHidesBackButton(true, animated:true)
-            backButton.enabled = true
-            resetButton.enabled = true
             start = false
         }
         
@@ -348,6 +343,29 @@ class PicturesViewController: ViewController {
         
     }
     
+    @IBAction func comment(sender: AnyObject){
+        
+        commentButton.enabled = false
+        
+        let alert = UIAlertController(title: "Comment", message: "Enter details about \(namingImages[count])", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = ""
+            
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            self.resultComments[self.count] = textField.text!
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
     @IBAction func back(sender: AnyObject) {
         
@@ -357,8 +375,7 @@ class PicturesViewController: ViewController {
         perceptualError.enabled = true
         
         resetButton.enabled = false
-        backButton.enabled = true
-        helpButton.enabled = false
+        commentButton.enabled = true
         
         resultErrors.removeLast()
         resultTimes.removeLast()
@@ -370,7 +387,7 @@ class PicturesViewController: ViewController {
         
         if count == 0 {
             resetButton.enabled = false
-            backButton.enabled = false
+            commentButton.enabled = false
             self.navigationItem.setHidesBackButton(false, animated:true)
         }
         if order.count > 0 {
@@ -395,7 +412,7 @@ class PicturesViewController: ViewController {
         
         print("getting here")
         
-        backButton.enabled = false
+        commentButton.enabled = false
         self.navigationItem.setHidesBackButton(false, animated:true)
         
         placeLabel.text = ""
@@ -453,8 +470,7 @@ class PicturesViewController: ViewController {
                 perceptualError.enabled = false
                 
                 resetButton.enabled = true
-                backButton.enabled = true
-                helpButton.enabled = true
+                commentButton.enabled = true
                 
                 resultErrors[count].append(4)
                 resultTimes[count].append(findTime())
@@ -567,6 +583,7 @@ class PicturesViewController: ViewController {
                     
                     resultErrors.append([])
                     resultTimes.append([])
+                    resultComments.append("")
                     
                     correct.enabled = true
                     incorrect.enabled = true
@@ -574,8 +591,7 @@ class PicturesViewController: ViewController {
                     perceptualError.enabled = true
                     
                     resetButton.enabled = false
-                    backButton.enabled = false
-                    helpButton.enabled = false
+                    commentButton.enabled = false
                     
                     endTimer = false
                     startTime = NSDate.timeIntervalSinceReferenceDate()
