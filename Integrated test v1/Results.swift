@@ -29,12 +29,14 @@ class Results: NSObject {
     
     // Return the string function to put on the header
     func header() -> String {
+        /*
         let elapsedTime = endTime!.timeIntervalSinceDate(startTime!)
         let duration = Int(elapsedTime)
+        */
         if shortDescription == nil {
-            return name! + " (" + String(duration) + " secs): "
+            return name!
         } else {
-            return name! + " (" + String(duration) + " secs): " + shortDescription!
+            return name! + shortDescription!
         }
     }
     
