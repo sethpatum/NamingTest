@@ -7,28 +7,36 @@
 //
 
 import Foundation
-import CloudKit
+import OpenWhisk
 import UIKit
 
-protocol CloudKitDelegate {
-    func errorUpdating(error: NSError)
-    func modelUpdated()
-}
-
-
 class CloudWorks {
-    var container : CKContainer
-    var publicDB : CKDatabase
-    let privateDB : CKDatabase
-    
-    var delegate : CloudKitDelegate?
 
+    // Change to your whisk app key and secret.
+    let WhiskAppKey: String = "b9502a06-125a-45b0-8348-879a06f1b54d"
+    let WhiskAppSecret: String = "B94Wg7jvVd1s0qqBR38YmaDfn1iHur4SE7ruc5urYL7b05Q7w9FS20DSfoxSOrIo"
+    
+    // the URL for Whisk backend
+    let baseUrl: String? = "https://openwhisk.ng.bluemix.net"
+    
+    // The action to invoke.
+    
+    // Choice: specify commponents
+    let MyNamespace: String = "whisk.system"
+    let MyPackage: String? = "util"
+    let MyWhiskAction: String = "date"
+    
+    var MyActionParameters: [String:AnyObject]? = nil
+    let HasResult: Bool = true // true if the action returns a result
+    
+    var session: NSURLSession!
 
     // Initilize the data structures needed
     init() {
-        container = CKContainer.defaultContainer()
-        publicDB = container.publicCloudDatabase
-        privateDB = container.privateCloudDatabase
+       
+        // create whisk credentials token
+        let creds = WhiskCredentials(accessKey: WhiskAppKey,accessToken: WhiskAppSecret)
+        
     }
     
     
@@ -37,88 +45,25 @@ class CloudWorks {
     // or if the results is zero records, try to add a record
     // if there are more than 1 record, a problem, report.
     func deviceRecord() {
-        let predicate = NSPredicate(format: "UUID == %@", uniqueName)
-        let query = CKQuery(recordType: "Devices",
-                            predicate:  predicate)
-        
-        self.publicDB.performQuery(query, inZoneWithID: nil) {
-            results, error in
-            if error != nil {
-                dispatch_async(dispatch_get_main_queue()) {
-                    print(error)
-                    self.addDeviceRecord()
-                }
-            } else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    if results!.count == 0 {
-                        self.addDeviceRecord()
-                    }
-                    
-                    if results!.count > 1 {
-                        self.notifyUser("Too many Device Records", message: "Too many device records found")
-                    }
-                    return
-                }
-            }
-        }
+
     }
     
     
     // Add a record for this device
     func addDeviceRecord() {
-        let myrec = CKRecord(recordType: "Devices")
-        myrec.setValue(uniqueName, forKey: "UUID")
-        myrec.setValue(ipadName, forKey:"DeviceName")
-        
-        self.publicDB.saveRecord(myrec, completionHandler: { (record, error) -> Void in
-            if let err = error {
-                self.notifyUser("Save Error", message:
-                    err.localizedDescription)
-            }
-        })
+
     }
     
     
     
     func patientRecord() {
-        let predicate = NSPredicate(format: "(DeviceUUID == %@) AND (PatientUUID == %@)", uniqueName, patientUUID!)
-        let query = CKQuery(recordType: "Patient",
-                            predicate:  predicate)
+ 
         
-        self.publicDB.performQuery(query, inZoneWithID: nil) {
-            results, error in
-            if error != nil {
-                dispatch_async(dispatch_get_main_queue()) {
-                    print(error)
-                    self.addPatientRecord()
-                }
-            } else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    if results!.count == 0 {
-                        self.addPatientRecord()
-                    }
-                    return
-                }
-            }
-        }
-
     }
     
     func addPatientRecord() {
-        let myrec = CKRecord(recordType: "Patient")
-        myrec.setValue(uniqueName, forKey: "DeviceUUID")
-        myrec.setValue(patientUUID, forKey:"PatientUUID")
-        myrec.setValue(patientName, forKey:"Name")
-        myrec.setValue(patientAge, forKey:"Age")
-        myrec.setValue(patientBdate, forKey:"BirthDate")
 
-        self.publicDB.saveRecord(myrec, completionHandler: { (record, error) -> Void in
-            if let err = error {
-                self.notifyUser("Save Error", message:
-                    err.localizedDescription)
-            }
-        })
-
+        
     }
     
     
