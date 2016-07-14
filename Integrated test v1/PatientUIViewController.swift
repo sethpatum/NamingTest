@@ -190,6 +190,10 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
                 picker.setMessageBody(body!, isHTML: true)
                 picker.setToRecipients([emailAddress])
                 presentViewController(picker, animated: true, completion: nil)
+                
+                if(cloudOn) {
+                    cloudHelper.deviceRecord()
+                }
             }
             selectedTest = ""
             resultsArray.doneWithPatient()
@@ -201,9 +205,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         patientBdate = ""
         patientGender = ""
         
-        if(cloudOn) {
-            cloudHelper.deviceRecord()
-        }
+       
     }
     
     
