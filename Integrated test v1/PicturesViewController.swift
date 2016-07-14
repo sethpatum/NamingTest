@@ -202,7 +202,7 @@ class PicturesViewController: ViewController {
     
     
     @IBAction func reset(sender: AnyObject) {
-        
+        /*
         correct.enabled = false
         incorrect.enabled = false
         semanticError.enabled = false
@@ -212,12 +212,10 @@ class PicturesViewController: ViewController {
         commentButton.enabled = false
         
         self.navigationItem.setHidesBackButton(false, animated:true)
-        
+        */
         count += 1
         
         done()
-        
-        imageView.removeFromSuperview()
         
     }
     
@@ -325,8 +323,19 @@ class PicturesViewController: ViewController {
         
         print("getting here")
         
+        correct.enabled = false
+        incorrect.enabled = false
+        semanticError.enabled = false
+        perceptualError.enabled = false
+        
+        resetButton.enabled = false
+        commentButton.enabled = false
+        
+        helpButton.enabled = false
+        
         self.navigationItem.setHidesBackButton(false, animated:true)
         imageView.userInteractionEnabled = false
+        imageView.removeFromSuperview()
         
         placeLabel.text = ""
         var resjson:[[String:String]] = []
@@ -485,6 +494,7 @@ class PicturesViewController: ViewController {
                 
                 if(count==totalCount){
                     print("should be done!")
+                    
                     done()
                 }
                     
