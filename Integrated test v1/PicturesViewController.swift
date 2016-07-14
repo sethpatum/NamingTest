@@ -158,18 +158,16 @@ class PicturesViewController: ViewController {
         imageView.addGestureRecognizer(gesture)
         imageView.userInteractionEnabled = true
         
-        print("0 interaction enabled is \(imageView.userInteractionEnabled)")
-        
-        
+        totalCount = namingImages.count
         print(selectedTest, terminator: "")
         if(selectedTest == "Naming Pictures") {
             self.title = "Naming Pictures"
-            totalCount = namingImages.count
         }
         
         if toPicture == "Test Picker" {
             count = startCount
-        } else {
+        }
+        else {
             count = 0
         }
         
@@ -215,6 +213,8 @@ class PicturesViewController: ViewController {
         
         self.navigationItem.setHidesBackButton(false, animated:true)
         
+        count += 1
+        
         done()
         
         imageView.removeFromSuperview()
@@ -231,8 +231,8 @@ class PicturesViewController: ViewController {
         resetButton.enabled = true
         commentButton.enabled = true
         
-        resultErrors[count].append(0)
-        resultTimes[count].append(findTime())
+        resultErrors[count-startCount].append(0)
+        resultTimes[count-startCount].append(findTime())
         
         resultsLabel.text = ""
         
@@ -247,25 +247,6 @@ class PicturesViewController: ViewController {
         endTimer = true
         imageView.addGestureRecognizer(gesture)
         imageView.userInteractionEnabled = true
-/*
-        count += 1
-        if(count==totalCount){
-            done()
-        }
-
-        else{
-            
-            order.append(true)
-            
-            if selectedTest == "Naming Pictures" {
-                if count != namingImages.count {
-                    placeLabel.text = "\(count+1)/\(namingImages.count)"
-                }
-            }
-            
-        }
-        
-*/
         
     }
     
@@ -280,8 +261,8 @@ class PicturesViewController: ViewController {
         resetButton.enabled = true
         commentButton.enabled = true
         
-        resultErrors[count].append(3)
-        resultTimes[count].append(findTime())
+        resultErrors[count-startCount].append(3)
+        resultTimes[count-startCount].append(findTime())
         
         resultsLabel.text = ""
         
@@ -296,39 +277,21 @@ class PicturesViewController: ViewController {
         endTimer = true
         imageView.addGestureRecognizer(gesture)
         imageView.userInteractionEnabled = true
-/*
-        count += 1
-        if(count==totalCount){
-            done()
-        }
-        
-        else{
-            
-            order.append(false)
-            
-            if selectedTest == "Naming Pictures" {
-                if count != namingImages.count-1 {
-                    placeLabel.text = "\(count+1)/\(namingImages.count)"
-                }
-            }
-            
-        }
-*/
         
     }
     
     @IBAction func semanticError(sender: AnyObject) {
         
-        resultErrors[count].append(1)
-        resultTimes[count].append(findTime())
+        resultErrors[count-startCount].append(1)
+        resultTimes[count-startCount].append(findTime())
         
     }
     
     
     @IBAction func perceptualError(sender: AnyObject) {
         
-        resultErrors[count].append(2)
-        resultTimes[count].append(findTime())
+        resultErrors[count-startCount].append(2)
+        resultTimes[count-startCount].append(findTime())
         
         startTime = NSDate.timeIntervalSinceReferenceDate()
         
@@ -350,56 +313,13 @@ class PicturesViewController: ViewController {
         //3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
-            self.resultComments[self.count] = textField.text!
+            self.resultComments[self.count-startCount] = textField.text!
         }))
         
         // 4. Present the alert.
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
-    
-    /*
-    @IBAction func back(sender: AnyObject) {
-        
-        correct.enabled = true
-        incorrect.enabled = true
-        semanticError.enabled = true
-        perceptualError.enabled = true
-        
-        resetButton.enabled = false
-        commentButton.enabled = true
-        
-        resultErrors.removeLast()
-        resultTimes.removeLast()
-        
-        print("full result errors: \(resultErrors), count: \(count)")
-        
-        resultErrors.append([])
-        resultTimes.append([])
-        
-        if count == 0 {
-            resetButton.enabled = false
-            commentButton.enabled = false
-            self.navigationItem.setHidesBackButton(false, animated:true)
-        }
-        if order.count > 0 {
-            if order[order.count-1] == true {
-                corr -= 1
-            }
-            else {
-                wrongList.removeAtIndex(wrongList.count-1)
-            }
-            
-            order.removeAtIndex(order.count-1)
-        }
-        
-        
-        imageView.removeFromSuperview()
-        
-        outputImage()
-        
-    }
-    */
     
     func done() {
         
@@ -411,9 +331,9 @@ class PicturesViewController: ViewController {
         placeLabel.text = ""
         var resjson:[[String:String]] = []
         
-        for(var k=0; k<count+1; k++){
+        for(var k=0; k<count-startCount; k++){
             let result = Results()
-            result.name = namingImages[k]
+            result.name = namingImages[k+startCount]
             var res:[String:String] = ["imagenum":String(k+1), "imagename":result.name!]
             for(var j=0; j<resultErrors[k].count; j++){
                 if(resultErrors[k][j] == 0){
@@ -433,8 +353,8 @@ class PicturesViewController: ViewController {
                     res["DontKnow"] = String(round(100*resultTimes[k][j])/100)
                 }
                 if(resultErrors[k][j] == 4){
-                    result.longDescription.addObject("Timer error at \(round(100*resultTimes[k][j])/100) seconds")
-                    res["TimerEnd"] = String(round(100*resultTimes[k][j])/100)
+                    result.longDescription.addObject("Timer error at \(round(100*resultTimes[k-startCount][j])/100) seconds")
+                    res["TimerEnd"] = String(round(100*resultTimes[k-startCount][j])/100)
                 }
             }
             if(resultComments[k] != ""){
@@ -513,29 +433,10 @@ class PicturesViewController: ViewController {
                 resultTimes[count].append(findTime())
                 
                 wrongList.append(imageName)
-/*
-                count += 1
-                if(count==totalCount){
-                    done()
-                }
-
-                else{
-                    
-                    order.append(false)
-                    
-                    if selectedTest == "Naming Pictures" {
-                        if count != namingImages.count-1 {
-                            placeLabel.text = "\(count+1)/\(namingImages.count)"
-                        }
-                    }
-                    
-                }
-*/
                 
             }
             
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -547,11 +448,6 @@ class PicturesViewController: ViewController {
         return UIInterfaceOrientationMask.Landscape
     }
     
-    /*
-    let namingImages2:[String] = ["A. Schwarzenegger", "B. Clinton", "B. Murray", "B. Obama", "E. Presley", "G. Bush", "G. Clooney", "H. Clinton", "J. Leno", "J. Travolta", "M. Monroe", "M. Obama", "MLK", "O. Winfrey", "R. Williams", "R. Williams"]
-    */
-
-
     func getImageName()->String{
         
         print(count)
@@ -578,29 +474,17 @@ class PicturesViewController: ViewController {
         
         img.center = CGPoint(x: self.view.bounds.width / 2 + translation.x, y: 471.0)
         
-        //y: self.view.bounds.height / 2 + translation.y
-        
-        /*
-        let xFromCenter = img.center.x - self.view.bounds.width / 2
-        
-        let scale = min(100 / abs(xFromCenter), 1)
-        
-        
-        var rotation = CGAffineTransformMakeRotation(xFromCenter / 200)
-        
-        var stretch = CGAffineTransformScale(rotation, scale, scale)
-        
-        img.transform = stretch
-        */
-        
         if gesture.state == UIGestureRecognizerState.Ended {
             if img.center.x < 150 {
                 
                 count += 1
                 
-                print("Result errors: \(resultErrors[count-1]), result times: \(resultTimes[count-1])")
+                print("Result errors: \(resultErrors[count-startCount-1]), result times: \(resultTimes[count-startCount-1])")
+                
+                print("count = \(count), totalCount = \(totalCount)")
                 
                 if(count==totalCount){
+                    print("should be done!")
                     done()
                 }
                     
@@ -645,45 +529,7 @@ class PicturesViewController: ViewController {
             }
             
         }
-        
-        /*
-        if gesture.state == UIGestureRecognizerState.Ended {
-            
-            var acceptedOrRejected = ""
-            
-            if label.center.x < 100 {
-                
-                acceptedOrRejected = "rejected"
-                
-            } else if label.center.x > self.view.bounds.width - 100 {
-                
-                acceptedOrRejected = "accepted"
-                
-            }
-            
-            if acceptedOrRejected != "" {
-                
-                PFUser.currentUser()?.addUniqueObjectsFromArray([displayedUserId], forKey:acceptedOrRejected)
-                
-                PFUser.currentUser()?.save()
-                
-            }
-            
-            rotation = CGAffineTransformMakeRotation(0)
-            
-            stretch = CGAffineTransformScale(rotation, 1, 1)
-            
-            label.transform = stretch
-            
-            label.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
-            
-            updateImage()
-            
-        }
-*/
-        
-        
-        
+    
     }
     
     
