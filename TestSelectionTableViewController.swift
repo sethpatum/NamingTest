@@ -20,7 +20,7 @@ class TestSelectionTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        toPicture = "Test Selection"
+        selectedTest = segue.identifier
         getImages()
     }
 

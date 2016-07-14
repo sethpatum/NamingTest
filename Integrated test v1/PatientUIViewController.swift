@@ -179,9 +179,13 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         let currentDate = NSDate()
         birthdateField.maximumDate = currentDate
         
-        
-        // Seguing here from Test selection
         if(selectedTest == "DONE") {
+            print("IN DONE")
+            if(cloudOn) {
+                cloudHelper.patientRecord()
+                //cloudHelper.audioRecord()
+            }
+            
             if(emailOn) {
                 body = resultsArray.emailBody()
                 let picker = MFMailComposeViewController()
@@ -191,13 +195,13 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
                 picker.setToRecipients([emailAddress])
                 presentViewController(picker, animated: true, completion: nil)
                 
-                if(cloudOn) {
-                    cloudHelper.deviceRecord()
-                }
             }
             selectedTest = ""
             resultsArray.doneWithPatient()
         }
+
+        
+        // Seguing here from Test selection
         
         patientName = ""
         patientID = ""
@@ -205,15 +209,14 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         patientBdate = ""
         patientGender = ""
         
-       
+        if(cloudOn) {
+            cloudHelper.deviceRecord()
+        }
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(cloudOn) {
-            cloudHelper.patientRecord()
-            cloudHelper.audioRecord()
-        }
+        
     }
 
     
