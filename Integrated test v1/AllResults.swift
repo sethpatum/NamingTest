@@ -68,9 +68,9 @@ class AllResults  {
                     e += "\(r.shortDescription)<p>\n"
                 }
                 
-                let elapsedTime = r.endTime!.timeIntervalSinceDate(r.startTime!)
-                let duration = Int(elapsedTime)
-                e += "\(duration) seconds taken. (Test run on \(r.startTime!))<p>\n"
+            //    let elapsedTime = r.endTime!.timeIntervalSinceDate(r.startTime!)
+             //   let duration = Int(elapsedTime)
+             //   e += "\(duration) seconds taken. (Test run on \(r.startTime!))<p>\n"
                 
                 for objs in r.longDescription {
                     if let desc = objs as? String {
