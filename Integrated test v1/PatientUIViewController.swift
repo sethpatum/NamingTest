@@ -19,12 +19,41 @@ var patientID : String?
 var patientBdate : String?
 var patientUUID : String?
 var patientGender : String?
+var patientEthnic : String?
+var patientEducation : String?
+var patientLanguage : String?
+var patientHandedness : String?
+var patientMemory : String?
+var patientHealth : String?
+var patientOrigin : String?
 
 
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
     
     @IBOutlet weak var GenderPicker: UIPickerView!
-    let genderData = ["Male", "Female"]
+    let genderData = ["Male", "Female", "Other", "Prefer Not To Say"]
+    
+    @IBOutlet weak var EthnicPicker: UIPickerView!
+    let ethnicData = ["Caucasian", "African American", "Latino", "Other"]
+    
+    @IBOutlet weak var EducationPicker: UIPickerView!
+    let educationData = ["< 9 yrs", "9-11 yrs", "High School Graduate", "Associates Degree", "Bachelors Degree", "Post Graduate Degree"]
+    
+    @IBOutlet weak var LanguagePicker: UIPickerView!
+    let languageData = ["English", "Spanish", "Other",]
+    
+    @IBOutlet weak var HandedPicker: UIPickerView!
+    let handedData = ["Left Handed", "Right Handed", "Ambidextrous"]
+    
+    
+    @IBOutlet weak var MemoryPicker: UIPickerView!
+    let memoryData = ["Yes", "No"]
+    
+    @IBOutlet weak var HealthPicker: UIPickerView!
+    let healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
+    
+    @IBOutlet weak var OriginPicker: UIPickerView!
+    let originData = ["United States", "Mexico", "Purto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka"]
     
     
     var recordingSession: AVAudioSession!
@@ -111,7 +140,13 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         UUID.text = patientUUID
         
         GenderPicker.delegate = self
-        
+        EthnicPicker.delegate = self
+        EducationPicker.delegate = self
+        LanguagePicker.delegate = self
+        HandedPicker.delegate = self
+        MemoryPicker.delegate = self
+        HealthPicker.delegate = self
+        OriginPicker.delegate = self
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -233,6 +268,27 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         if pickerView == GenderPicker {
             return genderData.count
         }
+        if pickerView == EthnicPicker {
+            return ethnicData.count
+        }
+        if pickerView == EducationPicker {
+            return educationData.count
+        }
+        if pickerView == LanguagePicker {
+            return languageData.count
+        }
+        if pickerView == HandedPicker {
+            return handedData.count
+        }
+        if pickerView == MemoryPicker {
+            return memoryData.count
+        }
+        if pickerView == HealthPicker {
+            return healthData.count
+        }
+        if pickerView == OriginPicker {
+            return originData.count
+        }
         return 1
     }
 
@@ -241,6 +297,34 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             patientGender = genderData[row]
             return genderData[row]
         }
+        if pickerView == EthnicPicker {
+            patientEthnic = ethnicData[row]
+            return ethnicData[row]
+        }
+        if pickerView == EducationPicker {
+            patientEducation = educationData[row]
+            return educationData[row]
+        }
+        if pickerView == LanguagePicker {
+            patientLanguage = languageData[row]
+            return languageData[row]
+        }
+        if pickerView == HandedPicker {
+            patientHandedness = handedData[row]
+            return handedData[row]
+        }
+        if pickerView == MemoryPicker {
+            patientMemory = memoryData[row]
+            return memoryData[row]
+        }
+        if pickerView == HealthPicker {
+            patientHealth = healthData[row]
+            return healthData[row]
+        }
+        if pickerView == OriginPicker {
+            patientOrigin = originData[row]
+            return originData[row]
+        }
         return ""
     }
     
@@ -248,7 +332,30 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         if pickerView == GenderPicker {
             patientGender = genderData[row]
         }
+        if pickerView == EthnicPicker {
+            patientEthnic = ethnicData[row]
+        }
+        if pickerView == EducationPicker {
+            patientEducation = educationData[row]
+        }
+        if pickerView == LanguagePicker {
+            patientLanguage = languageData[row]
+        }
+        if pickerView == HandedPicker {
+            patientHandedness = handedData[row]
+        }
+        if pickerView == MemoryPicker {
+            patientMemory = memoryData[row]
+        }
+        if pickerView == HealthPicker {
+            patientHealth = healthData[row]
+        }
+        if pickerView == OriginPicker {
+            patientOrigin = originData[row]
+        }
+    
+    
     }
 
-
 }
+
