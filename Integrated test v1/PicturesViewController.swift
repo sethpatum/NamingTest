@@ -12,7 +12,6 @@ var totalCount: Int = 0
 
 var toPicture: String = ""
 
-
 class PicturesViewController: ViewController {
     
     var imageName = ""
@@ -206,10 +205,10 @@ class PicturesViewController: ViewController {
     
     @IBAction func reset(sender: AnyObject) {
         
-        correct.enabled = true
-        incorrect.enabled = true
-        semanticError.enabled = true
-        perceptualError.enabled = true
+        correct.enabled = false
+        incorrect.enabled = false
+        semanticError.enabled = false
+        perceptualError.enabled = false
         
         resetButton.enabled = false
         commentButton.enabled = false
@@ -218,15 +217,7 @@ class PicturesViewController: ViewController {
         
         done()
         
-        order = [Bool]()
-        wrongList = [String]()
-        count = 0
-        corr = 0
-        
-        
         imageView.removeFromSuperview()
-        
-        outputImage()
         
     }
     
@@ -367,6 +358,7 @@ class PicturesViewController: ViewController {
         
     }
     
+    /*
     @IBAction func back(sender: AnyObject) {
         
         correct.enabled = true
@@ -407,16 +399,58 @@ class PicturesViewController: ViewController {
         outputImage()
         
     }
+    */
     
     func done() {
         
         print("getting here")
         
-        commentButton.enabled = false
         self.navigationItem.setHidesBackButton(false, animated:true)
+        imageView.userInteractionEnabled = false
         
         placeLabel.text = ""
+        var resjson:[[String:String]] = []
         
+        for(var k=0; k<count+1; k++){
+            let result = Results()
+            result.name = namingImages[k]
+            var res:[String:String] = ["imagenum":String(k), "imagename":result.name!]
+            for(var j=0; j<resultErrors[k].count; j++){
+                if(resultErrors[k][j] == 0){
+                    result.longDescription.addObject("Correct at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["Correct"] = String(round(100*resultTimes[k][j])/100)
+                }
+                if(resultErrors[k][j] == 1){
+                    result.longDescription.addObject("Semantic error at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["SemanticError"] = String(round(100*resultTimes[k][j])/100)
+                }
+                if(resultErrors[k][j] == 2){
+                    result.longDescription.addObject("Perceptual error at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["PerceptualError"] = String(round(100*resultTimes[k][j])/100)
+                }
+                if(resultErrors[k][j] == 3){
+                    result.longDescription.addObject("Don't know at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["DontKnow"] = String(round(100*resultTimes[k][j])/100)
+                }
+                if(resultErrors[k][j] == 4){
+                    result.longDescription.addObject("Timer error at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["TimerEnd"] = String(round(100*resultTimes[k][j])/100)
+                }
+            }
+            if(resultComments[k] != ""){
+                result.longDescription.addObject("Comment: \(resultComments[k])")
+                res["Comment"] = resultComments[k]
+            }
+            resultsArray.add(result)
+            resjson.append(res)
+        }
+        if cloudOn {
+            cloudHelper.testRecord(resjson)
+        }
+
+        
+        
+        /*
         let result = Results()
         result.name = self.title
         result.startTime = startTime2
@@ -426,7 +460,8 @@ class PicturesViewController: ViewController {
             result.longDescription.addObject("The incorrect pictures were the \(wrongList)")
         }
         resultsArray.add(result)
-        
+        */
+        /*
         if resultsDisplayOn == true {
             var str:String = "\(corr) correct out of \(count)"
             if wrongList.count > 0 {
@@ -434,6 +469,8 @@ class PicturesViewController: ViewController {
             }
             self.resultsLabel.text = str
         }
+        */
+        
         
     }
     
