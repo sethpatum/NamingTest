@@ -22,6 +22,9 @@ var patientUUID : String?
 
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var GenderPicker: UIPickerView!
+    
+    
     var recordingSession: AVAudioSession!
     
     var whistleRecorder: AVAudioRecorder!
