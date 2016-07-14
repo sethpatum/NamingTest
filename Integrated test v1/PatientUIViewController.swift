@@ -18,11 +18,13 @@ var patientAge : String?
 var patientID : String?
 var patientBdate : String?
 var patientUUID : String?
+var patientGender : String?
 
 
-class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
     
     @IBOutlet weak var GenderPicker: UIPickerView!
+    let genderData = ["Male", "Female"]
     
     
     var recordingSession: AVAudioSession!
@@ -65,6 +67,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdateField: UIDatePicker!
     
+    
     @IBOutlet weak var UUID: UILabel!
     
     @IBAction func StartTesting(sender: AnyObject) {
@@ -98,11 +101,17 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         patientBdate = formatter.stringFromDate(d.date)
     }
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         patientUUID = NSUUID().UUIDString
         UUID.text = patientUUID
+        
+        GenderPicker.delegate = self
+        
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -155,6 +164,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         patientID = ""
         patientAge = ""
         patientBdate = ""
+        patientGender = ""
         
         if(cloudOn) {
             cloudHelper.deviceRecord()
@@ -210,6 +220,34 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         }
         
         return true
+    }
+    
+    
+    // Setting up for all the pickers
+    
+    func numberOfComponentsInPickerView(pickerView : UIPickerView!) -> Int{
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if pickerView == GenderPicker {
+            return genderData.count
+        }
+        return 1
+    }
+
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == GenderPicker {
+            patientGender = genderData[row]
+            return genderData[row]
+        }
+        return ""
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == GenderPicker {
+            patientGender = genderData[row]
+        }
     }
 
 

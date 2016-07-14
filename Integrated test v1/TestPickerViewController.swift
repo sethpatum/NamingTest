@@ -53,15 +53,8 @@ class TestPickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return String(imagelist[row]) + "   " + namingImages[row]
-    }
-    
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // This method is triggered whenever the user makes a change to the picker selection.
-        // The parameter named row and component represents what was selected.
-        
         startCount = row
+
         let imageName = namingImages[row]
         
         image = UIImage(named: imageName)!
@@ -88,6 +81,41 @@ class TestPickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
         imageView.image = image
         self.view.addSubview(imageView)
 
+        return String(imagelist[row]) + "   " + namingImages[row]
+    }
+    
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // This method is triggered whenever the user makes a change to the picker selection.
+        // The parameter named row and component represents what was selected.
+        
+        startCount = row
+        
+        let imageName = namingImages[row]
+        
+        image = UIImage(named: imageName)!
+        
+        var x = CGFloat()
+        var y = CGFloat()
+        if image.size.width < image.size.height {
+            y = 300.0
+            x = (300.0*(image.size.width)/(image.size.height))
+        }
+        else {
+            x = 300.0
+            y = (300.0*(image.size.height)/(image.size.width))
+        }
+        
+        // remove the old imageView
+        if let viewWithTag = self.view.viewWithTag(1000) {
+            viewWithTag.removeFromSuperview()
+        }
+        
+        imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), 480.0, x, y))
+        imageView.tag = 1000
+        
+        imageView.image = image
+        self.view.addSubview(imageView)
     }
 
     /*
