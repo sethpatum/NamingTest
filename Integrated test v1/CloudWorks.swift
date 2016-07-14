@@ -107,7 +107,7 @@ class CloudWorks {
         let parameters1 = [ "dbname":"audio", "doc": [
             "_id": uuid,
             "device":uniqueName,
-            "patientName": patientName!] ]
+            "patientName": patientUUID!] ]
         writeRecord("write", parameters:parameters1)
         
        
