@@ -409,32 +409,45 @@ class PicturesViewController: ViewController {
         imageView.userInteractionEnabled = false
         
         placeLabel.text = ""
+        var resjson:[[String:String]] = []
         
         for(var k=0; k<count+1; k++){
             let result = Results()
             result.name = namingImages[k]
+            var res:[String:String] = ["imagenum":String(k), "imagename":result.name!]
             for(var j=0; j<resultErrors[k].count; j++){
                 if(resultErrors[k][j] == 0){
                     result.longDescription.addObject("Correct at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["Correct"] = String(round(100*resultTimes[k][j])/100)
                 }
                 if(resultErrors[k][j] == 1){
                     result.longDescription.addObject("Semantic error at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["SemanticError"] = String(round(100*resultTimes[k][j])/100)
                 }
                 if(resultErrors[k][j] == 2){
                     result.longDescription.addObject("Perceptual error at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["PerceptualError"] = String(round(100*resultTimes[k][j])/100)
                 }
                 if(resultErrors[k][j] == 3){
                     result.longDescription.addObject("Don't know at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["DontKnow"] = String(round(100*resultTimes[k][j])/100)
                 }
                 if(resultErrors[k][j] == 4){
                     result.longDescription.addObject("Timer error at \(round(100*resultTimes[k][j])/100) seconds")
+                    res["TimerEnd"] = String(round(100*resultTimes[k][j])/100)
                 }
             }
             if(resultComments[k] != ""){
                 result.longDescription.addObject("Comment: \(resultComments[k])")
+                res["Comment"] = resultComments[k]
             }
             resultsArray.add(result)
+            resjson.append(res)
         }
+        if cloudOn {
+            cloudHelper.testRecord(resjson)
+        }
+
         
         
         /*

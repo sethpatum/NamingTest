@@ -148,10 +148,10 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             resultsArray.doneWithPatient()
         }
         
-        patientName = nil
-        patientID = nil
-        patientAge = nil
-        patientBdate = nil
+        patientName = ""
+        patientID = ""
+        patientAge = ""
+        patientBdate = ""
         
         if(cloudOn) {
             cloudHelper.deviceRecord()
@@ -162,6 +162,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(cloudOn) {
             cloudHelper.patientRecord()
+            cloudHelper.audioRecord()
         }
     }
 
