@@ -414,7 +414,7 @@ class PicturesViewController: ViewController {
         for(var k=0; k<count+1; k++){
             let result = Results()
             result.name = namingImages[k]
-            var res:[String:String] = ["imagenum":String(k), "imagename":result.name!]
+            var res:[String:String] = ["imagenum":String(k+1), "imagename":result.name!]
             for(var j=0; j<resultErrors[k].count; j++){
                 if(resultErrors[k][j] == 0){
                     result.longDescription.addObject("Correct at \(round(100*resultTimes[k][j])/100) seconds")
