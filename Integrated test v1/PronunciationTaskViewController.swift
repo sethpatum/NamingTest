@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class PronunciationViewController: UIViewController {
     
@@ -19,6 +20,10 @@ class PronunciationViewController: UIViewController {
     
     var correct = UIButton()
     var incorrect = UIButton()
+    var helpButton = UIButton()
+    
+    let synth = AVSpeechSynthesizer()
+    var myUtterance = AVSpeechUtterance(string: "")
     
     var groupWords:[String] = ["two", "address", "whole", "eye", "again", "enough", "already", "cough", "fuel", "climb", "most", "excitement", "mosquito", "decorate", "fierce", "plumb", "knead", "vengeance", "gnat", "prestigious", "amphitheater", "lacuna", "iridescent", "lieu", "wily", "aesthetic", "equestrian", "porpoise", "subtle", "palatable", "homily", "ogre", "liason", "xenophobia", "dichotomy", "menagerie", "umbrage", "fecund", "scurrilous", "heinous", "obfuscate", "plethora", "exigency", "lascivious", "paradigm", "cretonne", "vicissitude", "ethereal", "uxorious", "lugubrious", "piquant", "perspicuity", "ubiquitous", "hyperbole", "facetious", "treatise", "picot", "macabre", "anechoic", "acquiesce", "dilettante", "eyrir", "misogyny", "vertiginous", "hegemony", "insouciant", "vide", "chthonic", "vivace", "celidh" ]
     
@@ -77,11 +82,33 @@ class PronunciationViewController: UIViewController {
         incorrect.enabled = true
         self.view.addSubview(incorrect)
         
+        let helppic = UIImage(named: "earbutton") as UIImage?
+        helpButton = UIButton(type: UIButtonType.Custom) as UIButton
+        helpButton.frame = CGRectMake(894, 100, 90, 90)
+        helpButton.setImage(helppic, forState: .Normal)
+        helpButton.addTarget(self, action: "HelpButton:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(helpButton)
+
+        
         wordLabel.text = groupWords[0]
         placeLabel.text = "1/\(groupWords.count)"
         
         self.navigationItem.setHidesBackButton(true, animated:true)
         
+    }
+    
+    @IBAction func HelpButton(sender: AnyObject) {
+        if count < groupWords.count {
+            let imageName = groupWords[count]
+            let myUtterance = AVSpeechUtterance(string: imageName)
+            myUtterance.rate = 0.3
+            synth.speakUtterance(myUtterance)
+        }
+        /*
+         if(selectedTest == "Naming Pictures") {
+         let vc = storyboard!.instantiateViewControllerWithIdentifier("Naming Pictures Help") as UIViewController
+         navigationController?.pushViewController(vc, animated:true)
+         } */
     }
     
     func done(){
