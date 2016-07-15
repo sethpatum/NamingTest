@@ -374,7 +374,7 @@ class PicturesViewController: ViewController {
             resjson.append(res)
         }
         if cloudOn {
-            cloudHelper.testRecord(resjson)
+            cloudHelper.pictureRecord(resjson)
         }
 
         

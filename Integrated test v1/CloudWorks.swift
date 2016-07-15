@@ -89,13 +89,21 @@ class CloudWorks {
             "patientName": patientName!,
             "patientAge": patientAge!,
             "patientID":patientID!,
-            "patientBdate":patientBdate!  ] ]
+            "patientBdate":patientBdate!,
+            "patientGender":patientGender!,
+            "patientEthnic":patientEthnic!,
+            "patientEducation":patientEducation!,
+            "patientLanguage":patientLanguage!,
+            "patientHandedness":patientHandedness!,
+            "patientMemory":patientMemory!,
+            "patientHealth":patientHealth!,
+            "patientOrigin":patientOrigin!] ]
         writeRecord("write", parameters:parameters)
     }
     
     
     
-    func testRecord(results:[[String:String]]) {
+    func pictureRecord(results:[[String:String]]) {
         let uuid = NSUUID().UUIDString
         let parameters = [ "dbname":"picturedata", "doc": [
             "_id": uuid,
@@ -105,6 +113,19 @@ class CloudWorks {
             "results":results  ] ]
         writeRecord("write", parameters:parameters)
 
+        
+    }
+    
+    func pronunciationRecord(results:[String:[String:String]]) {
+        let uuid = NSUUID().UUIDString
+        let parameters = [ "dbname":"pronunciationdata", "doc": [
+            "_id": uuid,
+            "device":uniqueName,
+            "patient":patientUUID!,
+            "date":date,
+            "results":results  ] ]
+        writeRecord("write", parameters:parameters)
+        
         
     }
     
