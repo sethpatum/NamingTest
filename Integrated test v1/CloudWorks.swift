@@ -23,6 +23,7 @@ class CloudWorks {
     let WhiskAppSecret: String = "hERgPjlfKoN7rbiSs0judMnWNY14WEuxQsWCpSUKyHRXTr6W65TPemoYl2mYHRUr"
     let MyNamespace: String = "CNToolkit_Updated Boston Naming Task"
     let MyPackage: String? = "Bluemix_BNT-collect_collect-iPads"
+    let date = String(NSDate())
 
 
     // the URL for Whisk backend
@@ -73,7 +74,8 @@ class CloudWorks {
         let parameters = [ "dbname":"devices", "doc": [
             "_id": uniqueName,
             "deviceid": uniqueName,
-            "devicename": ipadName ] ]
+            "devicename": ipadName,
+            "date":date ] ]
         writeRecord("write", parameters:parameters)
     }
     
@@ -83,6 +85,7 @@ class CloudWorks {
        let parameters = [ "dbname":"patients", "doc": [
             "_id": patientUUID!,
             "device":uniqueName,
+            "date":date,
             "patientName": patientName!,
             "patientAge": patientAge!,
             "patientID":patientID!,
@@ -98,6 +101,7 @@ class CloudWorks {
             "_id": uuid,
             "device":uniqueName,
             "patient":patientUUID!,
+            "date":date,
             "results":results  ] ]
         writeRecord("write", parameters:parameters)
 
@@ -110,7 +114,8 @@ class CloudWorks {
         let parameters1 = [ "dbname":"audio", "doc": [
             "_id": uuid,
             "device":uniqueName,
-            "patientName": patientUUID!] ]
+            "patientName": patientUUID!,
+            "date":date ] ]
         writeRecord("write", parameters:parameters1)
         
        
