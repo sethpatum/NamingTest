@@ -53,7 +53,6 @@ class TestPickerViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        startCount = row
 
         let imageName = namingImages[row]
         

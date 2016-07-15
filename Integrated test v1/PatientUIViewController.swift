@@ -12,7 +12,7 @@ import AVFoundation
 
 var firstTimeThrough = true
 
-var mailSubject : String = "CNToolkit Results"
+var mailSubject : String = "Updated Boston Naming Test -- Data Collection Results"
 var patientName : String?
 var patientAge : String?
 var patientID : String?
