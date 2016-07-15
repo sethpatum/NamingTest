@@ -86,7 +86,6 @@ class CloudWorks {
             "_id": patientUUID!,
             "device":uniqueName,
             "date":date,
-            "patientName": patientName!,
             "patientAge": patientAge!,
             "patientID":patientID!,
             "patientBdate":patientBdate!,

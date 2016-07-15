@@ -193,11 +193,8 @@ class PicturesViewController: ViewController {
         myUtterance = AVSpeechUtterance(string: imageName)
         myUtterance.rate = 0.3
         synth.speakUtterance(myUtterance)
-        /*
-        if(selectedTest == "Naming Pictures") {
-            let vc = storyboard!.instantiateViewControllerWithIdentifier("Naming Pictures Help") as UIViewController
-            navigationController?.pushViewController(vc, animated:true)
-        } */
+        
+        endTimer = true
     }
     
     
@@ -228,7 +225,7 @@ class PicturesViewController: ViewController {
         
         resetButton.enabled = true
         commentButton.enabled = true
-        
+        print(count, startCount)
         resultErrors[count-startCount].append(0)
         resultTimes[count-startCount].append(findTime())
         
