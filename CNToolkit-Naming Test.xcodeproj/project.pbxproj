@@ -58,14 +58,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1BA4A9C51B5556D800E3FBD4 /* CNToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BA4A9C51B5556D800E3FBD4 /* CNToolkit-Naming Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNToolkit-Naming Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA4A9C91B5556D800E3FBD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BA4A9CA1B5556D800E3FBD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BA4A9CC1B5556D800E3FBD4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1BA4A9CF1B5556D800E3FBD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BA4A9D11B5556D800E3FBD4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1BA4A9D41B5556D800E3FBD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1BA4A9DA1B5556D800E3FBD4 /* CNToolkitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CNToolkitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BA4A9DA1B5556D800E3FBD4 /* CNToolkit-Naming Test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CNToolkit-Naming Test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA4A9DF1B5556D800E3FBD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BA4A9E01B5556D800E3FBD4 /* Integrated_test_v1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integrated_test_v1Tests.swift; sourceTree = "<group>"; };
 		1BA503721C0A487C0021F216 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -124,8 +124,8 @@
 		1BA4A9C61B5556D800E3FBD4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1BA4A9C51B5556D800E3FBD4 /* CNToolkit.app */,
-				1BA4A9DA1B5556D800E3FBD4 /* CNToolkitTests.xctest */,
+				1BA4A9C51B5556D800E3FBD4 /* CNToolkit-Naming Test.app */,
+				1BA4A9DA1B5556D800E3FBD4 /* CNToolkit-Naming Test.xctest */,
 			);
 			name = Products;
 			sourceTree = SOURCE_ROOT;
@@ -208,9 +208,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1BA4A9C41B5556D800E3FBD4 /* CNToolkit */ = {
+		1BA4A9C41B5556D800E3FBD4 /* CNToolkit-Naming Test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1BA4A9E41B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkit" */;
+			buildConfigurationList = 1BA4A9E41B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkit-Naming Test" */;
 			buildPhases = (
 				1BA4A9C11B5556D800E3FBD4 /* Sources */,
 				1BA4A9C21B5556D800E3FBD4 /* Frameworks */,
@@ -221,14 +221,14 @@
 			);
 			dependencies = (
 			);
-			name = CNToolkit;
+			name = "CNToolkit-Naming Test";
 			productName = "Integrated test v1";
-			productReference = 1BA4A9C51B5556D800E3FBD4 /* CNToolkit.app */;
+			productReference = 1BA4A9C51B5556D800E3FBD4 /* CNToolkit-Naming Test.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1BA4A9D91B5556D800E3FBD4 /* CNToolkitTests */ = {
+		1BA4A9D91B5556D800E3FBD4 /* CNToolkit-Naming TestTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1BA4A9E71B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkitTests" */;
+			buildConfigurationList = 1BA4A9E71B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkit-Naming TestTests" */;
 			buildPhases = (
 				1BA4A9D61B5556D800E3FBD4 /* Sources */,
 				1BA4A9D71B5556D800E3FBD4 /* Frameworks */,
@@ -239,9 +239,9 @@
 			dependencies = (
 				1BA4A9DC1B5556D800E3FBD4 /* PBXTargetDependency */,
 			);
-			name = CNToolkitTests;
+			name = "CNToolkit-Naming TestTests";
 			productName = "Integrated test v1Tests";
-			productReference = 1BA4A9DA1B5556D800E3FBD4 /* CNToolkitTests.xctest */;
+			productReference = 1BA4A9DA1B5556D800E3FBD4 /* CNToolkit-Naming Test.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -270,7 +270,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1BA4A9C01B5556D800E3FBD4 /* Build configuration list for PBXProject "CNToolkit" */;
+			buildConfigurationList = 1BA4A9C01B5556D800E3FBD4 /* Build configuration list for PBXProject "CNToolkit-Naming Test" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -283,8 +283,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1BA4A9C41B5556D800E3FBD4 /* CNToolkit */,
-				1BA4A9D91B5556D800E3FBD4 /* CNToolkitTests */,
+				1BA4A9C41B5556D800E3FBD4 /* CNToolkit-Naming Test */,
+				1BA4A9D91B5556D800E3FBD4 /* CNToolkit-Naming TestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -347,7 +347,7 @@
 /* Begin PBXTargetDependency section */
 		1BA4A9DC1B5556D800E3FBD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1BA4A9C41B5556D800E3FBD4 /* CNToolkit */;
+			target = 1BA4A9C41B5556D800E3FBD4 /* CNToolkit-Naming Test */;
 			targetProxy = 1BA4A9DB1B5556D800E3FBD4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -469,8 +469,8 @@
 				INFOPLIST_FILE = "Integrated test v1/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sethizzyjackie.Integrated-test-v1";
-				PRODUCT_NAME = CNToolkit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sethizzyjackie.naming-test";
+				PRODUCT_NAME = "CNToolkit-Naming Test";
 			};
 			name = Debug;
 		};
@@ -487,8 +487,8 @@
 				INFOPLIST_FILE = "Integrated test v1/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sethizzyjackie.Integrated-test-v1";
-				PRODUCT_NAME = CNToolkit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sethizzyjackie.naming-test";
+				PRODUCT_NAME = "CNToolkit-Naming Test";
 			};
 			name = Release;
 		};
@@ -507,7 +507,7 @@
 				INFOPLIST_FILE = "Integrated test v1Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sunspot.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = CNToolkitTests;
+				PRODUCT_NAME = "CNToolkit-Naming Test";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Integrated test v1.app/Integrated test v1";
 			};
 			name = Debug;
@@ -523,7 +523,7 @@
 				INFOPLIST_FILE = "Integrated test v1Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sunspot.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = CNToolkitTests;
+				PRODUCT_NAME = "CNToolkit-Naming Test";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Integrated test v1.app/Integrated test v1";
 			};
 			name = Release;
@@ -531,7 +531,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1BA4A9C01B5556D800E3FBD4 /* Build configuration list for PBXProject "CNToolkit" */ = {
+		1BA4A9C01B5556D800E3FBD4 /* Build configuration list for PBXProject "CNToolkit-Naming Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1BA4A9E21B5556D800E3FBD4 /* Debug */,
@@ -540,7 +540,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1BA4A9E41B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkit" */ = {
+		1BA4A9E41B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkit-Naming Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1BA4A9E51B5556D800E3FBD4 /* Debug */,
@@ -549,7 +549,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1BA4A9E71B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkitTests" */ = {
+		1BA4A9E71B5556D800E3FBD4 /* Build configuration list for PBXNativeTarget "CNToolkit-Naming TestTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1BA4A9E81B5556D800E3FBD4 /* Debug */,
