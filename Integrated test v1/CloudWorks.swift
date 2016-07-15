@@ -70,7 +70,10 @@ class CloudWorks {
     
     
     func deviceRecord() {
-        let parameters = [ "dbname":"devices", "doc": [ "_id": uniqueName, "deviceid": uniqueName, "devicename": ipadName ] ]
+        let parameters = [ "dbname":"devices", "doc": [
+            "_id": uniqueName,
+            "deviceid": uniqueName,
+            "devicename": ipadName ] ]
         writeRecord("write", parameters:parameters)
     }
     
