@@ -140,10 +140,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        patientUUID = NSUUID().UUIDString
-        UUID.text = patientUUID
-        
-        
         AgePicker.delegate = self
         GenderPicker.delegate = self
         EthnicPicker.delegate = self
@@ -209,6 +205,9 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
 
         
         // Seguing here from Test selection
+        
+        patientUUID = NSUUID().UUIDString
+        UUID.text = patientUUID
         
         patientName = ""
         patientID = ""
