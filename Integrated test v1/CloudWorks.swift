@@ -22,7 +22,7 @@ class CloudWorks {
     let WhiskAppKey: String = "287d8438-4c7f-474c-af9b-cc8c15e2ff57"
     let WhiskAppSecret: String = "hERgPjlfKoN7rbiSs0judMnWNY14WEuxQsWCpSUKyHRXTr6W65TPemoYl2mYHRUr"
     let MyNamespace: String = "CNToolkit_Updated Boston Naming Task"
-    let MyPackage: String? = "Bluemix_BNT-collect_collect-iPads"
+    var MyPackage: String?
     let date = String(NSDate())
 
 
@@ -32,12 +32,20 @@ class CloudWorks {
     var whisk: Whisk
     
     var session: NSURLSession!
+    
+    
 
     // Initilize the data structures needed
     init() {
         // create whisk credentials token
         let creds = WhiskCredentials(accessKey: WhiskAppKey, accessToken: WhiskAppSecret)
         whisk = Whisk(credentials: creds)
+        
+        if testmodeOn == true {
+            MyPackage = "Bluemix_BNT-collect-test_testing-iPads-and-simulators"
+        } else {
+            MyPackage = "Bluemix_BNT-collect_collect-iPads"
+        }
     }
     
     

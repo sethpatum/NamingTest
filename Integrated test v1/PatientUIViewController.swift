@@ -171,8 +171,9 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         // load the defaults from presistant memory
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
-        announceOn = !NSUserDefaults.standardUserDefaults().boolForKey("announceOff")
+        announceOn = NSUserDefaults.standardUserDefaults().boolForKey("announceOn")
         cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
+        testmodeOn = NSUserDefaults.standardUserDefaults().boolForKey("testmodeOn")
         
         uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
         ipadName = UIDevice.currentDevice().name
