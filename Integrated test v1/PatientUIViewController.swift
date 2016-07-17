@@ -61,7 +61,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     let memoryData = ["Yes", "No"]
     
     @IBOutlet weak var HealthPicker: UIPickerView!
-    let healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
+    let healthData = ["None", "Hypertension", "Diabetes", "Renal Problems", "Other"]
     
     @IBOutlet weak var OriginPicker: UIPickerView!
     let originData = ["United States", "Mexico", "Purto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka"]
