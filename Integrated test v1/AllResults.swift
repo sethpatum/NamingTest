@@ -39,24 +39,19 @@ class AllResults  {
         var e:String = ""
         
         // See what information we got on the patient
-        if(patientName != nil) {
-            e += "<p><h4>Patient Name: \(patientName!)</h4>\n"
-        }
-        
-        if(patientAge != nil) {
-            e += "<h4>Patient Age:  \(patientAge!)</h4>\n"
-        }
-        
-        if(patientID != nil) {
-            e += "<h4>Patient ID: \(patientID!) </h4>\n"
-        }
-         e += "<p>\n"
-        
-        
-        if(patientBdate != nil) {
-            e += "<h4>Patient Birthdate: \(patientBdate!) </h4>\n"
-        }
-        e += "<p>\n"
+        e += "<p><h4>Patient Name: \(patientName!)</h4><p>\n"
+        e += "<h4>Patient Age:  \(patientAge!)</h4><p>\n"
+        e += "<h4>Patient ID: \(patientID!) </h4><p>\n"
+        e += "<h4>Patient Birthdate: \(patientBdate!) </h4><p>\n"
+        e += "<h4>Patient Gender: \(patientGender!) </h4>\n"
+        e += "<h4>Patient Ethnic: \(patientEthnic!) </h4>\n"
+        e += "<h4>Patient Education: \(patientEducation!) </h4>\n"
+        e += "<h4>Patient Language: \(patientLanguage!) </h4>\n"
+        e += "<h4>Patient Handedness: \(patientHandedness!) </h4>\n"
+        e += "<h4>Patient Memory: \(patientMemory!) </h4>\n"
+        e += "<h4>Patient Health: \(patientHealth!) </h4>\n"
+        e += "<h4>Patient Origin: \(patientOrigin!) </h4>\n"
+
         
         // Iterate over the results
         if(numResults() > 0) {
@@ -68,9 +63,9 @@ class AllResults  {
                     e += "\(r.shortDescription)<p>\n"
                 }
                 
-                let elapsedTime = r.endTime!.timeIntervalSinceDate(r.startTime!)
-                let duration = Int(elapsedTime)
-                e += "\(duration) seconds taken. (Test run on \(r.startTime!))<p>\n"
+            //    let elapsedTime = r.endTime!.timeIntervalSinceDate(r.startTime!)
+             //   let duration = Int(elapsedTime)
+             //   e += "\(duration) seconds taken. (Test run on \(r.startTime!))<p>\n"
                 
                 for objs in r.longDescription {
                     if let desc = objs as? String {
@@ -78,18 +73,8 @@ class AllResults  {
                     }
                 }
                 
-                if(r.screenshot != nil) {
-                    let imageString = returnEmailStringBase64EncodedImage(r.screenshot!)
-                    e += "<img src='data:image/png;base64,\(imageString)' width='\(r.screenshot!.size.width)' height='\(r.screenshot!.size.height)'><p>\n"
-                }
             }
         }
-        
-        // Put the time scale at the end of the e-mail
-        let scaleImage = UIImage(named: "scale")
-        let imageString = returnEmailStringBase64EncodedImage(scaleImage!)
-        e += "<p> <h3>scale</h3>\n"
-        e += "<img src='data:image/png;base64,\(imageString)' width='\(scaleImage!.size.width)' height='\(scaleImage!.size.height)'><p>\n"
         
         return e
     }

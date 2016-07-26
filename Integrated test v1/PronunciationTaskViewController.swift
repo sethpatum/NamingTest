@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class PronunciationViewController: UIViewController {
     
@@ -19,6 +20,11 @@ class PronunciationViewController: UIViewController {
     
     var correct = UIButton()
     var incorrect = UIButton()
+    var resetButton = UIButton()
+    var helpButton = UIButton()
+    
+    let synth = AVSpeechSynthesizer()
+    var myUtterance = AVSpeechUtterance(string: "")
     
     var groupWords:[String] = ["two", "address", "whole", "eye", "again", "enough", "already", "cough", "fuel", "climb", "most", "excitement", "mosquito", "decorate", "fierce", "plumb", "knead", "vengeance", "gnat", "prestigious", "amphitheater", "lacuna", "iridescent", "lieu", "wily", "aesthetic", "equestrian", "porpoise", "subtle", "palatable", "homily", "ogre", "liason", "xenophobia", "dichotomy", "menagerie", "umbrage", "fecund", "scurrilous", "heinous", "obfuscate", "plethora", "exigency", "lascivious", "paradigm", "cretonne", "vicissitude", "ethereal", "uxorious", "lugubrious", "piquant", "perspicuity", "ubiquitous", "hyperbole", "facetious", "treatise", "picot", "macabre", "anechoic", "acquiesce", "dilettante", "eyrir", "misogyny", "vertiginous", "hegemony", "insouciant", "vide", "chthonic", "vivace", "celidh" ]
     
@@ -77,6 +83,21 @@ class PronunciationViewController: UIViewController {
         incorrect.enabled = true
         self.view.addSubview(incorrect)
         
+        let endpic = UIImage(named: "stopbutton") as UIImage?
+        resetButton = UIButton(type: UIButtonType.Custom) as UIButton
+        resetButton.frame = CGRectMake(590, 100, 90, 90)
+        resetButton.setImage(endpic, forState: .Normal)
+        resetButton.addTarget(self, action: "reset:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(resetButton)
+        
+        let helppic = UIImage(named: "earbutton") as UIImage?
+        helpButton = UIButton(type: UIButtonType.Custom) as UIButton
+        helpButton.frame = CGRectMake(894, 100, 90, 90)
+        helpButton.setImage(helppic, forState: .Normal)
+        helpButton.addTarget(self, action: "HelpButton:", forControlEvents:.TouchUpInside)
+        self.view.addSubview(helpButton)
+
+        
         wordLabel.text = groupWords[0]
         placeLabel.text = "1/\(groupWords.count)"
         
@@ -84,8 +105,27 @@ class PronunciationViewController: UIViewController {
         
     }
     
-    func done(){
+    @IBAction func HelpButton(sender: AnyObject) {
+        if count < groupWords.count {
+            let imageName = groupWords[count]
+            let myUtterance = AVSpeechUtterance(string: imageName)
+            myUtterance.rate = 0.3
+            synth.speakUtterance(myUtterance)
+        }
         
+    }
+    
+    
+    @IBAction func reset(sender: AnyObject) {
+        //count += 1
+        
+        done()
+        
+    }
+
+    
+    
+    func done(){
         self.navigationItem.setHidesBackButton(false, animated:true)
         correct.enabled = false
         incorrect.enabled = false
@@ -93,29 +133,46 @@ class PronunciationViewController: UIViewController {
         let result = Results()
         result.name = "Pronunciation Task"
         
+        var rightjson:[String:String] = [:]
+        var wrongjson:[String:String] = [:]
+        
+        var rightlist = [String]()
         var wronglist = [String]()
         
-        for(var k=0; k<order.count; k++){
+        for(var k=0; k<count; k++){
             if(order[k] == false){
                 wronglist.append(groupWords[k])
+                wrongjson[String(k)] = groupWords[k]
+            } else {
+                rightlist.append(groupWords[k])
+                rightjson[String(k)] = groupWords[k]
             }
         }
         
-        result.longDescription.addObject("\(groupWords.count-wronglist.count) correct out of \(groupWords.count)")
+        result.longDescription.addObject("\(rightlist.count) correct out of \(wronglist.count+rightlist.count) tried")
+        
+        if(rightlist.count > 0){
+            var str = String()
+            for(var k=0; k<rightlist.count; k++){
+                str += "\(rightlist[k]), "
+            }
+            str = str.substringToIndex(str.endIndex.predecessor().predecessor())
+            print(str)
+            result.longDescription.addObject("Correct words: \(str)")
+        }
         
         if(wronglist.count > 0){
-            
-            var wrongstring = String()
+            var str = String()
             for(var k=0; k<wronglist.count; k++){
-                wrongstring += "\(wronglist[k]), "
+                str += "\(wronglist[k]), "
             }
-            
-            wrongstring = wrongstring.substringToIndex(wrongstring.endIndex.predecessor().predecessor())
-            
-            print(wrongstring)
-            
-            result.longDescription.addObject("Incorrect words: \(wrongstring)")
-            
+            str = str.substringToIndex(str.endIndex.predecessor().predecessor())
+            print(str)
+            result.longDescription.addObject("Incorrect words: \(str)")
+        }
+        
+        if cloudOn {
+            cloudHelper.pronunciationRecord(["Incorrect":wrongjson, "Correct":rightjson])
         }
         
         resultsArray.add(result)

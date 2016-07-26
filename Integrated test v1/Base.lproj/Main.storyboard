@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -10,7 +9,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -165,13 +164,13 @@
         <!--Pronunciation Task-->
         <scene sceneID="ze4-oO-BZz">
             <objects>
-                <viewController title="Pronunciation Task" id="5o0-33-fv8" customClass="PronunciationViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pronunciation Task" id="5o0-33-fv8" customClass="PronunciationViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LBy-Bw-eNO"/>
                         <viewControllerLayoutGuide type="bottom" id="eAE-jz-j8y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qci-6H-XHW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="En0-ji-FLG">
@@ -201,7 +200,7 @@
         <!--Test Selection-->
         <scene sceneID="7CP-gZ-Hkw">
             <objects>
-                <tableViewController title="Test Selection" id="d7F-55-Zey" customClass="TestSelectionTableViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Test Selection" id="d7F-55-Zey" customClass="TestSelectionTableViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8ak-p9-mBL">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,7 +209,7 @@
                             <tableViewSection id="ufu-R2-WAy">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vhb-vt-cEX">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vhb-vt-cEX" id="H7D-dt-NRd">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -233,7 +232,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wIc-sg-1fC">
-                                        <rect key="frame" x="0.0" y="44" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="108" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wIc-sg-1fC" id="rNn-DM-aEH">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -241,7 +240,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pzo-se-lt4">
-                                        <rect key="frame" x="0.0" y="88" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="152" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pzo-se-lt4" id="krF-qi-eTd">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -261,7 +260,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nYS-OJ-Bqn">
-                                        <rect key="frame" x="0.0" y="132" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="196" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nYS-OJ-Bqn" id="lJZ-nw-kzB">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -279,7 +278,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OUA-HJ-d7s">
-                                        <rect key="frame" x="0.0" y="176" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="240" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OUA-HJ-d7s" id="ZDI-Ry-1DZ">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -287,7 +286,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OcX-a4-uK1">
-                                        <rect key="frame" x="0.0" y="220" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="284" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OcX-a4-uK1" id="poM-HD-tqQ">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -305,7 +304,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6X6-8S-sY8">
-                                        <rect key="frame" x="0.0" y="264" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="328" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6X6-8S-sY8" id="vM0-JY-RsZ">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -313,7 +312,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3GO-Jm-biq">
-                                        <rect key="frame" x="0.0" y="308" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="372" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3GO-Jm-biq" id="oaP-3s-YpH">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -321,7 +320,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Kdo-ff-cUi">
-                                        <rect key="frame" x="0.0" y="352" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="416" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kdo-ff-cUi" id="gGF-tA-T95">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -329,7 +328,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="aBu-84-swF">
-                                        <rect key="frame" x="0.0" y="396" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="460" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aBu-84-swF" id="2Q3-oa-VVL">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -337,7 +336,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4aY-UP-Lfo">
-                                        <rect key="frame" x="0.0" y="440" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="504" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4aY-UP-Lfo" id="XqI-sR-9CB">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -345,7 +344,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="12" id="pj4-l7-34O">
-                                        <rect key="frame" x="0.0" y="484" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="548" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pj4-l7-34O" id="cPj-tt-MNZ">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -353,7 +352,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1uL-EN-LZf">
-                                        <rect key="frame" x="0.0" y="528" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="592" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1uL-EN-LZf" id="LL4-NS-uaZ">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -361,7 +360,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WZd-9S-V6Q">
-                                        <rect key="frame" x="0.0" y="572" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="636" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WZd-9S-V6Q" id="DsH-hS-0P8">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -369,7 +368,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ACl-aC-toS">
-                                        <rect key="frame" x="0.0" y="616" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="680" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ACl-aC-toS" id="gSV-B6-XBk">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -413,7 +412,7 @@
         <!--Test Picker-->
         <scene sceneID="i4U-e0-NvF">
             <objects>
-                <viewController title="Test Picker" id="e22-w8-d0F" customClass="TestPickerViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Test Picker" id="e22-w8-d0F" customClass="TestPickerViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Th0-rZ-PhG"/>
                         <viewControllerLayoutGuide type="bottom" id="JJ7-Dj-oje"/>
@@ -449,7 +448,7 @@
         <!--Results-->
         <scene sceneID="mpW-Ug-Cmc">
             <objects>
-                <viewController title="Results" id="hTf-BP-e2o" customClass="ResultsViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Results" id="hTf-BP-e2o" customClass="ResultsViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bgP-rH-uJ2"/>
                         <viewControllerLayoutGuide type="bottom" id="0ap-2i-jGT"/>
@@ -502,7 +501,7 @@
         <!--Pictures-->
         <scene sceneID="kDn-YC-7pR">
             <objects>
-                <viewController title="Pictures" id="34v-JF-kvs" customClass="PicturesViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pictures" id="34v-JF-kvs" customClass="PicturesViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pp4-qe-ZeA"/>
                         <viewControllerLayoutGuide type="bottom" id="j5L-Wi-dfa"/>
@@ -652,7 +651,7 @@ While the authors and producers of this program strive to provide you with usefu
         <!--Setup View Controller-->
         <scene sceneID="mHE-ju-bPZ">
             <objects>
-                <viewController id="WAV-l7-oOn" customClass="SetupViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WAV-l7-oOn" customClass="SetupViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Ir-dL-ABU"/>
                         <viewControllerLayoutGuide type="bottom" id="D5V-DY-taj"/>
@@ -757,6 +756,24 @@ While the authors and producers of this program strive to provide you with usefu
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDG-q9-6jC">
+                                <rect key="frame" x="206" y="677" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When Test Mode is on, data will be saved to a test database" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUq-L1-85Q">
+                                <rect key="frame" x="375" y="677" width="457" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2g-b4-fjP">
+                                <rect key="frame" x="309" y="672" width="51" height="31"/>
+                                <connections>
+                                    <action selector="testmodeOnOff:" destination="WAV-l7-oOn" eventType="valueChanged" id="d43-yX-g2Y"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -770,6 +787,7 @@ While the authors and producers of this program strive to provide you with usefu
                         <outlet property="emailOnOff" destination="jfq-be-YFq" id="Kc5-f7-bXg"/>
                         <outlet property="iName" destination="C6U-xQ-yR7" id="WEJ-nT-Hyc"/>
                         <outlet property="resultsDisplayOnOff" destination="xF5-aA-G4J" id="4ua-3H-3Z8"/>
+                        <outlet property="testmodeOnOff" destination="m2g-b4-fjP" id="foB-xD-zmo"/>
                         <outlet property="uName" destination="qDH-GS-4Zo" id="fG9-56-cRB"/>
                     </connections>
                 </viewController>
@@ -816,7 +834,7 @@ While the authors and producers of this program strive to provide you with usefu
         <!--Patient Information-->
         <scene sceneID="pX2-93-CRM">
             <objects>
-                <viewController title="Patient Information" id="8LV-H7-0SE" customClass="PatientUIViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Patient Information" id="8LV-H7-0SE" customClass="PatientUIViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fFZ-k9-eVo"/>
                         <viewControllerLayoutGuide type="bottom" id="Pbc-6E-Yf8"/>
@@ -825,23 +843,27 @@ While the authors and producers of this program strive to provide you with usefu
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Subject ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8x-q8-6n4">
-                                <rect key="frame" x="165" y="373" width="84" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8x-q8-6n4">
+                                <rect key="frame" x="165" y="390" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Age:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-bk-cbh">
-                                <rect key="frame" x="214" y="481" width="35" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Age:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-bk-cbh">
+                                <rect key="frame" x="216" y="542" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sa4-Rp-b5l">
-                                <rect key="frame" x="284" y="369" width="434" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sa4-Rp-b5l">
+                                <rect key="frame" x="284" y="390" width="434" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="434" id="WRG-KE-XIF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="namePhonePad"/>
                                 <connections>
+                                    <action selector="updateID:" destination="8LV-H7-0SE" eventType="editingDidEnd" id="Q1Q-by-1bp"/>
                                     <action selector="updateName:" destination="8LV-H7-0SE" eventType="editingDidEnd" id="Fme-dX-VZu"/>
                                 </connections>
                             </textField>
@@ -852,7 +874,7 @@ While the authors and producers of this program strive to provide you with usefu
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Blz-yN-Djr">
-                                <rect key="frame" x="284" y="589" width="612" height="162"/>
+                                <rect key="frame" x="285" y="673" width="612" height="75"/>
                                 <date key="date" timeIntervalSinceReferenceDate="462714587.96182102">
                                     <!--2015-08-31 11:49:47 +0000-->
                                 </date>
@@ -861,12 +883,12 @@ While the authors and producers of this program strive to provide you with usefu
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birth Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-jn-0nR">
-                                <rect key="frame" x="167" y="659" width="82" height="21"/>
+                                <rect key="frame" x="169" y="700" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-OJ-rcn">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjO-OJ-rcn">
                                 <rect key="frame" x="30" y="84" width="168" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Start Testing">
@@ -877,123 +899,128 @@ While the authors and producers of this program strive to provide you with usefu
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Primary Language:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myy-CJ-g80">
-                                <rect key="frame" x="25" y="298" width="144" height="21"/>
+                                <rect key="frame" x="25" y="332" width="144" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ethnic Background:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-Ge-kks">
-                                <rect key="frame" x="20" y="236" width="149" height="21"/>
+                                <rect key="frame" x="20" y="241" width="149" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdn-ex-jyN">
-                                <rect key="frame" x="107" y="160" width="62" height="21"/>
+                                <rect key="frame" x="107" y="148" width="62" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="858-u0-vpN">
-                                <rect key="frame" x="204" y="224" width="251" height="46"/>
+                                <rect key="frame" x="204" y="214" width="251" height="75"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1J-QW-kDn">
-                                <rect key="frame" x="204" y="151" width="251" height="40"/>
+                                <rect key="frame" x="204" y="121" width="251" height="75"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Highest Education Level:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3L-FX-oZV">
-                                <rect key="frame" x="60" y="538" width="189" height="21"/>
+                                <rect key="frame" x="62" y="625" width="189" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twJ-vb-lfH">
-                                <rect key="frame" x="284" y="526" width="334" height="46"/>
+                                <rect key="frame" x="285" y="598" width="330" height="75"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mev-Lq-reR">
-                                <rect key="frame" x="203" y="287" width="251" height="44"/>
+                                <rect key="frame" x="204" y="305" width="251" height="75"/>
                             </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j5C-kr-yOE">
-                                <rect key="frame" x="283" y="477" width="113" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <connections>
-                                    <action selector="updateAge:" destination="8LV-H7-0SE" eventType="editingDidEnd" id="r3R-Mk-pyC"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Handedness:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-2P-aX0">
-                                <rect key="frame" x="148" y="433" width="101" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpN-g6-2Gg">
-                                <rect key="frame" x="283" y="421" width="381" height="45"/>
+                                <rect key="frame" x="285" y="428" width="330" height="75"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diagnosed Memory Problem:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Res-Jp-KIM">
-                                <rect key="frame" x="526" y="160" width="222" height="21"/>
+                                <rect key="frame" x="526" y="148" width="222" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPi-mI-Irr">
-                                <rect key="frame" x="771" y="149" width="213" height="44"/>
-                            </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Idr-cD-GFN">
-                                <rect key="frame" x="771" y="224" width="213" height="44"/>
+                                <rect key="frame" x="771" y="210" width="213" height="75"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diagnosed Chronic Health Problem:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRr-kj-jda">
-                                <rect key="frame" x="475" y="236" width="273" height="21"/>
+                                <rect key="frame" x="475" y="237" width="273" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country/Region of Origin:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0un-KI-cVe">
-                                <rect key="frame" x="554" y="298" width="194" height="21"/>
+                                <rect key="frame" x="554" y="328" width="194" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGE-Iz-haN">
-                                <rect key="frame" x="771" y="287" width="213" height="44"/>
+                                <rect key="frame" x="771" y="301" width="213" height="75"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NSUUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usc-zw-dsR">
-                                <rect key="frame" x="632" y="485" width="352" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <rect key="frame" x="738" y="395" width="352" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPi-mI-Irr">
+                                <rect key="frame" x="771" y="121" width="213" height="75"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-An-YL8">
+                                <rect key="frame" x="285" y="515" width="330" height="75"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Handedness:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-2P-aX0">
+                                <rect key="frame" x="150" y="455" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="M8x-q8-6n4" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="145" id="0dW-Uh-Ky8"/>
+                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="top" secondItem="u4e-yX-EA7" secondAttribute="topMargin" constant="390" id="91m-qV-Jmn"/>
+                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="264" id="C6K-L2-T08"/>
                             <constraint firstItem="n77-2A-MJZ" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="383" id="GCs-XR-puy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n77-2A-MJZ" secondAttribute="trailing" constant="382" id="PZw-Jy-WYh"/>
+                            <constraint firstItem="M8x-q8-6n4" firstAttribute="top" secondItem="u4e-yX-EA7" secondAttribute="top" constant="390" id="Tig-cQ-4Zo"/>
+                            <constraint firstItem="6ve-bk-cbh" firstAttribute="top" secondItem="u4e-yX-EA7" secondAttribute="topMargin" constant="520" id="UCb-7n-dWN"/>
+                            <constraint firstItem="6ve-bk-cbh" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="196" id="VEZ-cc-EQ3"/>
+                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="centerX" secondItem="M8x-q8-6n4" secondAttribute="centerX" id="VFd-NT-4YV"/>
                             <constraint firstItem="n77-2A-MJZ" firstAttribute="top" secondItem="fFZ-k9-eVo" secondAttribute="bottom" constant="13" id="X8O-74-qUC"/>
                             <constraint firstItem="sa4-Rp-b5l" firstAttribute="leading" secondItem="M8x-q8-6n4" secondAttribute="trailing" constant="35" id="YRz-9k-6WP"/>
                             <constraint firstItem="xjO-OJ-rcn" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="10" id="cb1-zi-Xrv"/>
-                            <constraint firstItem="j5C-kr-yOE" firstAttribute="leading" secondItem="6ve-bk-cbh" secondAttribute="trailing" constant="35" id="udx-4W-j7C"/>
+                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="centerX" secondItem="M8x-q8-6n4" secondAttribute="centerX" id="r3c-Xc-h5f"/>
+                            <constraint firstItem="xjO-OJ-rcn" firstAttribute="top" secondItem="fFZ-k9-eVo" secondAttribute="bottom" constant="64" id="z43-jK-oVc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="VFd-NT-4YV"/>
                                 <exclude reference="YRz-9k-6WP"/>
-                                <exclude reference="udx-4W-j7C"/>
+                                <exclude reference="r3c-Xc-h5f"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="AgePicker" destination="xIN-An-YL8" id="YNs-qW-wX9"/>
                         <outlet property="EducationPicker" destination="twJ-vb-lfH" id="AiU-V2-lb5"/>
                         <outlet property="EthnicPicker" destination="858-u0-vpN" id="1qU-gJ-yc3"/>
                         <outlet property="GenderPicker" destination="u1J-QW-kDn" id="GoO-8C-n1B"/>
                         <outlet property="HandedPicker" destination="SpN-g6-2Gg" id="P1j-4n-dvO"/>
                         <outlet property="HealthPicker" destination="Idr-cD-GFN" id="fDX-2Z-re6"/>
+                        <outlet property="IDfield" destination="sa4-Rp-b5l" id="ZNf-7S-fNL"/>
                         <outlet property="IDlabel" destination="n3L-FX-oZV" id="N5a-u0-R62"/>
                         <outlet property="LanguagePicker" destination="mev-Lq-reR" id="LC5-Lw-rJ3"/>
                         <outlet property="MemoryPicker" destination="iPi-mI-Irr" id="hcV-0E-Uco"/>
                         <outlet property="OriginPicker" destination="gGE-Iz-haN" id="ZSS-Aa-KH4"/>
                         <outlet property="UUID" destination="Usc-zw-dsR" id="diW-pU-pfp"/>
                         <outlet property="ageLabel" destination="6ve-bk-cbh" id="ulb-Bu-el4"/>
-                        <outlet property="ageTextField" destination="j5C-kr-yOE" id="qBf-7C-Ex3"/>
                         <outlet property="birthdateField" destination="Blz-yN-Djr" id="q9K-AG-b1D"/>
                         <outlet property="birthdayLabel" destination="cxl-jn-0nR" id="PjC-3w-Abh"/>
                         <outlet property="nameField" destination="sa4-Rp-b5l" id="ac2-3B-e73"/>
@@ -1011,8 +1038,8 @@ While the authors and producers of this program strive to provide you with usefu
         <image name="cnbs" width="612" height="89"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kBo-Bx-fAG"/>
         <segue reference="Db8-gX-wha"/>
+        <segue reference="mFR-im-uC4"/>
         <segue reference="QiM-jf-6BP"/>
     </inferredMetricsTieBreakers>
 </document>

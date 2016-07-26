@@ -22,7 +22,8 @@ class CloudWorks {
     let WhiskAppKey: String = "287d8438-4c7f-474c-af9b-cc8c15e2ff57"
     let WhiskAppSecret: String = "hERgPjlfKoN7rbiSs0judMnWNY14WEuxQsWCpSUKyHRXTr6W65TPemoYl2mYHRUr"
     let MyNamespace: String = "CNToolkit_Updated Boston Naming Task"
-    let MyPackage: String? = "Bluemix_BNT-collect_collect-iPads"
+    var MyPackage: String?
+    let date = String(NSDate())
 
 
     // the URL for Whisk backend
@@ -31,12 +32,20 @@ class CloudWorks {
     var whisk: Whisk
     
     var session: NSURLSession!
+    
+    
 
     // Initilize the data structures needed
     init() {
         // create whisk credentials token
         let creds = WhiskCredentials(accessKey: WhiskAppKey, accessToken: WhiskAppSecret)
         whisk = Whisk(credentials: creds)
+        
+        if testmodeOn == true {
+            MyPackage = "Bluemix_BNT-collect-test_testing-iPads-and-simulators"
+        } else {
+            MyPackage = "Bluemix_BNT-collect_collect-iPads"
+        }
     }
     
     
@@ -70,7 +79,11 @@ class CloudWorks {
     
     
     func deviceRecord() {
-        let parameters = [ "dbname":"devices", "doc": [ "_id": uniqueName, "deviceid": uniqueName, "devicename": ipadName ] ]
+        let parameters = [ "dbname":"devices", "doc": [
+            "_id": uniqueName,
+            "deviceid": uniqueName,
+            "devicename": ipadName,
+            "date":date ] ]
         writeRecord("write", parameters:parameters)
     }
     
@@ -80,24 +93,46 @@ class CloudWorks {
        let parameters = [ "dbname":"patients", "doc": [
             "_id": patientUUID!,
             "device":uniqueName,
-            "patientName": patientName!,
+            "date":date,
             "patientAge": patientAge!,
             "patientID":patientID!,
-            "patientBdate":patientBdate!  ] ]
+            "patientBdate":patientBdate!,
+            "patientGender":patientGender!,
+            "patientEthnic":patientEthnic!,
+            "patientEducation":patientEducation!,
+            "patientLanguage":patientLanguage!,
+            "patientHandedness":patientHandedness!,
+            "patientMemory":patientMemory!,
+            "patientHealth":patientHealth!,
+            "patientOrigin":patientOrigin!] ]
         writeRecord("write", parameters:parameters)
     }
     
     
     
-    func testRecord(results:[[String:String]]) {
+    func pictureRecord(results:[[String:String]]) {
         let uuid = NSUUID().UUIDString
         let parameters = [ "dbname":"picturedata", "doc": [
             "_id": uuid,
             "device":uniqueName,
             "patient":patientUUID!,
+            "date":date,
             "results":results  ] ]
         writeRecord("write", parameters:parameters)
 
+        
+    }
+    
+    func pronunciationRecord(results:[String:[String:String]]) {
+        let uuid = NSUUID().UUIDString
+        let parameters = [ "dbname":"pronunciationdata", "doc": [
+            "_id": uuid,
+            "device":uniqueName,
+            "patient":patientUUID!,
+            "date":date,
+            "results":results  ] ]
+        writeRecord("write", parameters:parameters)
+        
         
     }
     
@@ -107,7 +142,8 @@ class CloudWorks {
         let parameters1 = [ "dbname":"audio", "doc": [
             "_id": uuid,
             "device":uniqueName,
-            "patientName": patientUUID!] ]
+            "patientName": patientUUID!,
+            "date":date ] ]
         writeRecord("write", parameters:parameters1)
         
        

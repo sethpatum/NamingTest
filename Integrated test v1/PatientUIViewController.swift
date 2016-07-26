@@ -12,7 +12,7 @@ import AVFoundation
 
 var firstTimeThrough = true
 
-var mailSubject : String = "CNToolkit Results"
+var mailSubject : String = "Updated Boston Naming Test -- Data Collection Results"
 var patientName : String?
 var patientAge : String?
 var patientID : String?
@@ -26,6 +26,15 @@ var patientHandedness : String?
 var patientMemory : String?
 var patientHealth : String?
 var patientOrigin : String?
+
+
+func makeAgeData() -> [String] {
+    var str:[String] = []
+    for i in 1...120 {
+        str.append(String(i))
+    }
+    return str
+}
 
 
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
@@ -45,12 +54,14 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var HandedPicker: UIPickerView!
     let handedData = ["Left Handed", "Right Handed", "Ambidextrous"]
     
+    @IBOutlet weak var AgePicker: UIPickerView!
+    var ageData:[String] = makeAgeData()
     
     @IBOutlet weak var MemoryPicker: UIPickerView!
     let memoryData = ["Yes", "No"]
     
     @IBOutlet weak var HealthPicker: UIPickerView!
-    let healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
+    let healthData = ["None", "Hypertension", "Diabetes", "Renal Problems", "Other"]
     
     @IBOutlet weak var OriginPicker: UIPickerView!
     let originData = ["United States", "Mexico", "Purto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka"]
@@ -91,7 +102,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var IDfield: UITextField!
     
     @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var ageTextField: UITextField!
     
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdateField: UIDatePicker!
@@ -115,10 +125,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     }
     
     
-    @IBAction func updateAge(sender: AnyObject) {
-        patientAge = ageTextField.text
-    }
-    
     @IBAction func updateID(sender: AnyObject) {
         patientID = IDfield.text
     }
@@ -131,14 +137,10 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     }
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        patientUUID = NSUUID().UUIDString
-        UUID.text = patientUUID
-        
+        AgePicker.delegate = self
         GenderPicker.delegate = self
         EthnicPicker.delegate = self
         EducationPicker.delegate = self
@@ -165,8 +167,9 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         // load the defaults from presistant memory
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
-        announceOn = !NSUserDefaults.standardUserDefaults().boolForKey("announceOff")
+        announceOn = NSUserDefaults.standardUserDefaults().boolForKey("announceOn")
         cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
+        testmodeOn = NSUserDefaults.standardUserDefaults().boolForKey("testmodeOn")
         
         uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
         ipadName = UIDevice.currentDevice().name
@@ -203,11 +206,24 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         
         // Seguing here from Test selection
         
+        patientUUID = NSUUID().UUIDString
+        UUID.text = patientUUID
+        
         patientName = ""
         patientID = ""
-        patientAge = ""
-        patientBdate = ""
-        patientGender = ""
+        patientAge = ageData[AgePicker.selectedRowInComponent(0)]
+        patientGender = genderData[GenderPicker.selectedRowInComponent(0)]
+        patientEthnic = ethnicData[EthnicPicker.selectedRowInComponent(0)]
+        patientEducation = educationData[EducationPicker.selectedRowInComponent(0)]
+        patientLanguage = languageData[LanguagePicker.selectedRowInComponent(0)]
+        patientHandedness = handedData[HandedPicker.selectedRowInComponent(0)]
+        patientMemory = memoryData[MemoryPicker.selectedRowInComponent(0)]
+        patientHealth = healthData[HealthPicker.selectedRowInComponent(0)]
+        patientOrigin = originData[OriginPicker.selectedRowInComponent(0)]
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "y-MM-dd"
+        patientBdate = formatter.stringFromDate(birthdateField.date)
+
         
         if(cloudOn) {
             cloudHelper.deviceRecord()
@@ -238,6 +254,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         print("URL:", audioURL)
         return audioURL
     }
+    
     //drop
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -270,63 +287,54 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        if pickerView == GenderPicker {
+        if pickerView == AgePicker {
+            return ageData.count
+        } else if pickerView == GenderPicker {
             return genderData.count
-        }
-        if pickerView == EthnicPicker {
+        } else if pickerView == EthnicPicker {
             return ethnicData.count
-        }
-        if pickerView == EducationPicker {
+        } else if pickerView == EducationPicker {
             return educationData.count
-        }
-        if pickerView == LanguagePicker {
+        } else if pickerView == LanguagePicker {
             return languageData.count
-        }
-        if pickerView == HandedPicker {
+        } else if pickerView == HandedPicker {
             return handedData.count
-        }
-        if pickerView == MemoryPicker {
+        } else if pickerView == MemoryPicker {
             return memoryData.count
-        }
-        if pickerView == HealthPicker {
+        } else if pickerView == HealthPicker {
             return healthData.count
-        }
-        if pickerView == OriginPicker {
+        } else if pickerView == OriginPicker {
             return originData.count
         }
         return 1
     }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == GenderPicker {
+        if pickerView == AgePicker {
+            patientAge = ageData[row]
+            return ageData[row]
+        } else if pickerView == GenderPicker {
             patientGender = genderData[row]
             return genderData[row]
-        }
-        if pickerView == EthnicPicker {
+        } else if pickerView == EthnicPicker {
             patientEthnic = ethnicData[row]
             return ethnicData[row]
-        }
-        if pickerView == EducationPicker {
+        } else if pickerView == EducationPicker {
             patientEducation = educationData[row]
             return educationData[row]
-        }
-        if pickerView == LanguagePicker {
+        } else if pickerView == LanguagePicker {
             patientLanguage = languageData[row]
             return languageData[row]
-        }
-        if pickerView == HandedPicker {
+        } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
             return handedData[row]
-        }
-        if pickerView == MemoryPicker {
+        } else if pickerView == MemoryPicker {
             patientMemory = memoryData[row]
             return memoryData[row]
-        }
-        if pickerView == HealthPicker {
+        } else if pickerView == HealthPicker {
             patientHealth = healthData[row]
             return healthData[row]
-        }
-        if pickerView == OriginPicker {
+        } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
             return originData[row]
         }
@@ -334,32 +342,25 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == GenderPicker {
+        if pickerView == AgePicker {
+            patientAge = ageData[row]
+        } else if pickerView == GenderPicker {
             patientGender = genderData[row]
-        }
-        if pickerView == EthnicPicker {
+        } else if pickerView == EthnicPicker {
             patientEthnic = ethnicData[row]
-        }
-        if pickerView == EducationPicker {
+        } else if pickerView == EducationPicker {
             patientEducation = educationData[row]
-        }
-        if pickerView == LanguagePicker {
+        } else if pickerView == LanguagePicker {
             patientLanguage = languageData[row]
-        }
-        if pickerView == HandedPicker {
+        } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
-        }
-        if pickerView == MemoryPicker {
+        } else if pickerView == MemoryPicker {
             patientMemory = memoryData[row]
-        }
-        if pickerView == HealthPicker {
+        } else if pickerView == HealthPicker {
             patientHealth = healthData[row]
-        }
-        if pickerView == OriginPicker {
+        } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
         }
-    
-    
     }
 
 }
