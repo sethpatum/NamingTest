@@ -362,6 +362,24 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             patientOrigin = originData[row]
         }
     }
+    
+    let alert = OrigenPicker (title: "Comment", message: "Enter details about \(namingImages[count])", preferredStyle: .Alert)
+    
+    //2. Add the text field. You can configure it however you need.
+    
+    alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+    textField.text = ""
+    
+    })
+    
+    //3. Grab the value from the text field, and print it when the user clicks OK.
+    alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
+    let textField = alert.textFields![0] as UITextField
+    self.resultComments[self.count-startCount] = textField.text!
+    }))
+    
+    // 4. Present the alert.
+    self.presentViewController(alert, animated: true, completion: nil)
 
 }
 
