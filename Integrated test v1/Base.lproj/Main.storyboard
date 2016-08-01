@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -9,7 +9,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -164,7 +164,7 @@
         <!--Pronunciation Task-->
         <scene sceneID="ze4-oO-BZz">
             <objects>
-                <viewController title="Pronunciation Task" id="5o0-33-fv8" customClass="PronunciationViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pronunciation Task" id="5o0-33-fv8" customClass="PronunciationViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LBy-Bw-eNO"/>
                         <viewControllerLayoutGuide type="bottom" id="eAE-jz-j8y"/>
@@ -176,13 +176,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="En0-ji-FLG">
                                 <rect key="frame" x="66" y="215" width="892" height="337"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCr-wJ-NGg">
                                 <rect key="frame" x="807" y="132" width="151" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -200,7 +200,7 @@
         <!--Test Selection-->
         <scene sceneID="7CP-gZ-Hkw">
             <objects>
-                <tableViewController title="Test Selection" id="d7F-55-Zey" customClass="TestSelectionTableViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Test Selection" id="d7F-55-Zey" customClass="TestSelectionTableViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8ak-p9-mBL">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -412,7 +412,7 @@
         <!--Test Picker-->
         <scene sceneID="i4U-e0-NvF">
             <objects>
-                <viewController title="Test Picker" id="e22-w8-d0F" customClass="TestPickerViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Test Picker" id="e22-w8-d0F" customClass="TestPickerViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Th0-rZ-PhG"/>
                         <viewControllerLayoutGuide type="bottom" id="JJ7-Dj-oje"/>
@@ -448,7 +448,7 @@
         <!--Results-->
         <scene sceneID="mpW-Ug-Cmc">
             <objects>
-                <viewController title="Results" id="hTf-BP-e2o" customClass="ResultsViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Results" id="hTf-BP-e2o" customClass="ResultsViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bgP-rH-uJ2"/>
                         <viewControllerLayoutGuide type="bottom" id="0ap-2i-jGT"/>
@@ -501,7 +501,7 @@
         <!--Pictures-->
         <scene sceneID="kDn-YC-7pR">
             <objects>
-                <viewController title="Pictures" id="34v-JF-kvs" customClass="PicturesViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pictures" id="34v-JF-kvs" customClass="PicturesViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pp4-qe-ZeA"/>
                         <viewControllerLayoutGuide type="bottom" id="j5L-Wi-dfa"/>
@@ -651,7 +651,7 @@ While the authors and producers of this program strive to provide you with usefu
         <!--Setup View Controller-->
         <scene sceneID="mHE-ju-bPZ">
             <objects>
-                <viewController id="WAV-l7-oOn" customClass="SetupViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WAV-l7-oOn" customClass="SetupViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Ir-dL-ABU"/>
                         <viewControllerLayoutGuide type="bottom" id="D5V-DY-taj"/>
@@ -815,7 +815,7 @@ While the authors and producers of this program strive to provide you with usefu
         <!--Patient Information-->
         <scene sceneID="pX2-93-CRM">
             <objects>
-                <viewController title="Patient Information" id="8LV-H7-0SE" customClass="PatientUIViewController" customModule="CNToolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Patient Information" id="8LV-H7-0SE" customClass="PatientUIViewController" customModule="CNToolkit_Naming_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fFZ-k9-eVo"/>
                         <viewControllerLayoutGuide type="bottom" id="Pbc-6E-Yf8"/>
@@ -924,9 +924,6 @@ While the authors and producers of this program strive to provide you with usefu
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Idr-cD-GFN">
-                                <rect key="frame" x="771" y="210" width="213" height="75"/>
-                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diagnosed Chronic Health Problem:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRr-kj-jda">
                                 <rect key="frame" x="475" y="237" width="273" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -994,7 +991,6 @@ While the authors and producers of this program strive to provide you with usefu
                         <outlet property="EthnicPicker" destination="858-u0-vpN" id="1qU-gJ-yc3"/>
                         <outlet property="GenderPicker" destination="u1J-QW-kDn" id="GoO-8C-n1B"/>
                         <outlet property="HandedPicker" destination="SpN-g6-2Gg" id="P1j-4n-dvO"/>
-                        <outlet property="HealthPicker" destination="Idr-cD-GFN" id="fDX-2Z-re6"/>
                         <outlet property="IDfield" destination="sa4-Rp-b5l" id="ZNf-7S-fNL"/>
                         <outlet property="IDlabel" destination="n3L-FX-oZV" id="N5a-u0-R62"/>
                         <outlet property="LanguagePicker" destination="mev-Lq-reR" id="LC5-Lw-rJ3"/>

@@ -60,11 +60,11 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var MemoryPicker: UIPickerView!
     let memoryData = ["Yes", "No"]
     
-    @IBOutlet weak var HealthPicker: UIPickerView!
-    let healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
+    //@IBOutlet weak var HealthPicker: UIPickerView!
+    // healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
     
     @IBOutlet weak var OriginPicker: UIPickerView!
-    let originData = ["United States", "Mexico", "Purto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka"]
+    let originData = ["United States", "Mexico", "Purto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka", "Other"]
     
     
     var recordingSession: AVAudioSession!
@@ -151,7 +151,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         LanguagePicker.delegate = self
         HandedPicker.delegate = self
         MemoryPicker.delegate = self
-        HealthPicker.delegate = self
+        //HealthPicker.delegate = self
         OriginPicker.delegate = self
         
         recordingSession = AVAudioSession.sharedInstance()
@@ -218,7 +218,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         patientLanguage = languageData[LanguagePicker.selectedRowInComponent(0)]
         patientHandedness = handedData[HandedPicker.selectedRowInComponent(0)]
         patientMemory = memoryData[MemoryPicker.selectedRowInComponent(0)]
-        patientHealth = healthData[HealthPicker.selectedRowInComponent(0)]
+       // patientHealth = healthData[HealthPicker.selectedRowInComponent(0)]
         patientOrigin = originData[OriginPicker.selectedRowInComponent(0)]
         let formatter = NSDateFormatter()
         formatter.dateFormat = "y-MM-dd"
@@ -301,8 +301,8 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             return handedData.count
         } else if pickerView == MemoryPicker {
             return memoryData.count
-        } else if pickerView == HealthPicker {
-            return healthData.count
+ //       } else if pickerView == HealthPicker {
+ //           return healthData.count
         } else if pickerView == OriginPicker {
             return originData.count
         }
@@ -331,9 +331,9 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         } else if pickerView == MemoryPicker {
             patientMemory = memoryData[row]
             return memoryData[row]
-        } else if pickerView == HealthPicker {
-            patientHealth = healthData[row]
-            return healthData[row]
+//        } else if pickerView == HealthPicker {
+//            patientHealth = healthData[row]
+//            return healthData[row]
         } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
             return originData[row]
@@ -346,22 +346,58 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             patientAge = ageData[row]
         } else if pickerView == GenderPicker {
             patientGender = genderData[row]
+            if patientGender == "Other"{
+                addOtherCondition(&patientGender)
+            }
         } else if pickerView == EthnicPicker {
             patientEthnic = ethnicData[row]
+            if patientEthnic == "Other" {
+                addOtherCondition(&patientEthnic)
+            }
+            print(patientEthnic)
         } else if pickerView == EducationPicker {
             patientEducation = educationData[row]
         } else if pickerView == LanguagePicker {
             patientLanguage = languageData[row]
+            if patientLanguage == "Other" {
+                addOtherCondition(&patientLanguage)
+            }
         } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
         } else if pickerView == MemoryPicker {
             patientMemory = memoryData[row]
-        } else if pickerView == HealthPicker {
-            patientHealth = healthData[row]
+//        } else if pickerView == HealthPicker {
+//            patientHealth = healthData[row]
         } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
+            if patientOrigin == "Other" {
+                addOtherCondition(&patientOrigin)
+            }
         }
     }
+    
+    
+    func addOtherCondition(inout result:String?){
+        let alert = UIAlertController(title: "Other", message: "Enter other conditions", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = ""
+            
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            //self.resultComments[self.count-startCount] = textField.text!
+            result = textField.text
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
 
 }
 
