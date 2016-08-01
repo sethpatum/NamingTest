@@ -40,31 +40,31 @@ func makeAgeData() -> [String] {
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
     
     @IBOutlet weak var GenderPicker: UIPickerView!
-    let genderData = ["Male", "Female", "Other", "Prefer Not To Say"]
+    var genderData = ["Male", "Female", "Other", "Prefer Not To Say"]
     
     @IBOutlet weak var EthnicPicker: UIPickerView!
-    let ethnicData = ["Caucasian", "African American", "Latino", "Other"]
+    var ethnicData = ["Caucasian", "African American", "Latino", "Other"]
     
     @IBOutlet weak var EducationPicker: UIPickerView!
-    let educationData = ["< 9 yrs", "9-11 yrs", "High School Graduate", "Associates Degree", "Bachelors Degree", "Post Graduate Degree"]
+    var educationData = ["< 9 yrs", "9-11 yrs", "High School Graduate", "Associates Degree", "Bachelors Degree", "Post Graduate Degree"]
     
     @IBOutlet weak var LanguagePicker: UIPickerView!
-    let languageData = ["English", "Spanish", "Other",]
+    var languageData = ["English", "Spanish", "Other",]
     
     @IBOutlet weak var HandedPicker: UIPickerView!
-    let handedData = ["Left Handed", "Right Handed", "Ambidextrous"]
+    var handedData = ["Left Handed", "Right Handed", "Ambidextrous"]
     
     @IBOutlet weak var AgePicker: UIPickerView!
     var ageData:[String] = makeAgeData()
     
     @IBOutlet weak var MemoryPicker: UIPickerView!
-    let memoryData = ["Yes", "No"]
+    var memoryData = ["Yes", "No"]
     
     //@IBOutlet weak var HealthPicker: UIPickerView!
     // healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
     
     @IBOutlet weak var OriginPicker: UIPickerView!
-    let originData = ["United States", "Mexico", "Purto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka", "Other"]
+    var originData = ["United States", "Mexico", "Purto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka", "Other"]
     
     
     var recordingSession: AVAudioSession!
@@ -110,6 +110,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var UUID: UILabel!
     
     @IBAction func StartTesting(sender: AnyObject) {
+        print("PE", patientEthnic)
         if firstTimeThrough == true {
             firstTimeThrough = false
             performSegueWithIdentifier("toDisclaimer", sender: self)
@@ -347,20 +348,20 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         } else if pickerView == GenderPicker {
             patientGender = genderData[row]
             if patientGender == "Other"{
-                addOtherCondition(&patientGender)
+                addOtherCondition(&patientGender, pickerView:pickerView, data:&genderData)
             }
         } else if pickerView == EthnicPicker {
             patientEthnic = ethnicData[row]
             if patientEthnic == "Other" {
-                addOtherCondition(&patientEthnic)
+                addOtherCondition(&patientEthnic, pickerView:pickerView, data:&ethnicData)
             }
-            print(patientEthnic)
+            print("inPV", patientEthnic)
         } else if pickerView == EducationPicker {
             patientEducation = educationData[row]
         } else if pickerView == LanguagePicker {
             patientLanguage = languageData[row]
             if patientLanguage == "Other" {
-                addOtherCondition(&patientLanguage)
+                addOtherCondition(&patientLanguage, pickerView:pickerView, data:&languageData)
             }
         } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
@@ -371,13 +372,13 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
             if patientOrigin == "Other" {
-                addOtherCondition(&patientOrigin)
+                addOtherCondition(&patientOrigin, pickerView:pickerView, data:&originData)
             }
         }
     }
     
     
-    func addOtherCondition(inout result:String?){
+    func addOtherCondition(inout result:String?, pickerView:UIPickerView, inout data:[String]){
         let alert = UIAlertController(title: "Other", message: "Enter other conditions", preferredStyle: .Alert)
         
         //2. Add the text field. You can configure it however you need.
@@ -392,6 +393,10 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             let textField = alert.textFields![0] as UITextField
             //self.resultComments[self.count-startCount] = textField.text!
             result = textField.text
+            data.append(result!)
+            //pickerView.reloadComponent(data.count)
+            pickerView.selectRow(data.count, inComponent: 0, animated: true)
+            print("Adding the text ", result)
         }))
         
         // 4. Present the alert.
