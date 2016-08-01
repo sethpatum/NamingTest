@@ -11,6 +11,7 @@ import UIKit
 var cloudOn   : Bool = true
 var emailOn  : Bool = false
 var announceOn : Bool = false
+var testmodeOn : Bool = false
 var emailAddress : String = ""
 var uniqueName : String = ""
 var ipadName : String = ""
@@ -27,6 +28,7 @@ class SetupViewController: ViewController {
     @IBOutlet weak var resultsDisplayOnOff: UISwitch!
     @IBOutlet weak var uName: UILabel!
     @IBOutlet weak var iName: UILabel!
+    @IBOutlet weak var testmodeOnOff: UISwitch!
     
     @IBAction func emailOnOff(sender: AnyObject) {
         emailOn = emailOnOff.on
@@ -55,17 +57,23 @@ class SetupViewController: ViewController {
     
     @IBAction func announceOnOff(sender: AnyObject) {
         announceOn = announceOnOff.on
-        NSUserDefaults.standardUserDefaults().setBool(!announceOn, forKey: "announceOff")
+        NSUserDefaults.standardUserDefaults().setBool(announceOn, forKey: "announceOn")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    @IBAction func testmodeOnOff(sender: AnyObject) {
+        testmodeOn = testmodeOnOff.on
+        NSUserDefaults.standardUserDefaults().setBool(testmodeOn, forKey: "testmodeOn")
         NSUserDefaults.standardUserDefaults().synchronize()
 
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
-        announceOn = !NSUserDefaults.standardUserDefaults().boolForKey("announceOff")
+        announceOn = NSUserDefaults.standardUserDefaults().boolForKey("announceOn")
+        testmodeOn = NSUserDefaults.standardUserDefaults().boolForKey("testmodeOn")
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
 
         if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
@@ -83,6 +91,7 @@ class SetupViewController: ViewController {
         emailOnOff.on = emailOn
         cloudOnOff.on = cloudOn
         announceOnOff.on = announceOn
+        testmodeOnOff.on = testmodeOn
         email.text = emailAddress
         resultsDisplayOnOff.on = resultsDisplayOn
     }

@@ -12,7 +12,7 @@ import AVFoundation
 
 var firstTimeThrough = true
 
-var mailSubject : String = "CNToolkit Results"
+var mailSubject : String = "Updated Boston Naming Test -- Data Collection Results"
 var patientName : String?
 var patientAge : String?
 var patientID : String?
@@ -140,10 +140,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        patientUUID = NSUUID().UUIDString
-        UUID.text = patientUUID
-        
-        
         AgePicker.delegate = self
         GenderPicker.delegate = self
         EthnicPicker.delegate = self
@@ -171,8 +167,9 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         // load the defaults from presistant memory
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
         resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
-        announceOn = !NSUserDefaults.standardUserDefaults().boolForKey("announceOff")
+        announceOn = NSUserDefaults.standardUserDefaults().boolForKey("announceOn")
         cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
+        testmodeOn = NSUserDefaults.standardUserDefaults().boolForKey("testmodeOn")
         
         uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
         ipadName = UIDevice.currentDevice().name
@@ -208,6 +205,9 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
 
         
         // Seguing here from Test selection
+        
+        patientUUID = NSUUID().UUIDString
+        UUID.text = patientUUID
         
         patientName = ""
         patientID = ""
