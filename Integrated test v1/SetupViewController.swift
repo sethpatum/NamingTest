@@ -9,7 +9,6 @@
 import UIKit
 
 var cloudOn   : Bool = true
-var cloudTestOn : Bool = false
 var emailOn  : Bool = false
 var announceOn : Bool = false
 var testmodeOn : Bool = false
