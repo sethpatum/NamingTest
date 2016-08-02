@@ -184,7 +184,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         birthdateField.maximumDate = currentDate
         
         if(selectedTest == "DONE") {
-            print("IN DONE")
             if(cloudOn) {
                 cloudHelper.patientRecord()
                 //cloudHelper.audioRecord()
@@ -348,20 +347,19 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         } else if pickerView == GenderPicker {
             patientGender = genderData[row]
             if patientGender == "Other"{
-                addOtherCondition(&patientGender, pickerView:pickerView, data:&genderData)
+                addOtherCondition(pickerView)
             }
         } else if pickerView == EthnicPicker {
             patientEthnic = ethnicData[row]
             if patientEthnic == "Other" {
-                addOtherCondition(&patientEthnic, pickerView:pickerView, data:&ethnicData)
+                addOtherCondition(pickerView)
             }
-            print("inPV", patientEthnic)
         } else if pickerView == EducationPicker {
             patientEducation = educationData[row]
         } else if pickerView == LanguagePicker {
             patientLanguage = languageData[row]
             if patientLanguage == "Other" {
-                addOtherCondition(&patientLanguage, pickerView:pickerView, data:&languageData)
+                addOtherCondition(pickerView)
             }
         } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
@@ -372,13 +370,12 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
             if patientOrigin == "Other" {
-                addOtherCondition(&patientOrigin, pickerView:pickerView, data:&originData)
-            }
+                addOtherCondition(pickerView)            }
         }
     }
     
     
-    func addOtherCondition(inout result:String?, pickerView:UIPickerView, inout data:[String]){
+    func addOtherCondition(pickerView:UIPickerView){
         let alert = UIAlertController(title: "Other", message: "Enter other conditions", preferredStyle: .Alert)
         
         //2. Add the text field. You can configure it however you need.
@@ -392,11 +389,24 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             //self.resultComments[self.count-startCount] = textField.text!
-            result = textField.text
-            data.append(result!)
-            //pickerView.reloadComponent(data.count)
-            pickerView.selectRow(data.count, inComponent: 0, animated: true)
-            print("Adding the text ", result)
+            let result = textField.text
+     
+            var cnt : Int = 0
+            if pickerView == self.GenderPicker {
+                self.genderData.append(result!)
+                cnt = self.genderData.count
+            } else if pickerView == self.EthnicPicker {
+                self.ethnicData.append(result!)
+                cnt = self.ethnicData.count
+            } else if pickerView == self.LanguagePicker {
+                self.languageData.append(result!)
+                cnt = self.languageData.count
+            } else if pickerView == self.OriginPicker {
+                self.originData.append(result!)
+                cnt = self.originData.count
+            }
+            pickerView.reloadAllComponents()
+            pickerView.selectRow(cnt-1, inComponent: 0, animated: true)
         }))
         
         // 4. Present the alert.
