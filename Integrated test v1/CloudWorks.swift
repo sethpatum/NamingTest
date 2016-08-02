@@ -19,11 +19,13 @@ class CloudWorks {
     //let MyPackage: String? = "Bluemix_Cloudant NoSQL DB-hd_Credentials-1"
 
     
-    let WhiskAppKey: String = "287d8438-4c7f-474c-af9b-cc8c15e2ff57"
-    let WhiskAppSecret: String = "hERgPjlfKoN7rbiSs0judMnWNY14WEuxQsWCpSUKyHRXTr6W65TPemoYl2mYHRUr"
-    let MyNamespace: String = "CNToolkit_Updated Boston Naming Task"
+    var WhiskAppKey: String?
+    var WhiskAppSecret: String?
+    var MyNamespace: String?
     var MyPackage: String?
     let date = String(NSDate())
+    
+    
 
 
     // the URL for Whisk backend
@@ -37,6 +39,12 @@ class CloudWorks {
 
     // Initilize the data structures needed
     init() {
+        
+        WhiskAppKey = "287d8438-4c7f-474c-af9b-cc8c15e2ff57"
+        WhiskAppSecret = "hERgPjlfKoN7rbiSs0judMnWNY14WEuxQsWCpSUKyHRXTr6W65TPemoYl2mYHRUr"
+        MyNamespace = "CNToolkit_Updated Boston Naming Task"
+       
+        
         // create whisk credentials token
         let creds = WhiskCredentials(accessKey: WhiskAppKey, accessToken: WhiskAppSecret)
         whisk = Whisk(credentials: creds)

@@ -376,7 +376,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     
     
     func addOtherCondition(pickerView:UIPickerView){
-        let alert = UIAlertController(title: "Other", message: "Enter other conditions", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Other", message: "Enter other ", preferredStyle: .Alert)
         
         //2. Add the text field. You can configure it however you need.
         
