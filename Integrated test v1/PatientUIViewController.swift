@@ -395,15 +395,19 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             if pickerView == self.GenderPicker {
                 self.genderData.append(result!)
                 cnt = self.genderData.count
+                patientGender = result!
             } else if pickerView == self.EthnicPicker {
                 self.ethnicData.append(result!)
                 cnt = self.ethnicData.count
+                patientEthnic = result!
             } else if pickerView == self.LanguagePicker {
                 self.languageData.append(result!)
                 cnt = self.languageData.count
+                patientLanguage = result!
             } else if pickerView == self.OriginPicker {
                 self.originData.append(result!)
                 cnt = self.originData.count
+                patientOrigin = result!
             }
             pickerView.reloadAllComponents()
             pickerView.selectRow(cnt-1, inComponent: 0, animated: true)
