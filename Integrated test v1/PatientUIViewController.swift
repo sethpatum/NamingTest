@@ -24,7 +24,7 @@ var patientEducation : String?
 var patientLanguage : String?
 var patientHandedness : String?
 var patientMemory : String?
-var patientHealth : String?
+var patientHealth : [String?]
 var patientOrigin : String?
 
 
@@ -38,6 +38,9 @@ func makeAgeData() -> [String] {
 
 
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
+    
+    @IBOutlet weak var Diabetes: UISwitch!
+    @IBOutlet weak var ADHD: UISwitch!
     
     @IBOutlet weak var GenderPicker: UIPickerView!
     var genderData = ["Male", "Female", "Other", "Prefer Not To Say"]
@@ -92,6 +95,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         
     }
     */
+    @IBOutlet weak var OtherCond: UITextField!
     
     var body:String?
     
@@ -372,8 +376,19 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             if patientOrigin == "Other" {
                 addOtherCondition(pickerView)            }
         }
+        if Diabetes == true{
+            patientHealth.append("Diabetes")
+        }
+        if ADHD == true{
+            patientHealth.append("ADD/ADHD")
+        }
+        patientHealth.append(OtherCond)
+        
     }
     
+    
+    
+
     
     func addOtherCondition(pickerView:UIPickerView){
         let alert = UIAlertController(title: "Other", message: "Enter other ", preferredStyle: .Alert)
