@@ -48,8 +48,7 @@ class AllResults  {
         e += "<h4>Patient Education: \(patientEducation!) </h4>\n"
         e += "<h4>Patient Language: \(patientLanguage!) </h4>\n"
         e += "<h4>Patient Handedness: \(patientHandedness!) </h4>\n"
-        e += "<h4>Patient Memory: \(patientMemory!) </h4>\n"
-        e += "<h4>Patient Health: \(patientHealth!) </h4>\n"
+        e += "<h4>Patient Health: \(patientHealth) </h4>\n"
         e += "<h4>Patient Origin: \(patientOrigin!) </h4>\n"
 
         

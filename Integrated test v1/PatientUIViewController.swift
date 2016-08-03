@@ -23,8 +23,7 @@ var patientEthnic : String?
 var patientEducation : String?
 var patientLanguage : String?
 var patientHandedness : String?
-var patientMemory : String?
-var patientHealth : [String?]
+var patientHealth : [String] = []
 var patientOrigin : String?
 
 
@@ -59,9 +58,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     
     @IBOutlet weak var AgePicker: UIPickerView!
     var ageData:[String] = makeAgeData()
-    
-    @IBOutlet weak var MemoryPicker: UIPickerView!
-    var memoryData = ["Yes", "No"]
     
     //@IBOutlet weak var HealthPicker: UIPickerView!
     // healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
@@ -110,6 +106,12 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdateField: UIDatePicker!
     
+    @IBOutlet weak var memoryYN: UISwitch!
+    @IBOutlet weak var diabetesYN: UISwitch!
+    @IBOutlet weak var addYN: UISwitch!
+    @IBOutlet weak var hypertensionYN: UISwitch!
+    @IBOutlet weak var renalYN: UISwitch!
+    @IBOutlet weak var healthOtherField: UITextField!
     
     @IBOutlet weak var UUID: UILabel!
     
@@ -151,9 +153,14 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         EducationPicker.delegate = self
         LanguagePicker.delegate = self
         HandedPicker.delegate = self
-        MemoryPicker.delegate = self
-        //HealthPicker.delegate = self
         OriginPicker.delegate = self
+        
+        memoryYN.setOn(false, animated:false)
+        diabetesYN.setOn(false, animated:false)
+        addYN.setOn(false, animated:false)
+        hypertensionYN.setOn(false, animated:false)
+        renalYN.setOn(false, animated:false)
+        healthOtherField.text = ""
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -215,14 +222,13 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         
         patientName = ""
         patientID = ""
+        patientHealth = []
         patientAge = ageData[AgePicker.selectedRowInComponent(0)]
         patientGender = genderData[GenderPicker.selectedRowInComponent(0)]
         patientEthnic = ethnicData[EthnicPicker.selectedRowInComponent(0)]
         patientEducation = educationData[EducationPicker.selectedRowInComponent(0)]
         patientLanguage = languageData[LanguagePicker.selectedRowInComponent(0)]
         patientHandedness = handedData[HandedPicker.selectedRowInComponent(0)]
-        patientMemory = memoryData[MemoryPicker.selectedRowInComponent(0)]
-       // patientHealth = healthData[HealthPicker.selectedRowInComponent(0)]
         patientOrigin = originData[OriginPicker.selectedRowInComponent(0)]
         let formatter = NSDateFormatter()
         formatter.dateFormat = "y-MM-dd"
@@ -236,7 +242,24 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if memoryYN.on == true {
+            patientHealth.append("Memory Issue")
+        }
+        if diabetesYN.on == true {
+            patientHealth.append("Diabetes")
+        }
+        if addYN.on == true {
+            patientHealth.append("ADD/ADHD")
+        }
+        if hypertensionYN.on == true {
+            patientHealth.append("Hypertension")
+        }
+        if renalYN.on == true {
+            patientHealth.append("Renal Problem")
+        }
+        if healthOtherField.text?.characters.count > 0  {
+            patientHealth.append(healthOtherField.text!)
+        }
     }
 
     
@@ -303,8 +326,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             return languageData.count
         } else if pickerView == HandedPicker {
             return handedData.count
-        } else if pickerView == MemoryPicker {
-            return memoryData.count
  //       } else if pickerView == HealthPicker {
  //           return healthData.count
         } else if pickerView == OriginPicker {
@@ -332,9 +353,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
             return handedData[row]
-        } else if pickerView == MemoryPicker {
-            patientMemory = memoryData[row]
-            return memoryData[row]
 //        } else if pickerView == HealthPicker {
 //            patientHealth = healthData[row]
 //            return healthData[row]
@@ -367,22 +385,14 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             }
         } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
-        } else if pickerView == MemoryPicker {
-            patientMemory = memoryData[row]
 //        } else if pickerView == HealthPicker {
 //            patientHealth = healthData[row]
         } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
             if patientOrigin == "Other" {
-                addOtherCondition(pickerView)            }
+                addOtherCondition(pickerView)
+            }
         }
-        if Diabetes == true{
-            patientHealth.append("Diabetes")
-        }
-        if ADHD == true{
-            patientHealth.append("ADD/ADHD")
-        }
-        patientHealth.append(OtherCond)
         
     }
     

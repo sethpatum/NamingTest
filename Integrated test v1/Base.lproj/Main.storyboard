@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -843,20 +843,14 @@ While the authors and producers of this program strive to provide you with usefu
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8x-q8-6n4">
-                                <rect key="frame" x="165" y="390" width="84" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-bk-cbh">
+                                <rect key="frame" x="134" y="599" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Age:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-bk-cbh">
-                                <rect key="frame" x="216" y="542" width="35" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sa4-Rp-b5l">
-                                <rect key="frame" x="284" y="390" width="434" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sa4-Rp-b5l">
+                                <rect key="frame" x="204" y="391" width="434" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="434" id="WRG-KE-XIF"/>
                                 </constraints>
@@ -883,7 +877,7 @@ While the authors and producers of this program strive to provide you with usefu
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birth Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-jn-0nR">
-                                <rect key="frame" x="169" y="700" width="82" height="21"/>
+                                <rect key="frame" x="87" y="700" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -923,93 +917,108 @@ While the authors and producers of this program strive to provide you with usefu
                                 <rect key="frame" x="204" y="121" width="251" height="75"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Highest Education Level:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3L-FX-oZV">
-                                <rect key="frame" x="62" y="625" width="189" height="21"/>
+                                <rect key="frame" x="547" y="600" width="189" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="twJ-vb-lfH">
-                                <rect key="frame" x="285" y="598" width="330" height="75"/>
+                                <rect key="frame" x="748" y="573" width="249" height="75"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mev-Lq-reR">
                                 <rect key="frame" x="204" y="305" width="251" height="75"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SpN-g6-2Gg">
-                                <rect key="frame" x="285" y="428" width="330" height="75"/>
+                                <rect key="frame" x="204" y="455" width="330" height="75"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diagnosed Memory Problem:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Res-Jp-KIM">
-                                <rect key="frame" x="526" y="148" width="222" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diagnosed Chronic Health Problem:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRr-kj-jda">
-                                <rect key="frame" x="643" y="455" width="273" height="21"/>
+                                <rect key="frame" x="632" y="121" width="273" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country/Region of Origin:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0un-KI-cVe">
-                                <rect key="frame" x="554" y="328" width="194" height="21"/>
+                                <rect key="frame" x="542" y="482" width="194" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGE-Iz-haN">
-                                <rect key="frame" x="771" y="301" width="213" height="75"/>
+                                <rect key="frame" x="748" y="455" width="249" height="75"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NSUUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usc-zw-dsR">
-                                <rect key="frame" x="738" y="395" width="352" height="21"/>
+                                <rect key="frame" x="663" y="395" width="352" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPi-mI-Irr">
-                                <rect key="frame" x="771" y="121" width="213" height="75"/>
-                            </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-An-YL8">
-                                <rect key="frame" x="285" y="515" width="330" height="75"/>
+                                <rect key="frame" x="204" y="571" width="330" height="75"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Handedness:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-2P-aX0">
-                                <rect key="frame" x="150" y="455" width="101" height="21"/>
+                                <rect key="frame" x="68" y="483" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yS6-xA-VWd">
-                                <rect key="frame" x="867" y="484" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yS6-xA-VWd">
+                                <rect key="frame" x="856" y="150" width="51" height="31"/>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-Sy-njY">
-                                <rect key="frame" x="867" y="523" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-Sy-njY">
+                                <rect key="frame" x="856" y="189" width="51" height="31"/>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhi-cT-JLj">
-                                <rect key="frame" x="867" y="562" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bhi-cT-JLj">
+                                <rect key="frame" x="856" y="228" width="51" height="31"/>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TUU-4u-MEN">
-                                <rect key="frame" x="843" y="601" width="97" height="30"/>
+                                <rect key="frame" x="832" y="350" width="156" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diagnosed Memory Issue:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkC-pc-Fnk">
-                                <rect key="frame" x="643" y="489" width="198" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diagnosed Memory Issue:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkC-pc-Fnk">
+                                <rect key="frame" x="632" y="155" width="198" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diabetes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqd-GE-KTc">
-                                <rect key="frame" x="643" y="528" width="157" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Diabetes:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqd-GE-KTc">
+                                <rect key="frame" x="673" y="194" width="157" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD/ADHD:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJJ-T9-gVJ">
-                                <rect key="frame" x="643" y="567" width="157" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD/ADHD:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJJ-T9-gVJ">
+                                <rect key="frame" x="673" y="233" width="157" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjp-YM-OY2">
-                                <rect key="frame" x="643" y="605" width="157" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjp-YM-OY2">
+                                <rect key="frame" x="653" y="354" width="157" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patient ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E0-8g-GHc">
+                                <rect key="frame" x="90" y="396" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hypertension:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YB-Pu-zI6">
+                                <rect key="frame" x="722" y="270" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-ha-iZq">
+                                <rect key="frame" x="856" y="267" width="51" height="31"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wxI-qA-dww">
+                                <rect key="frame" x="856" y="306" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Renal Problems:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaG-TG-aDh">
+                                <rect key="frame" x="706" y="311" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1017,28 +1026,12 @@ While the authors and producers of this program strive to provide you with usefu
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="M8x-q8-6n4" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="145" id="0dW-Uh-Ky8"/>
-                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="top" secondItem="u4e-yX-EA7" secondAttribute="topMargin" constant="390" id="91m-qV-Jmn"/>
-                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="264" id="C6K-L2-T08"/>
                             <constraint firstItem="n77-2A-MJZ" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="383" id="GCs-XR-puy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n77-2A-MJZ" secondAttribute="trailing" constant="382" id="PZw-Jy-WYh"/>
-                            <constraint firstItem="M8x-q8-6n4" firstAttribute="top" secondItem="u4e-yX-EA7" secondAttribute="top" constant="390" id="Tig-cQ-4Zo"/>
-                            <constraint firstItem="6ve-bk-cbh" firstAttribute="top" secondItem="u4e-yX-EA7" secondAttribute="topMargin" constant="520" id="UCb-7n-dWN"/>
-                            <constraint firstItem="6ve-bk-cbh" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="196" id="VEZ-cc-EQ3"/>
-                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="centerX" secondItem="M8x-q8-6n4" secondAttribute="centerX" id="VFd-NT-4YV"/>
                             <constraint firstItem="n77-2A-MJZ" firstAttribute="top" secondItem="fFZ-k9-eVo" secondAttribute="bottom" constant="13" id="X8O-74-qUC"/>
-                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="leading" secondItem="M8x-q8-6n4" secondAttribute="trailing" constant="35" id="YRz-9k-6WP"/>
                             <constraint firstItem="xjO-OJ-rcn" firstAttribute="leading" secondItem="u4e-yX-EA7" secondAttribute="leadingMargin" constant="10" id="cb1-zi-Xrv"/>
-                            <constraint firstItem="sa4-Rp-b5l" firstAttribute="centerX" secondItem="M8x-q8-6n4" secondAttribute="centerX" id="r3c-Xc-h5f"/>
                             <constraint firstItem="xjO-OJ-rcn" firstAttribute="top" secondItem="fFZ-k9-eVo" secondAttribute="bottom" constant="64" id="z43-jK-oVc"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="VFd-NT-4YV"/>
-                                <exclude reference="YRz-9k-6WP"/>
-                                <exclude reference="r3c-Xc-h5f"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
@@ -1051,15 +1044,19 @@ While the authors and producers of this program strive to provide you with usefu
                         <outlet property="IDfield" destination="sa4-Rp-b5l" id="ZNf-7S-fNL"/>
                         <outlet property="IDlabel" destination="n3L-FX-oZV" id="N5a-u0-R62"/>
                         <outlet property="LanguagePicker" destination="mev-Lq-reR" id="LC5-Lw-rJ3"/>
-                        <outlet property="MemoryPicker" destination="iPi-mI-Irr" id="hcV-0E-Uco"/>
                         <outlet property="OriginPicker" destination="gGE-Iz-haN" id="ZSS-Aa-KH4"/>
                         <outlet property="OtherCond" destination="TUU-4u-MEN" id="NI2-7L-y5b"/>
                         <outlet property="UUID" destination="Usc-zw-dsR" id="diW-pU-pfp"/>
+                        <outlet property="addYN" destination="Bhi-cT-JLj" id="YzQ-bt-3Ny"/>
                         <outlet property="ageLabel" destination="6ve-bk-cbh" id="ulb-Bu-el4"/>
                         <outlet property="birthdateField" destination="Blz-yN-Djr" id="q9K-AG-b1D"/>
                         <outlet property="birthdayLabel" destination="cxl-jn-0nR" id="PjC-3w-Abh"/>
+                        <outlet property="diabetesYN" destination="o8D-Sy-njY" id="lYs-jN-LYT"/>
+                        <outlet property="healthOtherField" destination="TUU-4u-MEN" id="6hQ-8C-tBI"/>
+                        <outlet property="hypertensionYN" destination="pgl-ha-iZq" id="1Ng-Tl-Ddq"/>
+                        <outlet property="memoryYN" destination="yS6-xA-VWd" id="XUM-E7-T0p"/>
                         <outlet property="nameField" destination="sa4-Rp-b5l" id="ac2-3B-e73"/>
-                        <outlet property="nameLabel" destination="M8x-q8-6n4" id="35q-NC-Eoj"/>
+                        <outlet property="renalYN" destination="wxI-qA-dww" id="wWM-yK-0K7"/>
                         <segue destination="Oao-cI-byD" kind="show" identifier="toDisclaimer" id="gxL-oI-zvu"/>
                         <segue destination="cLF-Kx-Eej" kind="show" identifier="toTestSelection" id="Db8-gX-wha"/>
                     </connections>
