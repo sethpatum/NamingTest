@@ -23,8 +23,7 @@ var patientEthnic : String?
 var patientEducation : String?
 var patientLanguage : String?
 var patientHandedness : String?
-var patientMemory : String?
-var patientHealth : String?
+var patientHealth : [String] = []
 var patientOrigin : String?
 
 
@@ -39,29 +38,29 @@ func makeAgeData() -> [String] {
 
 class PatientUIViewController: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
     
+    @IBOutlet weak var Diabetes: UISwitch!
+    @IBOutlet weak var ADHD: UISwitch!
+    
     @IBOutlet weak var GenderPicker: UIPickerView!
-    let genderData = ["Male", "Female", "Other", "Prefer Not To Say"]
+    var genderData = ["Male", "Female", "Other", "Prefer Not To Say"]
     
     @IBOutlet weak var EthnicPicker: UIPickerView!
-    let ethnicData = ["Caucasian", "African American", "Latino", "Other"]
+    var ethnicData = ["Caucasian", "African American", "Latino", "Other"]
     
     @IBOutlet weak var EducationPicker: UIPickerView!
-    let educationData = ["< 9 yrs", "9-11 yrs", "High School Graduate", "Associates Degree", "Bachelors Degree", "Post Graduate Degree"]
+    var educationData = ["< 9 yrs", "9-11 yrs", "High School Graduate", "Associates Degree", "Bachelors Degree", "Post Graduate Degree"]
     
     @IBOutlet weak var LanguagePicker: UIPickerView!
-    let languageData = ["English", "Spanish", "Other",]
+    var languageData = ["English", "Spanish", "Other",]
     
     @IBOutlet weak var HandedPicker: UIPickerView!
-    let handedData = ["Left Handed", "Right Handed", "Ambidextrous"]
+    var handedData = ["Left Handed", "Right Handed", "Ambidextrous"]
     
     @IBOutlet weak var AgePicker: UIPickerView!
     var ageData:[String] = makeAgeData()
     
-    @IBOutlet weak var MemoryPicker: UIPickerView!
-    let memoryData = ["Yes", "No"]
-    
-    @IBOutlet weak var HealthPicker: UIPickerView!
-    let healthData = ["None", "Hypertension", "Diabetes", "Renal Problems", "Other"]
+    //@IBOutlet weak var HealthPicker: UIPickerView!
+    // healthData = ["Hypertension", "Diabetes", "Renal Problems", "Other"]
     
     @IBOutlet weak var OriginPicker: UIPickerView!
     let originData = ["United States", "Mexico", "Puerto Rico", "South America", "Western Europe", "Eastern Europe", "Southeast Asia", "Cape Verde", "Canada", "Sri Lanka", "Other"]
@@ -92,6 +91,7 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         
     }
     */
+    @IBOutlet weak var OtherCond: UITextField!
     
     var body:String?
     
@@ -106,10 +106,17 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdateField: UIDatePicker!
     
+    @IBOutlet weak var memoryYN: UISwitch!
+    @IBOutlet weak var diabetesYN: UISwitch!
+    @IBOutlet weak var addYN: UISwitch!
+    @IBOutlet weak var hypertensionYN: UISwitch!
+    @IBOutlet weak var renalYN: UISwitch!
+    @IBOutlet weak var healthOtherField: UITextField!
     
     @IBOutlet weak var UUID: UILabel!
     
     @IBAction func StartTesting(sender: AnyObject) {
+        print("PE", patientEthnic)
         if firstTimeThrough == true {
             firstTimeThrough = false
             performSegueWithIdentifier("toDisclaimer", sender: self)
@@ -146,9 +153,14 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         EducationPicker.delegate = self
         LanguagePicker.delegate = self
         HandedPicker.delegate = self
-        MemoryPicker.delegate = self
-        HealthPicker.delegate = self
         OriginPicker.delegate = self
+        
+        memoryYN.setOn(false, animated:false)
+        diabetesYN.setOn(false, animated:false)
+        addYN.setOn(false, animated:false)
+        hypertensionYN.setOn(false, animated:false)
+        renalYN.setOn(false, animated:false)
+        healthOtherField.text = ""
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -183,7 +195,6 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         birthdateField.maximumDate = currentDate
         
         if(selectedTest == "DONE") {
-            print("IN DONE")
             if(cloudOn) {
                 cloudHelper.patientRecord()
                 //cloudHelper.audioRecord()
@@ -211,14 +222,13 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         
         patientName = ""
         patientID = ""
+        patientHealth = []
         patientAge = ageData[AgePicker.selectedRowInComponent(0)]
         patientGender = genderData[GenderPicker.selectedRowInComponent(0)]
         patientEthnic = ethnicData[EthnicPicker.selectedRowInComponent(0)]
         patientEducation = educationData[EducationPicker.selectedRowInComponent(0)]
         patientLanguage = languageData[LanguagePicker.selectedRowInComponent(0)]
         patientHandedness = handedData[HandedPicker.selectedRowInComponent(0)]
-        patientMemory = memoryData[MemoryPicker.selectedRowInComponent(0)]
-        patientHealth = healthData[HealthPicker.selectedRowInComponent(0)]
         patientOrigin = originData[OriginPicker.selectedRowInComponent(0)]
         patientBdate = ""
        
@@ -231,7 +241,24 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if memoryYN.on == true {
+            patientHealth.append("Memory Issue")
+        }
+        if diabetesYN.on == true {
+            patientHealth.append("Diabetes")
+        }
+        if addYN.on == true {
+            patientHealth.append("ADD/ADHD")
+        }
+        if hypertensionYN.on == true {
+            patientHealth.append("Hypertension")
+        }
+        if renalYN.on == true {
+            patientHealth.append("Renal Problem")
+        }
+        if healthOtherField.text?.characters.count > 0  {
+            patientHealth.append(healthOtherField.text!)
+        }
     }
 
     
@@ -298,10 +325,8 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             return languageData.count
         } else if pickerView == HandedPicker {
             return handedData.count
-        } else if pickerView == MemoryPicker {
-            return memoryData.count
-        } else if pickerView == HealthPicker {
-            return healthData.count
+ //       } else if pickerView == HealthPicker {
+ //           return healthData.count
         } else if pickerView == OriginPicker {
             return originData.count
         }
@@ -327,12 +352,9 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
             return handedData[row]
-        } else if pickerView == MemoryPicker {
-            patientMemory = memoryData[row]
-            return memoryData[row]
-        } else if pickerView == HealthPicker {
-            patientHealth = healthData[row]
-            return healthData[row]
+//        } else if pickerView == HealthPicker {
+//            patientHealth = healthData[row]
+//            return healthData[row]
         } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
             return originData[row]
@@ -345,22 +367,80 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
             patientAge = ageData[row]
         } else if pickerView == GenderPicker {
             patientGender = genderData[row]
+            if patientGender == "Other"{
+                addOtherCondition(pickerView)
+            }
         } else if pickerView == EthnicPicker {
             patientEthnic = ethnicData[row]
+            if patientEthnic == "Other" {
+                addOtherCondition(pickerView)
+            }
         } else if pickerView == EducationPicker {
             patientEducation = educationData[row]
         } else if pickerView == LanguagePicker {
             patientLanguage = languageData[row]
+            if patientLanguage == "Other" {
+                addOtherCondition(pickerView)
+            }
         } else if pickerView == HandedPicker {
             patientHandedness = handedData[row]
-        } else if pickerView == MemoryPicker {
-            patientMemory = memoryData[row]
-        } else if pickerView == HealthPicker {
-            patientHealth = healthData[row]
+//        } else if pickerView == HealthPicker {
+//            patientHealth = healthData[row]
         } else if pickerView == OriginPicker {
             patientOrigin = originData[row]
+            if patientOrigin == "Other" {
+                addOtherCondition(pickerView)
+            }
         }
+        
     }
+    
+    
+    
+
+    
+    func addOtherCondition(pickerView:UIPickerView){
+        let alert = UIAlertController(title: "Other", message: "Enter other ", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = ""
+            
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            //self.resultComments[self.count-startCount] = textField.text!
+            let result = textField.text
+     
+            var cnt : Int = 0
+            if pickerView == self.GenderPicker {
+                self.genderData.append(result!)
+                cnt = self.genderData.count
+                patientGender = result!
+            } else if pickerView == self.EthnicPicker {
+                self.ethnicData.append(result!)
+                cnt = self.ethnicData.count
+                patientEthnic = result!
+            } else if pickerView == self.LanguagePicker {
+                self.languageData.append(result!)
+                cnt = self.languageData.count
+                patientLanguage = result!
+            } else if pickerView == self.OriginPicker {
+                self.originData.append(result!)
+                cnt = self.originData.count
+                patientOrigin = result!
+            }
+            pickerView.reloadAllComponents()
+            pickerView.selectRow(cnt-1, inComponent: 0, animated: true)
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
 
 }
 

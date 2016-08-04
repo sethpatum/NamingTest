@@ -102,8 +102,7 @@ class CloudWorks {
             "patientEducation":patientEducation!,
             "patientLanguage":patientLanguage!,
             "patientHandedness":patientHandedness!,
-            "patientMemory":patientMemory!,
-            "patientHealth":patientHealth!,
+            "patientHealth":patientHealth,
             "patientOrigin":patientOrigin!] ]
         writeRecord("write", parameters:parameters)
     }
