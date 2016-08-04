@@ -1,3 +1,5 @@
+
+
 //
 //  NamingPicturesViewController.swift
 //  Integrated test v1

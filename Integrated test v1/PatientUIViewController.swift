@@ -220,9 +220,8 @@ class PatientUIViewController: ViewController, MFMailComposeViewControllerDelega
         patientMemory = memoryData[MemoryPicker.selectedRowInComponent(0)]
         patientHealth = healthData[HealthPicker.selectedRowInComponent(0)]
         patientOrigin = originData[OriginPicker.selectedRowInComponent(0)]
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "y-MM-dd"
-        patientBdate = formatter.stringFromDate(birthdateField.date)
+        patientBdate = ""
+       
 
         
         if(cloudOn) {
